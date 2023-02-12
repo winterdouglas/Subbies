@@ -32,12 +32,12 @@ command -v npm >/dev/null 2>&1 || {
   brew install node
 }
 
-# Ensure Watchman is installed
-command -v watchman >/dev/null 2>&1 || {
-  echo "This app requires Watchman to watch file changes, but it was not found on your system."
-  echo "Installing watchman with brew..."
-  brew install watchman
-}
+# # Ensure Watchman is installed
+# command -v watchman >/dev/null 2>&1 || {
+#   echo "This app requires Watchman to watch file changes, but it was not found on your system."
+#   echo "Installing watchman with brew..."
+#   brew install watchman
+# }
 
 # Ensure Yarn is installed
 command -v yarn >/dev/null 2>&1 || {
