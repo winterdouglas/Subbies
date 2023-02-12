@@ -14,7 +14,21 @@
     "target": "esnext",
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": "./app",
+    "paths" : {
+      "@app": ["."],
+      "@components": ["./components"],
+      "@config": ["./config"],
+      "@hooks": ["./hooks"],
+      "@i18n": ["./i18n"],
+      "@models": ["./models"],
+      "@navigators": ["./navigators"],
+      "@screens": ["./screens"],
+      "@services": ["./services"],
+      "@theme": ["./theme"],
+      "@utils": ["./utils"]
+    }
   },
   "exclude": ["node_modules"],
   "include": ["index.js", "App.js", "app", "test"],

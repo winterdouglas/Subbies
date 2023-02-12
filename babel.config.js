@@ -1,5 +1,23 @@
 const plugins = [
   [
+    'module-resolver',
+    {
+      "alias": {
+        "@app": "./app",
+        "@components": "./app/components",
+        "@config": "./app/config",
+        "@hooks": "./app/hooks",
+        "@i18n": "./app/i18n",
+        "@models": "./app/models",
+        "@navigators": "./app/navigators",
+        "@screens": "./app/screens",
+        "@services": "./app/services",
+        "@theme": "./app/theme",
+        "@utils": "./app/utils"
+      },
+    },
+  ],
+  [
     "@babel/plugin-proposal-decorators",
     {
       legacy: true,
