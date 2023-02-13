@@ -1,1 +1,4 @@
 babel.config.js
+react-native.config.js
+metro.config.js
+webpack.config.js

@@ -2,6 +2,7 @@ const plugins = [
   [
     'module-resolver',
     {
+      "root": ["./app"],
       "alias": {
         "@app": "./app",
         "@components": "./app/components",
