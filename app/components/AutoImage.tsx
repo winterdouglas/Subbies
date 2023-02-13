@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useState } from "react"
 import { Image, ImageProps, ImageURISource, Platform } from "react-native"
 
-// TODO: document new props
 export interface AutoImageProps extends ImageProps {
   /**
    * How wide should the image be?

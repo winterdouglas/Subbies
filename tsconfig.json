@@ -15,22 +15,21 @@
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "baseUrl": "./app",
+    "baseUrl": ".",
     "paths" : {
-      "@app": ["."],
-      "@components": ["./components"],
-      "@config": ["./config"],
-      "@hooks": ["./hooks"],
-      "@i18n": ["./i18n"],
-      "@models": ["./models"],
-      "@navigators": ["./navigators"],
-      "@screens": ["./screens"],
-      "@services": ["./services"],
-      "@theme": ["./theme"],
-      "@utils": ["./utils"]
+      "@app": ["./app"],
+      "@components": ["./app/components"],
+      "@config": ["./app/config"],
+      "@hooks": ["./app/hooks"],
+      "@i18n": ["./app/i18n"],
+      "@navigators": ["./app/navigators"],
+      "@screens/*": ["./app/screens/*"],
+      "@services/*": ["./app/services/*"],
+      "@theme": ["./app/theme"],
+      "@utils/*": ["./app/utils/*"]
     }
   },
   "exclude": ["node_modules"],
-  "include": ["index.js", "App.js", "app", "test"],
+  "include": ["index.js", "App.js", "index.ts", "app", "test"],
   "extends": "expo/tsconfig.base"
 }

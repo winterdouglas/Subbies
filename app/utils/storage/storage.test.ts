@@ -1,39 +1,50 @@
-import AsyncStorage from "@react-native-async-storage/async-storage"
-import { load, loadString, save, saveString, clear, remove } from "./storage"
+import { MMKV } from "react-native-mmkv"
+import createStorage, { IStorage } from "./storage"
 
 // fixtures
+const KEY = "Key"
 const VALUE_OBJECT = { x: 1 }
 const VALUE_STRING = JSON.stringify(VALUE_OBJECT)
+const NEW_KEY = "New"
 
-beforeEach(() => (AsyncStorage.getItem as jest.Mock).mockReturnValue(Promise.resolve(VALUE_STRING)))
-afterEach(() => jest.clearAllMocks())
+// MMKV mocks the instance automatically
+let mockStorage: MMKV
+let storage: IStorage
 
-test("load", async () => {
-  const value = await load("something")
-  expect(value).toEqual(JSON.parse(VALUE_STRING))
+beforeEach(() => {
+  mockStorage = new MMKV()
+  mockStorage.set(KEY, VALUE_STRING)
+
+  storage = createStorage(mockStorage)
+})
+afterEach(() => mockStorage.clearAll())
+
+test("load", () => {
+  const value = storage.load(KEY)
+  expect(value).toStrictEqual(VALUE_OBJECT)
 })
 
-test("loadString", async () => {
-  const value = await loadString("something")
-  expect(value).toEqual(VALUE_STRING)
+test("loadString", () => {
+  const value = storage.loadString(KEY)
+  expect(value).toStrictEqual(VALUE_STRING)
 })
 
-test("save", async () => {
-  await save("something", VALUE_OBJECT)
-  expect(AsyncStorage.setItem).toHaveBeenCalledWith("something", VALUE_STRING)
+test("save", () => {
+  storage.save(NEW_KEY, VALUE_OBJECT)
+  expect(mockStorage.getString(NEW_KEY)).toStrictEqual(VALUE_STRING)
 })
 
-test("saveString", async () => {
-  await saveString("something", VALUE_STRING)
-  expect(AsyncStorage.setItem).toHaveBeenCalledWith("something", VALUE_STRING)
+test("saveString", () => {
+  storage.saveString(NEW_KEY, VALUE_STRING)
+  expect(mockStorage.getString(NEW_KEY)).toStrictEqual(VALUE_STRING)
 })
 
-test("remove", async () => {
-  await remove("something")
-  expect(AsyncStorage.removeItem).toHaveBeenCalledWith("something")
+test("remove", () => {
+  storage.remove(KEY)
+  expect(mockStorage.contains(KEY)).toStrictEqual(false)
 })
 
-test("clear", async () => {
-  await clear()
-  expect(AsyncStorage.clear).toHaveBeenCalledWith()
+test("clear", () => {
+  storage.clear()
+  expect(mockStorage.getAllKeys()).toEqual(expect.arrayContaining([]))
 })
