@@ -41,7 +41,7 @@ export enum ErrorType {
    */
   FATAL = "Fatal",
   /**
-   * An error caught by try/catch where defined using Reactotron.tron.error.
+   * An error caught by try/catch
    */
   HANDLED = "Handled",
 }
@@ -51,11 +51,9 @@ export enum ErrorType {
  */
 export const reportCrash = (error: any, type: ErrorType = ErrorType.FATAL) => {
   if (__DEV__) {
-    // Log to console and Reactotron in development
     const message = error.message || "Unknown"
     console.error(error)
     console.log(message, type)
-    console.tron.log(error)
   } else {
     // In production, utilize crash reporting service of choice below:
     // RN

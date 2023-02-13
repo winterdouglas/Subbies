@@ -8366,7 +8366,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"error-stack-parser@npm:^2.0.4, error-stack-parser@npm:^2.0.6":
+"error-stack-parser@npm:^2.0.6":
   version: 2.1.4
   resolution: "error-stack-parser@npm:2.1.4"
   dependencies:
@@ -14802,13 +14802,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mitt@npm:1.1.3":
-  version: 1.1.3
-  resolution: "mitt@npm:1.1.3"
-  checksum: 856a786b3fd82aaf5bb46d9bcc13250f7ec682cc89a800ed718e8ca01a849a3dc5b84e5cbd874c7504745ea1c1f6789d7257892879ae242d0df70d3a17513f97
-  languageName: node
-  linkType: hard
-
 "mixin-deep@npm:^1.2.0":
   version: 1.3.2
   resolution: "mixin-deep@npm:1.3.2"
@@ -14847,37 +14840,6 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 0c91b721bb12c3f9af4b77ebf73604baf350e64d80df91754dc509491ae93bf238581e59c7188360cec7cb62fc4100959245a42cfe01834efedc5e9d068376c2
-  languageName: node
-  linkType: hard
-
-"mobx-react-lite@npm:3.4.0":
-  version: 3.4.0
-  resolution: "mobx-react-lite@npm:3.4.0"
-  peerDependencies:
-    mobx: ^6.1.0
-    react: ^16.8.0 || ^17 || ^18
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 9294e127e281c8b37ec7bcaf17de479f50519e6ad485b58d7b991291900511541a5a718653759d3cf6503462c70325d025e1c2ed376d4584fb1b2d3aac9d9b48
-  languageName: node
-  linkType: hard
-
-"mobx-state-tree@npm:5.1.5":
-  version: 5.1.5
-  resolution: "mobx-state-tree@npm:5.1.5"
-  peerDependencies:
-    mobx: ^6.3.0
-  checksum: 7d88e6018668e0fe21908301848a724810640d8271e287bc90cbe63f87172d8353dc9f7fb922899e0ba70efba290c6cc7166b90032c76b957faec42a4dd27923
-  languageName: node
-  linkType: hard
-
-"mobx@npm:6.6.0":
-  version: 6.6.0
-  resolution: "mobx@npm:6.6.0"
-  checksum: 369b8d6830ec286e9c856c80002c7a554d46bca739b7f76432cb56b3ce1fe0a7ed7e5a994b9793d30023beeff0dd16300a501e831fa97107104e4fedc7d4af8f
   languageName: node
   linkType: hard
 
@@ -17296,17 +17258,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"query-string@npm:6.10.1":
-  version: 6.10.1
-  resolution: "query-string@npm:6.10.1"
-  dependencies:
-    decode-uri-component: ^0.2.0
-    split-on-first: ^1.0.0
-    strict-uri-encode: ^2.0.0
-  checksum: 93925c3ceade180cad70277cb0379c45fbac06b9f432593930352b3d15e39dbcb204f8fb2059daba87bd0798fb1071c5a59cd937f580a7cf8ecd29881103febe
-  languageName: node
-  linkType: hard
-
 "query-string@npm:^5.0.1":
   version: 5.1.1
   resolution: "query-string@npm:5.1.1"
@@ -17371,13 +17322,6 @@ __metadata:
   dependencies:
     inherits: ~2.0.3
   checksum: ebc23639248e4fe40a789f713c20548e513e053b3dc4924b6cb0ad741e3f264dcff948225c8737834dd4f9ec286dbc06a1a7c13858ea382d9379f4303bcc0916
-  languageName: node
-  linkType: hard
-
-"ramda@npm:^0.25.0":
-  version: 0.25.0
-  resolution: "ramda@npm:0.25.0"
-  checksum: 008abbcc69aefd89a2a4a0c9f4cf9f8da2ec490a0e1e261b4c88de8540ef0c383d469bfdf71b758b559377c71bfa8efea164fdb1779169359a86b46f7cb23cb1
   languageName: node
   linkType: hard
 
@@ -17612,16 +17556,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-flipper@npm:^0.164.0":
-  version: 0.164.0
-  resolution: "react-native-flipper@npm:0.164.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-native: ">0.62.0"
-  checksum: 8730d7349bec27a23558760320082bd89b07fb404a87bf039a8d852455f28e4d5419f093bb7900ff5f6d85488274cfb246278b6700878bcabe574d5aacd88dac
-  languageName: node
-  linkType: hard
-
 "react-native-gesture-handler@npm:~2.8.0":
   version: 2.8.0
   resolution: "react-native-gesture-handler@npm:2.8.0"
@@ -17816,61 +17750,6 @@ __metadata:
     object-assign: ^4.1.1
     prop-types: ^15.6.2
   checksum: 8484f3ecb13414526f2a7412190575fc134da785c02695eb92bb6028c930bfe1c238d7be2a125088fec663cc7cda0a3623373c46807cf2c281f49c34b79881ac
-  languageName: node
-  linkType: hard
-
-"reactotron-core-client@npm:2.8.10, reactotron-core-client@npm:^2.8.10":
-  version: 2.8.10
-  resolution: "reactotron-core-client@npm:2.8.10"
-  checksum: 766d33d7a2956860b8b655113121bc7a0922ddcb33e76fb849d065fcfc2bbda2fadf8d8af7b32e6944a292526b24de7f6444e5e0eb5b49d431f02ddb3a088fd5
-  languageName: node
-  linkType: hard
-
-"reactotron-core-client@npm:2.8.9":
-  version: 2.8.9
-  resolution: "reactotron-core-client@npm:2.8.9"
-  checksum: 095dccf8fa84f570637457396f613cce7633c5f96a693727ccc5f685e67dc51d8cb5adbd03936090a75b8d1fcc50a74b3062d8995602aafc69ccfccf3656bc3d
-  languageName: node
-  linkType: hard
-
-"reactotron-mst@npm:3.1.4":
-  version: 3.1.4
-  resolution: "reactotron-mst@npm:3.1.4"
-  dependencies:
-    ramda: ^0.25.0
-  peerDependencies:
-    mobx: ^3.4.1 || ^4.1.0 || >6.0.0
-    mobx-state-tree: ^1.4.0 || ^2.0.2 || >3.0.0
-    reactotron-core-client: ^2.5.0
-  checksum: 056428fc92dedc03c38bc8fcae1aca5b73eb603c23046ede62c8aa63e9b8693e165a4422f8386b099adc1e768c39d3175980fff32630c6666d88cd247a3f88f9
-  languageName: node
-  linkType: hard
-
-"reactotron-react-js@npm:^3.3.7":
-  version: 3.3.8
-  resolution: "reactotron-react-js@npm:3.3.8"
-  dependencies:
-    reactotron-core-client: 2.8.9
-    stacktrace-js: 2.0.1
-  checksum: 0c46c2042d15bfebaa7ff9dae57ef23cc677155c53f5fafb60ca03797b9702fb56967ec89ff3c493bd13364d5829ddff9d79d9805d576b9c3b0e0b33fb8da0bd
-  languageName: node
-  linkType: hard
-
-"reactotron-react-native@npm:5.0.3":
-  version: 5.0.3
-  resolution: "reactotron-react-native@npm:5.0.3"
-  dependencies:
-    mitt: 1.1.3
-    query-string: 6.10.1
-    react-native-flipper: ^0.164.0
-    reactotron-core-client: 2.8.10
-    rn-host-detect: 1.2.0
-  peerDependencies:
-    react-native: ">=0.40.0"
-  dependenciesMeta:
-    react-native-flipper:
-      optional: true
-  checksum: 7e1afe8dfdd909cd593dab40f43f944ad483906b8a7433dd7a9f4ad038d7b67d059d629030559b1c4f0cdbf6a1cee911d72b8f621014aa046abe752ede9bfcad
   languageName: node
   linkType: hard
 
@@ -18561,13 +18440,6 @@ __metadata:
     hash-base: ^3.0.0
     inherits: ^2.0.1
   checksum: 006accc40578ee2beae382757c4ce2908a826b27e2b079efdcd2959ee544ddf210b7b5d7d5e80467807604244e7388427330f5c6d4cd61e6edaddc5773ccc393
-  languageName: node
-  linkType: hard
-
-"rn-host-detect@npm:1.2.0":
-  version: 1.2.0
-  resolution: "rn-host-detect@npm:1.2.0"
-  checksum: 447b06d6726b665d9d7933b5da96232aad6ee01d1c8287e7b67e9ed1d07cde437127aaa4cf2f51ee2dfb4bb0f0cb398d2676220a392d990e99f6f2aefcc5f5b0
   languageName: node
   linkType: hard
 
@@ -19317,13 +19189,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map@npm:0.5.6":
-  version: 0.5.6
-  resolution: "source-map@npm:0.5.6"
-  checksum: 390b3f5165c9631a74fb6fb55ba61e62a7f9b7d4026ae0e2bfc2899c241d71c1bccb8731c496dc7f7cb79a5f523406eb03d8c5bebe8448ee3fc38168e2d209c8
-  languageName: node
-  linkType: hard
-
 "source-map@npm:^0.5.0, source-map@npm:^0.5.6":
   version: 0.5.7
   resolution: "source-map@npm:0.5.7"
@@ -19502,15 +19367,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stack-generator@npm:^2.0.4":
-  version: 2.0.10
-  resolution: "stack-generator@npm:2.0.10"
-  dependencies:
-    stackframe: ^1.3.4
-  checksum: 4fc3978a934424218a0aa9f398034e1f78153d5ff4f4ff9c62478c672debb47dd58de05b09fc3900530cbb526d72c93a6e6c9353bacc698e3b1c00ca3dda0c47
-  languageName: node
-  linkType: hard
-
 "stack-trace@npm:0.0.10":
   version: 0.0.10
   resolution: "stack-trace@npm:0.0.10"
@@ -19531,27 +19387,6 @@ __metadata:
   version: 1.3.4
   resolution: "stackframe@npm:1.3.4"
   checksum: bae1596873595c4610993fa84f86a3387d67586401c1816ea048c0196800c0646c4d2da98c2ee80557fd9eff05877efe33b91ba6cd052658ed96ddc85d19067d
-  languageName: node
-  linkType: hard
-
-"stacktrace-gps@npm:^3.0.3":
-  version: 3.1.2
-  resolution: "stacktrace-gps@npm:3.1.2"
-  dependencies:
-    source-map: 0.5.6
-    stackframe: ^1.3.4
-  checksum: 85daa232d138239b6ae0f4bcdd87d15d302a045d93625db17614030945b5314e204b5fbcf9bee5b6f4f9e6af5fca05f65c27fe910894b861ef6853b99470aa1c
-  languageName: node
-  linkType: hard
-
-"stacktrace-js@npm:2.0.1":
-  version: 2.0.1
-  resolution: "stacktrace-js@npm:2.0.1"
-  dependencies:
-    error-stack-parser: ^2.0.4
-    stack-generator: ^2.0.4
-    stacktrace-gps: ^3.0.3
-  checksum: 4e54ef92bcf19899f630b5445700cf7a72dfea278deb52fcef18d8bec9f0cc3e79c710e6b05400f4e009225a5bf3119c4e4a089e5ef5b98fbe318be963522c63
   languageName: node
   linkType: hard
 
@@ -19975,9 +19810,6 @@ __metadata:
     metro-config: 0.71.1
     metro-react-native-babel-preset: 0.72.3
     metro-source-map: 0.71.1
-    mobx: 6.6.0
-    mobx-react-lite: 3.4.0
-    mobx-state-tree: 5.1.5
     mocha: 6
     patch-package: 6.4.7
     postinstall-prepare: 1.0.1
@@ -19993,10 +19825,6 @@ __metadata:
     react-native-safe-area-context: 4.4.1
     react-native-screens: ~3.18.0
     react-native-web: ~0.18.7
-    reactotron-core-client: ^2.8.10
-    reactotron-mst: 3.1.4
-    reactotron-react-js: ^3.3.7
-    reactotron-react-native: 5.0.3
     regenerator-runtime: ^0.13.4
     ts-jest: 26
     typescript: ^4.6.3

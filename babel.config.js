@@ -9,7 +9,6 @@ const plugins = [
         "@config": "./app/config",
         "@hooks": "./app/hooks",
         "@i18n": "./app/i18n",
-        "@models": "./app/models",
         "@navigators": "./app/navigators",
         "@screens": "./app/screens",
         "@services": "./app/services",
