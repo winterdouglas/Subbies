@@ -17579,6 +17579,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-mmkv@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "react-native-mmkv@npm:2.7.0"
+  peerDependencies:
+    react: "*"
+    react-native: ">=0.71.0"
+  checksum: 74f85b097fb96ecc6906f7b0fd83bf66462d874a3afc243b439a912579cf02dd83266e41da93a214a2986e4a28be42ea3c790f0936c0dbd08a4515395e2ad0de
+  languageName: node
+  linkType: hard
+
 "react-native-reanimated@npm:~2.12.0":
   version: 2.12.0
   resolution: "react-native-reanimated@npm:2.12.0"
@@ -19821,6 +19831,7 @@ __metadata:
     react-native: 0.70.5
     react-native-bootsplash: 4.3.2
     react-native-gesture-handler: ~2.8.0
+    react-native-mmkv: ^2.7.0
     react-native-reanimated: ~2.12.0
     react-native-safe-area-context: 4.4.1
     react-native-screens: ~3.18.0

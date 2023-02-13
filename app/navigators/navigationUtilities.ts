@@ -9,6 +9,7 @@ import {
 import Config from "../config"
 import type { PersistNavigationConfig } from "../config/config.base"
 import { useIsMounted } from "../hooks/useIsMounted"
+import { IStorage } from "@utils/storage"
 
 /* eslint-disable */
 export const RootNavigation = {
@@ -103,7 +104,7 @@ function navigationRestoredDefaultState(persistNavigation: PersistNavigationConf
 /**
  * Custom hook for persisting navigation state.
  */
-export function useNavigationPersistence(storage: any, persistenceKey: string) {
+export function useNavigationPersistence(storage: IStorage, persistenceKey: string) {
   const [initialNavigationState, setInitialNavigationState] = useState()
   const isMounted = useIsMounted()
 
