@@ -18,10 +18,10 @@
     "baseUrl": ".",
     "paths" : {
       "@app": ["./app"],
-      "@components/*": ["./app/components/*"],
+      "@components": ["./app/components"],
       "@config": ["./app/config"],
       "@hooks": ["./app/hooks"],
-      "@i18n": ["./app/i18n/*"],
+      "@i18n": ["./app/i18n"],
       "@navigators": ["./app/navigators"],
       "@screens/*": ["./app/screens/*"],
       "@services/*": ["./app/services/*"],
