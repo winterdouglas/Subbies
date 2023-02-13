@@ -53,8 +53,10 @@ function App(props: AppProps) {
   const [areFontsLoaded] = useFonts(customFontsToLoad)
 
   useEffect(() => {
-    hideSplashScreen()
-  }, [])
+    if (areFontsLoaded) {
+      hideSplashScreen()
+    }
+  }, [areFontsLoaded])
 
   // Before we show the app, we have to wait for our state to be ready.
   // In the meantime, don't render anything. This will be the background
