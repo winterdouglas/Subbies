@@ -7,8 +7,8 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native"
-import { colors, spacing, typography } from "../theme"
-import { Text, TextProps } from "./Text"
+import { colors, spacing, typography } from "@theme"
+import { Text, TextProps } from "../Text"
 
 type Presets = keyof typeof $viewPresets
 
@@ -89,14 +89,14 @@ export function Button(props: ButtonProps) {
   } = props
 
   const preset: Presets = $viewPresets[props.preset] ? props.preset : "default"
-  function $viewStyle({ pressed }) {
+  function $viewStyle({ pressed }: PressableStateCallbackType) {
     return [
       $viewPresets[preset],
       $viewStyleOverride,
       !!pressed && [$pressedViewPresets[preset], $pressedViewStyleOverride],
     ]
   }
-  function $textStyle({ pressed }) {
+  function $textStyle({ pressed }: PressableStateCallbackType) {
     return [
       $textPresets[preset],
       $textStyleOverride,

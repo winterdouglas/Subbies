@@ -22,7 +22,7 @@ interface State {
  * - [React Error Boundaries](https://reactjs.org/docs/error-boundaries.html)
  */
 export class ErrorBoundary extends Component<Props, State> {
-  state = { error: null, errorInfo: null }
+  state: State = { error: null, errorInfo: null }
 
   // If an error in a child is encountered, this will run
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {

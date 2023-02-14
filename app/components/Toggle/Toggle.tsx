@@ -13,9 +13,9 @@ import {
   ViewStyle,
 } from "react-native"
 import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated"
-import { colors, spacing } from "../theme"
-import { iconRegistry, IconTypes } from "./Icon"
-import { Text, TextProps } from "./Text"
+import { colors, spacing } from "@theme"
+import { iconRegistry, IconTypes } from "../Icon"
+import { Text, TextProps } from "../Text"
 
 type Variants = "checkbox" | "switch" | "radio"
 
@@ -184,7 +184,10 @@ export function Toggle(props: ToggleProps) {
     () => (disabled ? View : TouchableOpacity),
     [disabled],
   )
-  const ToggleInput = useMemo(() => ToggleInputs[variant] || (() => null), [variant])
+  const ToggleInput = useMemo(
+    (): FC<ToggleInputProps> => ToggleInputs[variant] || (() => null),
+    [variant],
+  )
 
   const $containerStyles = [$containerStyleOverride]
   const $inputWrapperStyles = [$inputWrapper, $inputWrapperStyleOverride]

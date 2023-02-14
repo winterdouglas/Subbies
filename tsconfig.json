@@ -6,7 +6,7 @@
     "jsx": "react-native",
     "module": "es2015",
     "moduleResolution": "node",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": false,
@@ -16,7 +16,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
-    "paths" : {
+    "paths": {
       "@app": ["./app"],
       "@components": ["./app/components"],
       "@config": ["./app/config"],
