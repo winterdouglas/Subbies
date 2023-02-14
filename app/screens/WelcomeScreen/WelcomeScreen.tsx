@@ -27,7 +27,6 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = function WelcomeScreen() {
         <Text tx="welcomeScreen.exciting" preset="subheading" />
         <Image style={$welcomeFace} source={welcomeFace} resizeMode="contain" />
       </View>
-
       <View style={[$bottomContainer, $bottomContainerInsets]}>
         <Text tx="welcomeScreen.postscript" size="md" />
       </View>
