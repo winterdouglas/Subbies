@@ -8,7 +8,7 @@ import { AppNavigator, useNavigationPersistence } from "./navigators"
 import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary"
 import { createStorage } from "@utils/storage"
 import { customFontsToLoad } from "@theme"
-import Config from "@config"
+import { Config } from "@config"
 
 const storage = createStorage()
 

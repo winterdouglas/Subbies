@@ -81,8 +81,6 @@ interface AutoScreenProps extends Omit<ScrollScreenProps, "preset"> {
 
 export type ScreenProps = ScrollScreenProps | FixedScreenProps | AutoScreenProps
 
-const isIos = Platform.OS === "ios"
-
 function isNonScrolling(preset?: ScreenProps["preset"]) {
   return !preset || preset === "fixed"
 }
@@ -204,7 +202,7 @@ export function Screen(props: ScreenProps) {
       <StatusBar style={statusBarStyle} {...StatusBarProps} />
 
       <KeyboardAvoidingView
-        behavior={isIos ? "padding" : undefined}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
         keyboardVerticalOffset={keyboardOffset}
         {...KeyboardAvoidingViewProps}
         style={[$keyboardAvoidingViewStyle, KeyboardAvoidingViewProps?.style]}

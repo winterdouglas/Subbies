@@ -22,7 +22,7 @@ export interface AutoImageProps extends ImageProps {
  * the desired dimensions instead of just being contained within its image-container.
  *
  */
-export function useAutoImage(
+function useAutoImage(
   remoteUri: string,
   dimensions?: [maxWidth: number, maxHeight: number],
 ): [width: number, height: number] {

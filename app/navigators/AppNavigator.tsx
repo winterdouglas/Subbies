@@ -4,14 +4,14 @@
  * Generally speaking, it will contain an auth flow (registration, login, forgot password)
  * and a "main" flow which the user will use once logged in.
  */
-import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native"
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { StackScreenProps } from "@react-navigation/stack"
 import React from "react"
 import { useColorScheme } from "react-native"
-import Config from "../config"
-import { WelcomeScreen } from "../screens"
-import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
+import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native"
+import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
+import { Config } from "@config"
+import { WelcomeScreen } from "@screens/WelcomeScreen"
+import { useBackButtonHandler } from "./hooks"
+import { navigationRef } from "./navigationUtilities"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -37,7 +37,7 @@ export type AppStackParamList = {
  */
 const exitRoutes = Config.exitRoutes
 
-export type AppStackScreenProps<T extends keyof AppStackParamList> = StackScreenProps<
+export type AppStackScreenProps<T extends keyof AppStackParamList> = NativeStackScreenProps<
   AppStackParamList,
   T
 >
