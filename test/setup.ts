@@ -32,5 +32,5 @@ jest.mock("i18n-js", () => ({
 
 jest.useFakeTimers()
 declare global {
-  let __TEST__
+  let __TEST__: any
 }

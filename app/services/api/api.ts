@@ -6,7 +6,7 @@
  * documentation for more details.
  */
 import { ApisauceInstance, create } from "apisauce"
-import Config from "../../config"
+import { Config } from "@config"
 import type { ApiConfig } from "./api.types"
 
 /**

@@ -1,13 +1,13 @@
 import React, { FC } from "react"
 import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
-import { Text } from "../components"
-import { isRTL } from "../i18n"
+import { Text } from "@components"
+import { isRTL } from "@i18n"
 import { colors, spacing } from "@theme"
 import { useSafeAreaInsetsStyle } from "@hooks"
 import { AppStackScreenProps } from "@navigators"
 
-const welcomeLogo = require("../../assets/images/logo.png")
-const welcomeFace = require("../../assets/images/welcome-face.png")
+const welcomeLogo = require("@assets/images/logo.png")
+const welcomeFace = require("@assets/images/welcome-face.png")
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
@@ -27,7 +27,6 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = function WelcomeScreen() {
         <Text tx="welcomeScreen.exciting" preset="subheading" />
         <Image style={$welcomeFace} source={welcomeFace} resizeMode="contain" />
       </View>
-
       <View style={[$bottomContainer, $bottomContainerInsets]}>
         <Text tx="welcomeScreen.postscript" size="md" />
       </View>

@@ -1,10 +1,11 @@
 const plugins = [
   [
-    'module-resolver',
+    "module-resolver",
     {
-      "root": ["./app"],
-      "alias": {
+      root: ["./app"],
+      alias: {
         "@app": "./app",
+        "@assets": "./assets",
         "@components": "./app/components",
         "@config": "./app/config",
         "@hooks": "./app/hooks",
@@ -13,7 +14,7 @@ const plugins = [
         "@screens": "./app/screens",
         "@services": "./app/services",
         "@theme": "./app/theme",
-        "@utils": "./app/utils"
+        "@utils": "./app/utils",
       },
     },
   ],

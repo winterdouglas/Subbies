@@ -12,9 +12,13 @@ const propertySuffixMap = {
   end: "End",
 }
 
-const edgeInsetMap = {
+const edgeInsetMap: Record<"start" | "end", "left" | "right"> = {
   start: "left",
   end: "right",
+}
+
+function isExtended(edge: ExtendedEdge): edge is "start" | "end" {
+  return edge === "start" || edge === "end"
 }
 
 /**
@@ -38,7 +42,11 @@ export function useSafeAreaInsetsStyle(
 > {
   const insets = useSafeAreaInsets()
 
-  return safeAreaEdges.reduce((acc, e) => {
-    return { ...acc, [`${property}${propertySuffixMap[e]}`]: insets[edgeInsetMap[e] ?? e] }
+  return safeAreaEdges.reduce((acc, edge) => {
+    return {
+      ...acc,
+      [`${property}${propertySuffixMap[edge]}`]:
+        insets[isExtended(edge) ? edgeInsetMap[edge] : edge],
+    }
   }, {})
 }
