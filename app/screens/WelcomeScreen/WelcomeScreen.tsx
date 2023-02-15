@@ -6,8 +6,8 @@ import { colors, spacing } from "@theme"
 import { useSafeAreaInsetsStyle } from "@hooks"
 import { AppStackScreenProps } from "@navigators"
 
-const welcomeLogo = require("../../../assets/images/logo.png")
-const welcomeFace = require("../../../assets/images/welcome-face.png")
+const welcomeLogo = require("@assets/images/logo.png")
+const welcomeFace = require("@assets/images/welcome-face.png")
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 

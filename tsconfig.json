@@ -18,6 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "@app": ["./app"],
+      "@assets": ["./assets"],
       "@components": ["./app/components"],
       "@config": ["./app/config"],
       "@hooks": ["./app/hooks"],
