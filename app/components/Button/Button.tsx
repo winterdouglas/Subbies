@@ -89,6 +89,7 @@ export function Button(props: ButtonProps) {
   } = props
 
   const preset: Presets = $viewPresets[props.preset] ? props.preset : "default"
+
   function $viewStyle({ pressed }: PressableStateCallbackType) {
     return [
       $viewPresets[preset],
@@ -96,6 +97,7 @@ export function Button(props: ButtonProps) {
       !!pressed && [$pressedViewPresets[preset], $pressedViewStyleOverride],
     ]
   }
+
   function $textStyle({ pressed }: PressableStateCallbackType) {
     return [
       $textPresets[preset],
