@@ -1,18 +1,11 @@
 import * as React from "react"
 import { ComponentType } from "react"
-import {
-  Image,
-  ImageStyle,
-  StyleProp,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
-  ViewStyle,
-} from "react-native"
+import { Image, ImageStyle, StyleProp, View, ViewStyle } from "react-native"
+import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity"
 
 export type IconTypes = keyof typeof iconRegistry
 
-interface IconProps extends TouchableOpacityProps {
+interface IconProps extends PressableOpacityProps {
   /**
    * The name of the icon
    */
@@ -41,12 +34,12 @@ interface IconProps extends TouchableOpacityProps {
   /**
    * An optional function to be called when the icon is pressed
    */
-  onPress?: TouchableOpacityProps["onPress"]
+  onPress?: PressableOpacityProps["onPress"]
 }
 
 /**
  * A component to render a registered icon.
- * It is wrapped in a <TouchableOpacity /> if `onPress` is provided, otherwise a <View />.
+ * It is wrapped in a <PressableOpacity /> if `onPress` is provided, otherwise a <View />.
  *
  * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-Icon.md)
  */
@@ -61,8 +54,8 @@ export function Icon(props: IconProps) {
   } = props
 
   const isPressable = !!WrapperProps.onPress
-  const Wrapper: ComponentType<TouchableOpacityProps> = WrapperProps?.onPress
-    ? TouchableOpacity
+  const Wrapper: ComponentType<PressableOpacityProps> = WrapperProps?.onPress
+    ? PressableOpacity
     : View
 
   return (

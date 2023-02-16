@@ -1,18 +1,12 @@
-import React, { ComponentType, Fragment, ReactElement } from "react"
-import {
-  StyleProp,
-  TextStyle,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
-  ViewStyle,
-} from "react-native"
+import React, { Fragment, ReactElement } from "react"
+import { StyleProp, TextStyle, View, ViewStyle } from "react-native"
 import { colors, spacing } from "@theme"
 import { Text, TextProps } from "../Text"
+import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity"
 
 type Presets = keyof typeof $containerPresets
 
-interface CardProps extends TouchableOpacityProps {
+interface CardProps extends PressableOpacityProps {
   /**
    * One of the different types of text presets.
    */
@@ -149,15 +143,16 @@ export function Card(props: CardProps) {
   } = props
 
   const preset: Presets = $containerPresets[props.preset] ? props.preset : "default"
-  const isPressable = !!WrapperProps.onPress
   const isHeadingPresent = !!(HeadingComponent || heading || headingTx)
   const isContentPresent = !!(ContentComponent || content || contentTx)
   const isFooterPresent = !!(FooterComponent || footer || footerTx)
 
-  const Wrapper: ComponentType<TouchableOpacityProps> = isPressable ? TouchableOpacity : View
   const HeaderContentWrapper = verticalAlignment === "force-footer-bottom" ? View : Fragment
 
-  const $containerStyle = [$containerPresets[preset], $containerStyleOverride]
+  const $containerStyle = [
+    $containerPresets[preset],
+    $containerStyleOverride as StyleProp<ViewStyle>,
+  ]
   const $headingStyle = [
     $headingPresets[preset],
     (isFooterPresent || isContentPresent) && { marginBottom: spacing.micro },
@@ -185,12 +180,7 @@ export function Card(props: CardProps) {
   ]
 
   return (
-    <Wrapper
-      style={$containerStyle}
-      activeOpacity={0.8}
-      accessibilityRole={isPressable ? "button" : undefined}
-      {...WrapperProps}
-    >
+    <PressableOpacity style={$containerStyle} activeOpacity={0.8} {...WrapperProps}>
       {LeftComponent}
 
       <View style={$alignmentWrapperStyle}>
@@ -235,7 +225,7 @@ export function Card(props: CardProps) {
       </View>
 
       {RightComponent}
-    </Wrapper>
+    </PressableOpacity>
   )
 }
 
