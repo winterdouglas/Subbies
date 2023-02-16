@@ -3,13 +3,13 @@ import { ScrollView, TextStyle, View, ViewStyle } from "react-native"
 import { Button, Icon, Screen, Text } from "@components"
 import { colors, spacing } from "@theme"
 
-export interface ErrorDetailsProps {
+export interface ErrorScreenProps {
   error: Error
   errorInfo: ErrorInfo
   onReset(): void
 }
 
-export function ErrorDetails(props: ErrorDetailsProps) {
+export function ErrorScreen(props: ErrorScreenProps) {
   return (
     <Screen
       preset="fixed"
