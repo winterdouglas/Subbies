@@ -1,16 +1,9 @@
 import React, { ComponentType, forwardRef, Ref, useImperativeHandle, useRef } from "react"
-import {
-  StyleProp,
-  TextInput,
-  TextInputProps,
-  TextStyle,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from "react-native"
+import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from "react-native"
 import { isRTL, translate } from "@i18n"
 import { colors, spacing, typography } from "@theme"
 import { Text, TextProps } from "../Text"
+import { PressableOpacity } from "../PressableOpacity"
 
 export interface TextFieldAccessoryProps {
   style: StyleProp<any>
@@ -167,7 +160,7 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
   useImperativeHandle(ref, () => input.current)
 
   return (
-    <TouchableOpacity
+    <PressableOpacity
       activeOpacity={1}
       style={$containerStyles}
       onPress={focusInput}
@@ -225,7 +218,7 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
           style={$helperStyles}
         />
       )}
-    </TouchableOpacity>
+    </PressableOpacity>
   )
 })
 

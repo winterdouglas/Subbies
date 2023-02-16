@@ -1,3 +1,5 @@
+export * from "./useAnimationSpeed"
 export * from "./useHeader"
 export * from "./useIsMounted"
+export * from "./useOpacityAnimationStyle"
 export * from "./useSafeAreaInsetsStyle"

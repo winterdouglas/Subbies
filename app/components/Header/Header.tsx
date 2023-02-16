@@ -1,17 +1,11 @@
 import React, { ReactElement } from "react"
-import {
-  StyleProp,
-  TextStyle,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
-  ViewStyle,
-} from "react-native"
+import { StyleProp, TextStyle, View, ViewStyle } from "react-native"
 import { isRTL, translate } from "@i18n"
 import { colors, spacing } from "@theme"
 import { ExtendedEdge, useSafeAreaInsetsStyle } from "@hooks"
 import { Icon, IconTypes } from "../Icon"
 import { Text, TextProps } from "../Text"
+import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity"
 
 export interface HeaderProps {
   /**
@@ -85,7 +79,7 @@ export interface HeaderProps {
   /**
    * What happens when you press the left icon or text action.
    */
-  onLeftPress?: TouchableOpacityProps["onPress"]
+  onLeftPress?: PressableOpacityProps["onPress"]
   /**
    * Icon that should appear on the right.
    * Can be used with `onRightPress`.
@@ -118,7 +112,7 @@ export interface HeaderProps {
   /**
    * What happens when you press the right icon or text action.
    */
-  onRightPress?: TouchableOpacityProps["onPress"]
+  onRightPress?: PressableOpacityProps["onPress"]
   /**
    * Override the default edges for the safe area.
    */
@@ -132,7 +126,7 @@ interface HeaderActionProps {
   text?: TextProps["text"]
   tx?: TextProps["tx"]
   txOptions?: TextProps["txOptions"]
-  onPress?: TouchableOpacityProps["onPress"]
+  onPress?: PressableOpacityProps["onPress"]
   ActionComponent?: ReactElement
 }
 
@@ -230,14 +224,14 @@ function HeaderAction(props: HeaderActionProps) {
 
   if (content) {
     return (
-      <TouchableOpacity
+      <PressableOpacity
         style={[$actionTextContainer, { backgroundColor }]}
         onPress={onPress}
         disabled={!onPress}
         activeOpacity={0.8}
       >
         <Text weight="medium" size="md" text={content} style={$actionText} />
-      </TouchableOpacity>
+      </PressableOpacity>
     )
   }
 

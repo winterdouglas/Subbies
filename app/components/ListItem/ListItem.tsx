@@ -1,17 +1,11 @@
 import React, { ReactElement } from "react"
-import {
-  StyleProp,
-  TextStyle,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
-  ViewStyle,
-} from "react-native"
+import { StyleProp, TextStyle, View, ViewStyle } from "react-native"
 import { colors, spacing } from "@theme"
 import { Icon, IconTypes } from "../Icon"
 import { Text, TextProps } from "../Text"
+import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity"
 
-export interface ListItemProps extends TouchableOpacityProps {
+export interface ListItemProps extends PressableOpacityProps {
   /**
    * How tall the list item should be.
    * Default: 56
@@ -57,7 +51,7 @@ export interface ListItemProps extends TouchableOpacityProps {
    */
   containerStyle?: StyleProp<ViewStyle>
   /**
-   * Optional TouchableOpacity style override.
+   * Optional PressableOpacity style override.
    */
   style?: StyleProp<ViewStyle>
   /**
@@ -120,7 +114,7 @@ export function ListItem(props: ListItemProps) {
     txOptions,
     textStyle: $textStyleOverride,
     containerStyle: $containerStyleOverride,
-    ...TouchableOpacityProps
+    ...PressableOpacityProps
   } = props
 
   const $textStyles = [$textStyle, $textStyleOverride, TextProps?.style]
@@ -131,11 +125,11 @@ export function ListItem(props: ListItemProps) {
     $containerStyleOverride,
   ]
 
-  const $touchableStyles = [$touchableStyle, { minHeight: height }, style]
+  const $pressableStyles = [$pressableStyle, { minHeight: height }, style]
 
   return (
     <View style={$containerStyles}>
-      <TouchableOpacity {...TouchableOpacityProps} style={$touchableStyles}>
+      <PressableOpacity {...PressableOpacityProps} style={$pressableStyles}>
         <ListItemAction
           side="left"
           size={height}
@@ -155,7 +149,7 @@ export function ListItem(props: ListItemProps) {
           iconColor={rightIconColor}
           Component={RightComponent}
         />
-      </TouchableOpacity>
+      </PressableOpacity>
     </View>
   )
 }
@@ -203,7 +197,7 @@ const $textStyle: TextStyle = {
   flexShrink: 1,
 }
 
-const $touchableStyle: ViewStyle = {
+const $pressableStyle: ViewStyle = {
   flexDirection: "row",
   alignItems: "flex-start",
 }

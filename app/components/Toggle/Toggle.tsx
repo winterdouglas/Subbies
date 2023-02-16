@@ -1,4 +1,4 @@
-import React, { ComponentType, FC, useMemo } from "react"
+import React, { ComponentType, useMemo } from "react"
 import {
   GestureResponderEvent,
   Image,
@@ -7,8 +7,6 @@ import {
   SwitchProps,
   TextInputProps,
   TextStyle,
-  TouchableOpacity,
-  TouchableOpacityProps,
   View,
   ViewStyle,
 } from "react-native"
@@ -16,10 +14,11 @@ import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated"
 import { colors, spacing } from "@theme"
 import { iconRegistry, IconTypes } from "../Icon"
 import { Text, TextProps } from "../Text"
+import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity"
 
 type Variants = "checkbox" | "switch" | "radio"
 
-interface BaseToggleProps extends Omit<TouchableOpacityProps, "style"> {
+interface BaseToggleProps extends Omit<PressableOpacityProps, "style"> {
   /**
    * The variant of the toggle.
    * Options: "checkbox", "switch", "radio"
@@ -180,12 +179,12 @@ export function Toggle(props: ToggleProps) {
 
   const disabled = editable === false || status === "disabled" || props.disabled
 
-  const Wrapper = useMemo<ComponentType<TouchableOpacityProps>>(
-    () => (disabled ? View : TouchableOpacity),
+  const Wrapper = useMemo<ComponentType<PressableOpacityProps>>(
+    () => (disabled ? View : PressableOpacity),
     [disabled],
   )
   const ToggleInput = useMemo(
-    (): FC<ToggleInputProps> => ToggleInputs[variant] || (() => null),
+    (): ((props: ToggleInputProps) => JSX.Element) => ToggleInputs[variant] || (() => null),
     [variant],
   )
 
@@ -243,7 +242,7 @@ export function Toggle(props: ToggleProps) {
   )
 }
 
-const ToggleInputs: Record<Variants, FC<ToggleInputProps>> = {
+const ToggleInputs: Record<Variants, (props: ToggleInputProps) => JSX.Element> = {
   checkbox: Checkbox,
   switch: Switch,
   radio: Radio,
