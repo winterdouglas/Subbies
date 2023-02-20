@@ -97,7 +97,6 @@ interface ListItemActionProps {
   iconColor?: string
   Component?: ReactElement
   size: number
-  side: "left" | "right"
 }
 
 /**
@@ -174,7 +173,7 @@ export function ListItem<TBackgroundProps extends ViewProps>(
 }
 
 function ListItemAction(props: ListItemActionProps) {
-  const { icon, Component, iconColor, size, side } = props
+  const { icon, Component, iconColor, size } = props
 
   const $iconContainerStyles = [$iconContainer]
 
@@ -186,12 +185,7 @@ function ListItemAction(props: ListItemActionProps) {
         size={24}
         icon={icon}
         color={iconColor}
-        containerStyle={[
-          $iconContainerStyles,
-          side === "left" && $iconContainerLeft,
-          side === "right" && $iconContainerRight,
-          { height: size },
-        ]}
+        containerStyle={[$iconContainerStyles, { height: size }]}
       />
     )
   }
@@ -230,13 +224,7 @@ const $iconContainer: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
   flexGrow: 0,
-}
-const $iconContainerLeft: ViewStyle = {
-  marginEnd: spacing.medium,
-}
-
-const $iconContainerRight: ViewStyle = {
-  marginStart: spacing.medium,
+  marginHorizontal: spacing.medium,
 }
 
 const $backgroundStyle: ViewStyle = {
