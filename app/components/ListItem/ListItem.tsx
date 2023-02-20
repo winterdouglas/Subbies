@@ -1,11 +1,14 @@
 import React, { ComponentType, ReactElement } from "react"
-import { StyleProp, TextStyle, View, ViewProps, ViewStyle } from "react-native"
+import { PressableProps, StyleProp, TextStyle, View, ViewProps, ViewStyle } from "react-native"
 import { colors, spacing } from "@theme"
 import { Icon, IconTypes } from "../Icon"
 import { Text, TextProps } from "../Text"
-import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity"
+import { PressableScale } from "../PressableScale"
 
-export interface ListItemProps<TBackgroundProps extends ViewProps> extends PressableOpacityProps {
+export interface ListItemProps<
+  TPressableProps extends PressableProps,
+  TBackgroundProps extends ViewProps,
+> {
   /**
    * How tall the list item should be.
    * Default: 56
@@ -29,6 +32,10 @@ export interface ListItemProps<TBackgroundProps extends ViewProps> extends Press
    * Text which is looked up via i18n.
    */
   tx?: TextProps["tx"]
+  /**
+   * Whether the list item is round or not
+   */
+  round?: boolean
   /**
    * Children components.
    */
@@ -88,8 +95,14 @@ export interface ListItemProps<TBackgroundProps extends ViewProps> extends Press
    * Custom background view props
    */
   backgroundProps?: TBackgroundProps
-
-  round?: boolean
+  /**
+   * Custom pressable
+   */
+  PressableComponent?: ComponentType<TPressableProps>
+  /**
+   * Custom pressable props
+   */
+  pressableProps?: TPressableProps
 }
 
 interface ListItemActionProps {
@@ -104,33 +117,33 @@ interface ListItemActionProps {
  *
  * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-ListItem.md)
  */
-export function ListItem<TBackgroundProps extends ViewProps>(
-  props: ListItemProps<TBackgroundProps>,
-) {
-  const {
-    bottomSeparator,
-    children,
-    height = 56,
-    LeftComponent,
-    leftIcon,
-    leftIconColor,
-    RightComponent,
-    rightIcon,
-    rightIconColor,
-    style,
-    text,
-    TextProps,
-    topSeparator,
-    tx,
-    txOptions,
-    BackgroundComponent,
-    backgroundProps,
-    round,
-    textStyle: $textStyleOverride,
-    containerStyle: $containerStyleOverride,
-    ...PressableOpacityProps
-  } = props
-
+export function ListItem<
+  TPressableProps extends PressableProps,
+  TBackgroundProps extends ViewProps,
+>({
+  bottomSeparator,
+  children,
+  height = 56,
+  LeftComponent,
+  leftIcon,
+  leftIconColor,
+  RightComponent,
+  rightIcon,
+  rightIconColor,
+  style,
+  text,
+  TextProps,
+  topSeparator,
+  tx,
+  txOptions,
+  BackgroundComponent,
+  backgroundProps,
+  round,
+  textStyle: $textStyleOverride,
+  containerStyle: $containerStyleOverride,
+  PressableComponent,
+  pressableProps,
+}: ListItemProps<TPressableProps, TBackgroundProps>) {
   const $textStyles = [$textStyle, $textStyleOverride, TextProps?.style]
 
   const $containerStyles = [
@@ -143,10 +156,14 @@ export function ListItem<TBackgroundProps extends ViewProps>(
 
   const $backgroundStyles = [$backgroundStyle, backgroundProps?.style]
 
+  const Pressable = PressableComponent || PressableScale
+
   return (
     <View style={$containerStyles}>
-      <PressableOpacity activeOpacity={0.8} {...PressableOpacityProps} style={$pressableStyles}>
-        <BackgroundComponent style={$backgroundStyles} {...backgroundProps} />
+      <Pressable {...pressableProps} style={$pressableStyles}>
+        {BackgroundComponent && (
+          <BackgroundComponent style={$backgroundStyles} {...backgroundProps} />
+        )}
 
         <ListItemAction
           size={height}
@@ -165,7 +182,7 @@ export function ListItem<TBackgroundProps extends ViewProps>(
           iconColor={rightIconColor}
           Component={RightComponent}
         />
-      </PressableOpacity>
+      </Pressable>
     </View>
   )
 }
