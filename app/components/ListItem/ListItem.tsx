@@ -149,7 +149,6 @@ export function ListItem<TBackgroundProps extends ViewProps>(
         <BackgroundComponent style={$backgroundStyles} {...backgroundProps} />
 
         <ListItemAction
-          side="left"
           size={height}
           icon={leftIcon}
           iconColor={leftIconColor}
@@ -161,7 +160,6 @@ export function ListItem<TBackgroundProps extends ViewProps>(
         </Text>
 
         <ListItemAction
-          side="right"
           size={height}
           icon={rightIcon}
           iconColor={rightIconColor}
