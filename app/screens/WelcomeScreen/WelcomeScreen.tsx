@@ -1,6 +1,6 @@
 import React from "react"
 import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
-import { Screen, Text } from "@components"
+import { LinearGradient, ListItem, Screen, Text } from "@components"
 import { isRTL } from "@i18n"
 import { colors, spacing } from "@theme"
 import { AppStackScreenProps } from "@navigators"
@@ -26,6 +26,18 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
       </View>
       <View style={$bottomContainer}>
         <Text tx="welcomeScreen.postscript" size="md" />
+        <ListItem
+          text="Hello World"
+          round
+          BackgroundComponent={LinearGradient}
+          backgroundProps={{
+            colors: ["#FF9800", "#F44336"],
+            start: { x: 1, y: 0 },
+            end: { x: 0.2, y: 0 },
+          }}
+          leftIcon="bell"
+          rightIcon="caretRight"
+        />
       </View>
     </Screen>
   )
@@ -41,7 +53,7 @@ const $topContainer: ViewStyle = {
   flexGrow: 1,
   flexBasis: "57%",
   justifyContent: "center",
-  paddingHorizontal: spacing.large,
+  paddingHorizontal: spacing.medium,
 }
 
 const $bottomContainer: ViewStyle = {
@@ -51,7 +63,7 @@ const $bottomContainer: ViewStyle = {
   backgroundColor: colors.palette.neutral100,
   borderTopLeftRadius: 16,
   borderTopRightRadius: 16,
-  paddingHorizontal: spacing.large,
+  paddingHorizontal: spacing.medium,
   justifyContent: "space-around",
 }
 
