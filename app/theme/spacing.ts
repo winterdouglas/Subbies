@@ -2,6 +2,7 @@
   Use these spacings for margins/paddings and other whitespace throughout your app.
  */
 export const spacing = {
+  nano: 1,
   micro: 2,
   tiny: 4,
   extraSmall: 8,

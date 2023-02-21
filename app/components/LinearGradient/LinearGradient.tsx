@@ -13,7 +13,7 @@ interface Point {
   y: number
 }
 
-interface LinearGradientProps extends SvgProps {
+export interface LinearGradientProps extends SvgProps {
   colors: ColorValue[]
   start?: Point
   end?: Point

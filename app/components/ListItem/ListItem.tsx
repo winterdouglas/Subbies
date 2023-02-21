@@ -3,7 +3,7 @@ import { PressableProps, StyleProp, TextStyle, View, ViewProps, ViewStyle } from
 import { colors, spacing } from "@theme"
 import { Icon, IconTypes } from "../Icon"
 import { Text, TextProps } from "../Text"
-import { PressableScale } from "../PressableScale"
+import { PressableOpacity } from "../PressableOpacity"
 
 export interface ListItemProps<
   TPressableProps extends PressableProps,
@@ -110,6 +110,7 @@ interface ListItemActionProps {
   iconColor?: string
   Component?: ReactElement
   size: number
+  side: "left" | "right"
 }
 
 /**
@@ -156,7 +157,7 @@ export function ListItem<
 
   const $backgroundStyles = [$backgroundStyle, backgroundProps?.style]
 
-  const Pressable = PressableComponent || PressableScale
+  const Pressable = PressableComponent || PressableOpacity
 
   return (
     <View style={$containerStyles}>
@@ -166,6 +167,7 @@ export function ListItem<
         )}
 
         <ListItemAction
+          side="left"
           size={height}
           icon={leftIcon}
           iconColor={leftIconColor}
@@ -177,6 +179,7 @@ export function ListItem<
         </Text>
 
         <ListItemAction
+          side="right"
           size={height}
           icon={rightIcon}
           iconColor={rightIconColor}
@@ -188,7 +191,7 @@ export function ListItem<
 }
 
 function ListItemAction(props: ListItemActionProps) {
-  const { icon, Component, iconColor, size } = props
+  const { icon, Component, iconColor, size, side } = props
 
   const $iconContainerStyles = [$iconContainer]
 
@@ -200,7 +203,12 @@ function ListItemAction(props: ListItemActionProps) {
         size={24}
         icon={icon}
         color={iconColor}
-        containerStyle={[$iconContainerStyles, { height: size }]}
+        containerStyle={[
+          $iconContainerStyles,
+          side === "left" && $iconContainerLeft,
+          side === "right" && $iconContainerRight,
+          { height: size },
+        ]}
       />
     )
   }
@@ -228,6 +236,7 @@ const $textStyle: TextStyle = {
   alignSelf: "center",
   flexGrow: 1,
   flexShrink: 1,
+  marginHorizontal: spacing.medium,
 }
 
 const $pressableStyle: ViewStyle = {
@@ -239,7 +248,14 @@ const $iconContainer: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
   flexGrow: 0,
-  marginHorizontal: spacing.medium,
+}
+
+const $iconContainerLeft: ViewStyle = {
+  marginStart: spacing.medium,
+}
+
+const $iconContainerRight: ViewStyle = {
+  marginEnd: spacing.medium,
 }
 
 const $backgroundStyle: ViewStyle = {

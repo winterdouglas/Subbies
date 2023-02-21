@@ -57,6 +57,7 @@ interface BaseScreenProps {
 interface FixedScreenProps extends BaseScreenProps {
   preset?: "fixed"
 }
+
 interface ScrollScreenProps extends BaseScreenProps {
   preset?: "scroll"
   /**

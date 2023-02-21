@@ -1,13 +1,15 @@
 import React from "react"
-import { View, ViewStyle } from "react-native"
-import { EmptyState, LinearGradient, ListItem, Screen } from "@components"
-import { FlashList } from "@shopify/flash-list"
-import { spacing } from "@theme"
+import { List, Screen } from "@components"
 import { AppStackScreenProps } from "@navigators"
-import { hexToHSL, toHSLString } from "@utils/colorUtils"
 import { useHeader } from "@hooks"
+import { hexToHSL, toHSLString } from "@utils/colorUtils"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
+
+const items = [
+  { title: "Whatever", color: "#FF9800" },
+  { title: "Another cool item", color: "#F44336" },
+]
 
 export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) {
   useHeader({
@@ -16,47 +18,27 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
 
   return (
     <Screen preset="fixed" safeAreaEdges={["bottom"]}>
-      <FlashList
-        contentContainerStyle={$listContainer}
-        data={[]}
-        ItemSeparatorComponent={Separator}
-        estimatedItemSize={72}
-        ListEmptyComponent={EmptyState}
-        renderItem={({ item }) => {
-          const { title, hex } = item
-          const color = hexToHSL(`#${hex}`)
+      <List
+        preset="gradient"
+        data={items}
+        keyExtractor={(item) => item.title}
+        getGradientProps={(item) => {
+          const color = hexToHSL(item.color)
           const gradientStart = toHSLString(color)
-          const gradientEnd = toHSLString({ ...color, l: Math.min(color.l - color.l * 0.2, 100) })
+          const gradientEnd = toHSLString({ ...color, l: Math.min(color.l + color.l * 0.2, 100) })
 
-          return (
-            <ListItem
-              text={title}
-              round
-              BackgroundComponent={LinearGradient}
-              backgroundProps={{
-                colors: [gradientStart, gradientEnd],
-                start: { x: 1, y: 0 },
-                end: { x: 0.2, y: 0 },
-              }}
-              rightIcon="caretRight"
-              textStyle={{ color: "white" }}
-              rightIconColor="white"
-            />
-          )
+          return {
+            colors: [gradientStart, gradientEnd],
+          }
+        }}
+        getItemProps={(item) => {
+          return {
+            text: item.title,
+            leftIcon: "github",
+            rightIcon: "caretRight",
+          }
         }}
       />
     </Screen>
   )
-}
-
-export const Separator = () => {
-  return <View style={$separator}></View>
-}
-
-const $listContainer: ViewStyle = {
-  padding: spacing.medium,
-}
-
-const $separator: ViewStyle = {
-  height: spacing.medium,
 }
