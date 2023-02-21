@@ -1,9 +1,14 @@
-import { timing } from "@theme"
 import { useEffect, useState } from "react"
 import { AccessibilityInfo } from "react-native"
+import { timing } from "@theme"
 
-export function useAnimationSpeed() {
+/**
+ * A hook that provides the the animation speed, respecting whether the user preferred reduced motion.
+ * @returns An array with the animation speed and whether reduce motion is enabled or not.
+ */
+export function useAnimationSpeed(): [number, boolean] {
   const [reduceMotionEnabled, setReduceMotionEnabled] = useState(false)
+  const animationSpeed = reduceMotionEnabled ? timing.disabled : timing.quick
 
   useEffect(() => {
     const reduceMotionChangedSubscription = AccessibilityInfo.addEventListener(
@@ -20,5 +25,5 @@ export function useAnimationSpeed() {
     }
   }, [])
 
-  return reduceMotionEnabled ? timing.disabled : timing.quick
+  return [animationSpeed, reduceMotionEnabled]
 }

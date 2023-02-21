@@ -1,11 +1,14 @@
-import React, { ReactElement } from "react"
-import { StyleProp, TextStyle, View, ViewStyle } from "react-native"
+import React, { ComponentType, ReactElement } from "react"
+import { PressableProps, StyleProp, TextStyle, View, ViewProps, ViewStyle } from "react-native"
 import { colors, spacing } from "@theme"
 import { Icon, IconTypes } from "../Icon"
 import { Text, TextProps } from "../Text"
-import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity"
+import { PressableOpacity } from "../PressableOpacity"
 
-export interface ListItemProps extends PressableOpacityProps {
+export interface ListItemProps<
+  TPressableProps extends PressableProps,
+  TBackgroundProps extends ViewProps,
+> {
   /**
    * How tall the list item should be.
    * Default: 56
@@ -29,6 +32,10 @@ export interface ListItemProps extends PressableOpacityProps {
    * Text which is looked up via i18n.
    */
   tx?: TextProps["tx"]
+  /**
+   * Whether the list item is round or not
+   */
+  round?: boolean
   /**
    * Children components.
    */
@@ -80,6 +87,22 @@ export interface ListItemProps extends PressableOpacityProps {
    * Overrides `leftIcon`.
    */
   LeftComponent?: ReactElement
+  /**
+   * Custom background view
+   */
+  BackgroundComponent?: ComponentType<TBackgroundProps>
+  /**
+   * Custom background view props
+   */
+  backgroundProps?: TBackgroundProps
+  /**
+   * Custom pressable
+   */
+  PressableComponent?: ComponentType<TPressableProps>
+  /**
+   * Custom pressable props
+   */
+  pressableProps?: TPressableProps
 }
 
 interface ListItemActionProps {
@@ -95,28 +118,33 @@ interface ListItemActionProps {
  *
  * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-ListItem.md)
  */
-export function ListItem(props: ListItemProps) {
-  const {
-    bottomSeparator,
-    children,
-    height = 56,
-    LeftComponent,
-    leftIcon,
-    leftIconColor,
-    RightComponent,
-    rightIcon,
-    rightIconColor,
-    style,
-    text,
-    TextProps,
-    topSeparator,
-    tx,
-    txOptions,
-    textStyle: $textStyleOverride,
-    containerStyle: $containerStyleOverride,
-    ...PressableOpacityProps
-  } = props
-
+export function ListItem<
+  TPressableProps extends PressableProps,
+  TBackgroundProps extends ViewProps,
+>({
+  bottomSeparator,
+  children,
+  height = 56,
+  LeftComponent,
+  leftIcon,
+  leftIconColor,
+  RightComponent,
+  rightIcon,
+  rightIconColor,
+  style,
+  text,
+  TextProps,
+  topSeparator,
+  tx,
+  txOptions,
+  BackgroundComponent,
+  backgroundProps,
+  round,
+  textStyle: $textStyleOverride,
+  containerStyle: $containerStyleOverride,
+  PressableComponent,
+  pressableProps,
+}: ListItemProps<TPressableProps, TBackgroundProps>) {
   const $textStyles = [$textStyle, $textStyleOverride, TextProps?.style]
 
   const $containerStyles = [
@@ -125,11 +153,19 @@ export function ListItem(props: ListItemProps) {
     $containerStyleOverride,
   ]
 
-  const $pressableStyles = [$pressableStyle, { minHeight: height }, style]
+  const $pressableStyles = [$pressableStyle, round && $roundStyle, { minHeight: height }, style]
+
+  const $backgroundStyles = [$backgroundStyle, backgroundProps?.style]
+
+  const Pressable = PressableComponent || PressableOpacity
 
   return (
     <View style={$containerStyles}>
-      <PressableOpacity {...PressableOpacityProps} style={$pressableStyles}>
+      <Pressable {...pressableProps} style={$pressableStyles}>
+        {BackgroundComponent && (
+          <BackgroundComponent style={$backgroundStyles} {...backgroundProps} />
+        )}
+
         <ListItemAction
           side="left"
           size={height}
@@ -149,7 +185,7 @@ export function ListItem(props: ListItemProps) {
           iconColor={rightIconColor}
           Component={RightComponent}
         />
-      </PressableOpacity>
+      </Pressable>
     </View>
   )
 }
@@ -190,11 +226,17 @@ const $separatorBottom: ViewStyle = {
   borderBottomColor: colors.separator,
 }
 
+const $roundStyle: ViewStyle = {
+  borderRadius: 8,
+  overflow: "hidden",
+}
+
 const $textStyle: TextStyle = {
   paddingVertical: spacing.extraSmall,
   alignSelf: "center",
   flexGrow: 1,
   flexShrink: 1,
+  marginHorizontal: spacing.medium,
 }
 
 const $pressableStyle: ViewStyle = {
@@ -207,10 +249,19 @@ const $iconContainer: ViewStyle = {
   alignItems: "center",
   flexGrow: 0,
 }
+
 const $iconContainerLeft: ViewStyle = {
-  marginEnd: spacing.medium,
+  marginStart: spacing.medium,
 }
 
 const $iconContainerRight: ViewStyle = {
-  marginStart: spacing.medium,
+  marginEnd: spacing.medium,
+}
+
+const $backgroundStyle: ViewStyle = {
+  position: "absolute",
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
 }

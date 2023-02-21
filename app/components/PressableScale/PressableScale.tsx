@@ -4,24 +4,24 @@ import Animated, {
   cancelAnimation,
   useAnimatedStyle,
   useSharedValue,
-  withTiming,
+  withSpring,
 } from "react-native-reanimated"
 import { useAnimationSpeed } from "@hooks"
 
-export interface PressableOpacityProps extends PressableProps {
-  activeOpacity?: number
+export interface PressableScaleProps extends PressableProps {
+  activeScale?: number
 }
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
-export function PressableOpacity({ activeOpacity = 0.8, ...props }: PressableOpacityProps) {
-  const [animatedStyle, animate] = useOpacityAnimationStyle(1)
+export function PressableScale({ activeScale = 0.96, ...props }: PressableScaleProps) {
+  const [animatedStyle, animate] = useScaleAnimationStyle(1)
 
   return (
     <AnimatedPressable
       {...props}
       onPressIn={(event) => {
-        animate(activeOpacity)
+        animate(activeScale)
         props.onPressIn?.(event)
       }}
       onPressOut={(event) => {
@@ -35,24 +35,27 @@ export function PressableOpacity({ activeOpacity = 0.8, ...props }: PressableOpa
   )
 }
 
-function useOpacityAnimationStyle(initialValue: number): [ViewStyle, (to: number) => void] {
-  const opacity = useSharedValue(initialValue)
-  const [animationSpeed] = useAnimationSpeed()
+function useScaleAnimationStyle(initialValue: number): [ViewStyle, (to: number) => void] {
+  const scale = useSharedValue(initialValue)
+  const [_animationSpeed, reduceMotion] = useAnimationSpeed()
 
   const animatedStyle = useAnimatedStyle((): ViewStyle => {
     return {
-      opacity: opacity.value,
+      transform: [{ scale: scale.value }],
     }
   })
 
   function animate(to: number) {
-    opacity.value = withTiming(to, {
-      duration: animationSpeed,
+    if (reduceMotion) return
+
+    scale.value = withSpring(to, {
+      mass: 0.1,
+      stiffness: 90,
     })
   }
 
   useEffect(() => {
-    return () => cancelAnimation(opacity)
+    return () => cancelAnimation(scale)
   }, [])
 
   return [animatedStyle, animate]

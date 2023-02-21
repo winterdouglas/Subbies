@@ -116,20 +116,20 @@ const EmptyStatePresets = {
  * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-EmptyState.md)
  */
 export function EmptyState(props: EmptyStateProps) {
-  const preset = EmptyStatePresets[props.preset] ? EmptyStatePresets[props.preset] : undefined
+  const actualPreset = EmptyStatePresets[props.preset || "generic"]
 
   const {
-    button = preset?.button,
+    button = actualPreset?.button,
     buttonTx,
     buttonOnPress,
     buttonTxOptions,
-    content = preset?.content,
+    content = actualPreset?.content,
     contentTx,
     contentTxOptions,
-    heading = preset?.heading,
+    heading = actualPreset?.heading,
     headingTx,
     headingTxOptions,
-    imageSource = preset?.imageSource,
+    imageSource = actualPreset?.imageSource,
     style: $containerStyleOverride,
     buttonStyle: $buttonStyleOverride,
     buttonTextStyle: $buttonTextStyleOverride,
