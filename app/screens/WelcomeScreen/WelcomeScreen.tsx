@@ -1,27 +1,29 @@
 import React from "react"
 import { View, ViewStyle } from "react-native"
-import { LinearGradient, ListItem, Screen } from "@components"
+import { EmptyState, LinearGradient, ListItem, Screen } from "@components"
 import { FlashList } from "@shopify/flash-list"
 import { spacing } from "@theme"
 import { AppStackScreenProps } from "@navigators"
 import { hexToHSL, toHSLString } from "@utils/colorUtils"
-import * as icons from "simple-icons"
-import { SvgXml } from "react-native-svg"
-
-const allIcons = Object.values(icons)
+import { useHeader } from "@hooks"
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
 export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) {
+  useHeader({
+    title: "Subbies",
+  })
+
   return (
-    <Screen preset="fixed" safeAreaEdges={["top", "bottom"]}>
+    <Screen preset="fixed" safeAreaEdges={["bottom"]}>
       <FlashList
         contentContainerStyle={$listContainer}
-        data={allIcons}
+        data={[]}
         ItemSeparatorComponent={Separator}
         estimatedItemSize={72}
+        ListEmptyComponent={EmptyState}
         renderItem={({ item }) => {
-          const { title, svg, hex } = item
+          const { title, hex } = item
           const color = hexToHSL(`#${hex}`)
           const gradientStart = toHSLString(color)
           const gradientEnd = toHSLString({ ...color, l: Math.min(color.l - color.l * 0.2, 100) })
@@ -32,19 +34,10 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
               round
               BackgroundComponent={LinearGradient}
               backgroundProps={{
-                colors: [gradientEnd, gradientStart],
-                // start: { x: 1, y: 0 },
-                // end: { x: 0.2, y: 0 },
+                colors: [gradientStart, gradientEnd],
+                start: { x: 1, y: 0 },
+                end: { x: 0.2, y: 0 },
               }}
-              LeftComponent={
-                <SvgXml
-                  style={{ marginHorizontal: 16, alignSelf: "center" }}
-                  xml={svg}
-                  fill="white"
-                  width={24}
-                  height={24}
-                />
-              }
               rightIcon="caretRight"
               textStyle={{ color: "white" }}
               rightIconColor="white"

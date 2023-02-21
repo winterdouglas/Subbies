@@ -153,7 +153,6 @@ export function Header(props: HeaderProps) {
     rightText,
     rightTx,
     rightTxOptions,
-    safeAreaEdges = ["top"],
     title,
     titleMode = "center",
     titleTx,
@@ -164,7 +163,7 @@ export function Header(props: HeaderProps) {
     containerStyle: $containerStyleOverride,
   } = props
 
-  const $containerInsets = useSafeAreaInsetsStyle(safeAreaEdges)
+  const $containerInsets = useSafeAreaInsetsStyle(["top"])
 
   const titleContent = titleTx ? translate(titleTx, titleTxOptions) : title
 

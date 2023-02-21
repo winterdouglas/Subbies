@@ -19015,13 +19015,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-icons@npm:^8.5.0":
-  version: 8.5.0
-  resolution: "simple-icons@npm:8.5.0"
-  checksum: 147bb66395494ca69732b7add9cfbe6da639a1c3e2f41681ab85d02d19db0d8eb607a9ef82d0cc1b12cd2b1d4106205f9a7c4b111326cf9f3e9b2b1c62dbe6cb
-  languageName: node
-  linkType: hard
-
 "simple-plist@npm:^1.1.0":
   version: 1.4.0
   resolution: "simple-plist@npm:1.4.0"
@@ -19917,7 +19910,6 @@ __metadata:
     react-native-svg: ^13.8.0
     react-native-web: ~0.18.7
     regenerator-runtime: ^0.13.4
-    simple-icons: ^8.5.0
     ts-jest: 26
     typescript: ^4.6.3
     webpack: 4
