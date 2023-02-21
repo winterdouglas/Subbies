@@ -57,6 +57,5 @@ export const hexToHSL = (hex: string): HslColor => {
 
 export const toHSLString = ({ h, s, l }: HslColor) => {
   const val = `hsl(${h},${s}%,${l}%)`
-  console.log(val)
   return val
 }
