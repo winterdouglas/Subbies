@@ -2,6 +2,8 @@
 import * as ReactNative from "react-native"
 import mockFile from "./mockFile"
 
+require("@shopify/flash-list/jestSetup");
+
 // libraries to mock
 jest.doMock("react-native", () => {
   // Extend ReactNative
