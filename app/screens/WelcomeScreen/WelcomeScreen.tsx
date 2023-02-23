@@ -3,6 +3,10 @@ import { List, Screen } from "@components"
 import { AppStackScreenProps } from "@navigators"
 import { useHeader } from "@hooks"
 import { hexToHSL, toHSLString } from "@utils/colorUtils"
+// import Icon from 'react-native-vector-icons/Ionicons';
+// import Ionicons from 'react-native-vector-icons/dist/glyphmaps/Ionicons.json';
+
+// type IoniconsIconNames = keyof typeof Ionicons;
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
