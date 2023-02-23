@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react"
 import { StyleProp, TextStyle, View, ViewStyle } from "react-native"
-import { isRTL, translate } from "@i18n"
+import { isRTL, translate } from "@lib/i18n"
 import { colors, spacing } from "@theme"
 import { ExtendedEdge, useSafeAreaInsetsStyle } from "@hooks"
 import { Icon, IconTypes } from "../Icon"

@@ -1,6 +1,6 @@
 import React, { ComponentType, forwardRef, Ref, useImperativeHandle, useRef } from "react"
 import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from "react-native"
-import { isRTL, translate } from "@i18n"
+import { isRTL, translate } from "@lib/i18n"
 import { colors, spacing, typography } from "@theme"
 import { Text, TextProps } from "../Text"
 import { PressableOpacity } from "../PressableOpacity"
