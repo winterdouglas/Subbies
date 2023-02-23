@@ -2,7 +2,7 @@
 import * as ReactNative from "react-native"
 import mockFile from "./mockFile"
 
-require("@shopify/flash-list/jestSetup");
+require("@shopify/flash-list/jestSetup")
 
 // libraries to mock
 jest.doMock("react-native", () => {
@@ -33,6 +33,7 @@ jest.mock("i18n-js", () => ({
 }))
 
 jest.useFakeTimers()
+
 declare global {
   let __TEST__: any
 }

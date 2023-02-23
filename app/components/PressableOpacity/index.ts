@@ -1,1 +1,1 @@
-export * from "./PressableOpacity"
+export * from "./PressableOpacity";

@@ -1,40 +1,40 @@
-import * as React from "react"
-import { ComponentType } from "react"
-import { Image, ImageStyle, StyleProp, View, ViewStyle } from "react-native"
-import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity"
+import * as React from "react";
+import { ComponentType } from "react";
+import { Image, ImageStyle, StyleProp, View, ViewStyle } from "react-native";
+import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
 
-export type IconTypes = keyof typeof iconRegistry
+export type IconTypes = keyof typeof iconRegistry;
 
 interface IconProps extends PressableOpacityProps {
   /**
    * The name of the icon
    */
-  icon: IconTypes
+  icon: IconTypes;
 
   /**
    * An optional tint color for the icon
    */
-  color?: string
+  color?: string;
 
   /**
    * An optional size for the icon. If not provided, the icon will be sized to the icon's resolution.
    */
-  size?: number
+  size?: number;
 
   /**
    * Style overrides for the icon image
    */
-  style?: StyleProp<ImageStyle>
+  style?: StyleProp<ImageStyle>;
 
   /**
    * Style overrides for the icon container
    */
-  containerStyle?: StyleProp<ViewStyle>
+  containerStyle?: StyleProp<ViewStyle>;
 
   /**
    * An optional function to be called when the icon is pressed
    */
-  onPress?: PressableOpacityProps["onPress"]
+  onPress?: PressableOpacityProps["onPress"];
 }
 
 /**
@@ -51,19 +51,18 @@ export function Icon(props: IconProps) {
     style: $imageStyleOverride,
     containerStyle: $containerStyleOverride,
     ...WrapperProps
-  } = props
+  } = props;
 
-  const isPressable = !!WrapperProps.onPress
+  const isPressable = !!WrapperProps.onPress;
   const Wrapper: ComponentType<PressableOpacityProps> = WrapperProps?.onPress
     ? PressableOpacity
-    : View
+    : View;
 
   return (
     <Wrapper
       accessibilityRole={isPressable ? "imagebutton" : undefined}
       {...WrapperProps}
-      style={$containerStyleOverride}
-    >
+      style={$containerStyleOverride}>
       <Image
         style={[
           $imageStyle,
@@ -74,7 +73,7 @@ export function Icon(props: IconProps) {
         source={iconRegistry[icon]}
       />
     </Wrapper>
-  )
+  );
 }
 
 export const iconRegistry = {
@@ -100,8 +99,8 @@ export const iconRegistry = {
   slack: require("@assets/icons/slack.png"),
   view: require("@assets/icons/view.png"),
   x: require("@assets/icons/x.png"),
-}
+};
 
 const $imageStyle: ImageStyle = {
   resizeMode: "contain",
-}
+};

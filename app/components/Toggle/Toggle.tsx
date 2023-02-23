@@ -1,4 +1,4 @@
-import React, { ComponentType, useMemo } from "react"
+import React, { ComponentType, useMemo } from "react";
 import {
   GestureResponderEvent,
   Image,
@@ -9,14 +9,14 @@ import {
   TextStyle,
   View,
   ViewStyle,
-} from "react-native"
-import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated"
-import { colors, spacing } from "@theme"
-import { iconRegistry, IconTypes } from "../Icon"
-import { Text, TextProps } from "../Text"
-import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity"
+} from "react-native";
+import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated";
+import { colors, spacing } from "@theme";
+import { iconRegistry, IconTypes } from "../Icon";
+import { Text, TextProps } from "../Text";
+import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
 
-type Variants = "checkbox" | "switch" | "radio"
+type Variants = "checkbox" | "switch" | "radio";
 
 interface BaseToggleProps extends Omit<PressableOpacityProps, "style"> {
   /**
@@ -24,130 +24,130 @@ interface BaseToggleProps extends Omit<PressableOpacityProps, "style"> {
    * Options: "checkbox", "switch", "radio"
    * Default: "checkbox"
    */
-  variant?: unknown
+  variant?: unknown;
   /**
    * A style modifier for different input states.
    */
-  status?: "error" | "disabled"
+  status?: "error" | "disabled";
   /**
    * If false, input is not editable. The default value is true.
    */
-  editable?: TextInputProps["editable"]
+  editable?: TextInputProps["editable"];
   /**
    * The value of the field. If true the component will be turned on.
    */
-  value?: boolean
+  value?: boolean;
   /**
    * Invoked with the new value when the value changes.
    */
-  onValueChange?: SwitchProps["onValueChange"]
+  onValueChange?: SwitchProps["onValueChange"];
   /**
    * Style overrides for the container
    */
-  containerStyle?: StyleProp<ViewStyle>
+  containerStyle?: StyleProp<ViewStyle>;
   /**
    * Style overrides for the input wrapper
    */
-  inputWrapperStyle?: StyleProp<ViewStyle>
+  inputWrapperStyle?: StyleProp<ViewStyle>;
   /**
    * Optional input wrapper style override.
    * This gives the inputs their size, shape, "off" background-color, and outer border.
    */
-  inputOuterStyle?: ViewStyle
+  inputOuterStyle?: ViewStyle;
   /**
    * Optional input style override.
    * This gives the inputs their inner characteristics and "on" background-color.
    */
-  inputInnerStyle?: ViewStyle
+  inputInnerStyle?: ViewStyle;
   /**
    * The position of the label relative to the action component.
    * Default: right
    */
-  labelPosition?: "left" | "right"
+  labelPosition?: "left" | "right";
   /**
    * The label text to display if not using `labelTx`.
    */
-  label?: TextProps["text"]
+  label?: TextProps["text"];
   /**
    * Label text which is looked up via i18n.
    */
-  labelTx?: TextProps["tx"]
+  labelTx?: TextProps["tx"];
   /**
    * Optional label options to pass to i18n. Useful for interpolation
    * as well as explicitly setting locale or translation fallbacks.
    */
-  labelTxOptions?: TextProps["txOptions"]
+  labelTxOptions?: TextProps["txOptions"];
   /**
    * Style overrides for label text.
    */
-  labelStyle?: StyleProp<TextStyle>
+  labelStyle?: StyleProp<TextStyle>;
   /**
    * Pass any additional props directly to the label Text component.
    */
-  LabelTextProps?: TextProps
+  LabelTextProps?: TextProps;
   /**
    * The helper text to display if not using `helperTx`.
    */
-  helper?: TextProps["text"]
+  helper?: TextProps["text"];
   /**
    * Helper text which is looked up via i18n.
    */
-  helperTx?: TextProps["tx"]
+  helperTx?: TextProps["tx"];
   /**
    * Optional helper options to pass to i18n. Useful for interpolation
    * as well as explicitly setting locale or translation fallbacks.
    */
-  helperTxOptions?: TextProps["txOptions"]
+  helperTxOptions?: TextProps["txOptions"];
   /**
    * Pass any additional props directly to the helper Text component.
    */
-  HelperTextProps?: TextProps
+  HelperTextProps?: TextProps;
 }
 
 interface CheckboxToggleProps extends BaseToggleProps {
-  variant?: "checkbox"
+  variant?: "checkbox";
   /**
    * Optional style prop that affects the Image component.
    */
-  inputDetailStyle?: ImageStyle
+  inputDetailStyle?: ImageStyle;
   /**
    * Checkbox-only prop that changes the icon used for the "on" state.
    */
-  checkboxIcon?: IconTypes
+  checkboxIcon?: IconTypes;
 }
 
 interface RadioToggleProps extends BaseToggleProps {
-  variant?: "radio"
+  variant?: "radio";
   /**
    * Optional style prop that affects the dot View.
    */
-  inputDetailStyle?: ViewStyle
+  inputDetailStyle?: ViewStyle;
 }
 
 interface SwitchToggleProps extends BaseToggleProps {
-  variant?: "switch"
+  variant?: "switch";
   /**
    * Switch-only prop that adds a text/icon label for on/off states.
    */
-  switchAccessibilityMode?: "text" | "icon"
+  switchAccessibilityMode?: "text" | "icon";
   /**
    * Optional style prop that affects the knob View.
    * Note: `width` and `height` rules should be points (numbers), not percentages.
    */
-  inputDetailStyle?: Omit<ViewStyle, "width" | "height"> & { width?: number; height?: number }
+  inputDetailStyle?: Omit<ViewStyle, "width" | "height"> & { width?: number; height?: number };
 }
 
-export type ToggleProps = CheckboxToggleProps | RadioToggleProps | SwitchToggleProps
+export type ToggleProps = CheckboxToggleProps | RadioToggleProps | SwitchToggleProps;
 
 interface ToggleInputProps {
-  on: boolean
-  status: BaseToggleProps["status"]
-  disabled: boolean
-  outerStyle: ViewStyle
-  innerStyle: ViewStyle
-  detailStyle: Omit<ViewStyle & ImageStyle, "overflow">
-  switchAccessibilityMode?: SwitchToggleProps["switchAccessibilityMode"]
-  checkboxIcon?: CheckboxToggleProps["checkboxIcon"]
+  on: boolean;
+  status: BaseToggleProps["status"];
+  disabled: boolean;
+  outerStyle: ViewStyle;
+  innerStyle: ViewStyle;
+  detailStyle: Omit<ViewStyle & ImageStyle, "overflow">;
+  switchAccessibilityMode?: SwitchToggleProps["switchAccessibilityMode"];
+  checkboxIcon?: CheckboxToggleProps["checkboxIcon"];
 }
 
 /**
@@ -172,34 +172,34 @@ export function Toggle(props: ToggleProps) {
     containerStyle: $containerStyleOverride,
     inputWrapperStyle: $inputWrapperStyleOverride,
     ...WrapperProps
-  } = props
+  } = props;
 
-  const { switchAccessibilityMode } = props as SwitchToggleProps
-  const { checkboxIcon } = props as CheckboxToggleProps
+  const { switchAccessibilityMode } = props as SwitchToggleProps;
+  const { checkboxIcon } = props as CheckboxToggleProps;
 
-  const disabled = editable === false || status === "disabled" || props.disabled
+  const disabled = editable === false || status === "disabled" || props.disabled;
 
   const Wrapper = useMemo<ComponentType<PressableOpacityProps>>(
     () => (disabled ? View : PressableOpacity),
     [disabled],
-  )
+  );
   const ToggleInput = useMemo(
     (): ((props: ToggleInputProps) => JSX.Element) => ToggleInputs[variant] || (() => null),
     [variant],
-  )
+  );
 
-  const $containerStyles = [$containerStyleOverride]
-  const $inputWrapperStyles = [$inputWrapper, $inputWrapperStyleOverride]
+  const $containerStyles = [$containerStyleOverride];
+  const $inputWrapperStyles = [$inputWrapper, $inputWrapperStyleOverride];
   const $helperStyles = [
     $helper,
     status === "error" && { color: colors.error },
     HelperTextProps?.style,
-  ]
+  ];
 
   function handlePress(e: GestureResponderEvent) {
-    if (disabled) return
-    onValueChange?.(!value)
-    onPress?.(e)
+    if (disabled) return;
+    onValueChange?.(!value);
+    onPress?.(e);
   }
 
   return (
@@ -209,8 +209,7 @@ export function Toggle(props: ToggleProps) {
       accessibilityState={{ checked: value, disabled }}
       {...WrapperProps}
       style={$containerStyles}
-      onPress={handlePress}
-    >
+      onPress={handlePress}>
       <View style={$inputWrapperStyles}>
         {labelPosition === "left" && <FieldLabel {...props} labelPosition={labelPosition} />}
 
@@ -239,14 +238,14 @@ export function Toggle(props: ToggleProps) {
         />
       )}
     </Wrapper>
-  )
+  );
 }
 
 const ToggleInputs: Record<Variants, (props: ToggleInputProps) => JSX.Element> = {
   checkbox: Checkbox,
   switch: Switch,
   radio: Radio,
-}
+};
 
 function Checkbox(props: ToggleInputProps) {
   const {
@@ -257,32 +256,32 @@ function Checkbox(props: ToggleInputProps) {
     outerStyle: $outerStyleOverride,
     innerStyle: $innerStyleOverride,
     detailStyle: $detailStyleOverride,
-  } = props
+  } = props;
 
   const offBackgroundColor = [
     disabled && colors.palette.neutral400,
     status === "error" && colors.errorBackground,
     colors.palette.neutral200,
-  ].filter(Boolean)[0]
+  ].filter(Boolean)[0];
 
   const outerBorderColor = [
     disabled && colors.palette.neutral400,
     status === "error" && colors.error,
     !on && colors.palette.neutral800,
     colors.palette.secondary500,
-  ].filter(Boolean)[0]
+  ].filter(Boolean)[0];
 
   const onBackgroundColor = [
     disabled && colors.transparent,
     status === "error" && colors.errorBackground,
     colors.palette.secondary500,
-  ].filter(Boolean)[0]
+  ].filter(Boolean)[0];
 
   const iconTintColor = [
     disabled && colors.palette.neutral600,
     status === "error" && colors.error,
     colors.palette.accent100,
-  ].filter(Boolean)[0]
+  ].filter(Boolean)[0];
 
   return (
     <View
@@ -290,23 +289,21 @@ function Checkbox(props: ToggleInputProps) {
         $inputOuterVariants.checkbox,
         { backgroundColor: offBackgroundColor, borderColor: outerBorderColor },
         $outerStyleOverride,
-      ]}
-    >
+      ]}>
       <Animated.View
         style={[
           $checkboxInner,
           { backgroundColor: onBackgroundColor },
           $innerStyleOverride,
           useAnimatedStyle(() => ({ opacity: withTiming(on ? 1 : 0) }), [on]),
-        ]}
-      >
+        ]}>
         <Image
           source={iconRegistry[checkboxIcon] || iconRegistry.check}
           style={[$checkboxDetail, { tintColor: iconTintColor }, $detailStyleOverride]}
         />
       </Animated.View>
     </View>
-  )
+  );
 }
 
 function Radio(props: ToggleInputProps) {
@@ -317,32 +314,32 @@ function Radio(props: ToggleInputProps) {
     outerStyle: $outerStyleOverride,
     innerStyle: $innerStyleOverride,
     detailStyle: $detailStyleOverride,
-  } = props
+  } = props;
 
   const offBackgroundColor = [
     disabled && colors.palette.neutral400,
     status === "error" && colors.errorBackground,
     colors.palette.neutral200,
-  ].filter(Boolean)[0]
+  ].filter(Boolean)[0];
 
   const outerBorderColor = [
     disabled && colors.palette.neutral400,
     status === "error" && colors.error,
     !on && colors.palette.neutral800,
     colors.palette.secondary500,
-  ].filter(Boolean)[0]
+  ].filter(Boolean)[0];
 
   const onBackgroundColor = [
     disabled && colors.transparent,
     status === "error" && colors.errorBackground,
     colors.palette.neutral100,
-  ].filter(Boolean)[0]
+  ].filter(Boolean)[0];
 
   const dotBackgroundColor = [
     disabled && colors.palette.neutral600,
     status === "error" && colors.error,
     colors.palette.secondary500,
-  ].filter(Boolean)[0]
+  ].filter(Boolean)[0];
 
   return (
     <View
@@ -350,22 +347,20 @@ function Radio(props: ToggleInputProps) {
         $inputOuterVariants.radio,
         { backgroundColor: offBackgroundColor, borderColor: outerBorderColor },
         $outerStyleOverride,
-      ]}
-    >
+      ]}>
       <Animated.View
         style={[
           $radioInner,
           { backgroundColor: onBackgroundColor },
           $innerStyleOverride,
           useAnimatedStyle(() => ({ opacity: withTiming(on ? 1 : 0) }), [on]),
-        ]}
-      >
+        ]}>
         <View
           style={[$radioDetail, { backgroundColor: dotBackgroundColor }, $detailStyleOverride]}
         />
       </Animated.View>
     </View>
-  )
+  );
 }
 
 function Switch(props: ToggleInputProps) {
@@ -376,29 +371,29 @@ function Switch(props: ToggleInputProps) {
     outerStyle: $outerStyleOverride,
     innerStyle: $innerStyleOverride,
     detailStyle: $detailStyleOverride,
-  } = props
+  } = props;
 
-  const knobSizeFallback = 2
+  const knobSizeFallback = 2;
 
   const knobWidth = [$detailStyleOverride?.width, $switchDetail?.width, knobSizeFallback].find(
     (v) => typeof v === "number",
-  )
+  );
 
   const knobHeight = [$detailStyleOverride?.height, $switchDetail?.height, knobSizeFallback].find(
     (v) => typeof v === "number",
-  )
+  );
 
   const offBackgroundColor = [
     disabled && colors.palette.neutral400,
     status === "error" && colors.errorBackground,
     colors.palette.neutral300,
-  ].filter(Boolean)[0]
+  ].filter(Boolean)[0];
 
   const onBackgroundColor = [
     disabled && colors.transparent,
     status === "error" && colors.errorBackground,
     colors.palette.secondary500,
-  ].filter(Boolean)[0]
+  ].filter(Boolean)[0];
 
   const knobBackgroundColor = (function () {
     if (on) {
@@ -407,35 +402,35 @@ function Switch(props: ToggleInputProps) {
         status === "error" && colors.error,
         disabled && colors.palette.neutral600,
         colors.palette.neutral100,
-      ].filter(Boolean)[0]
+      ].filter(Boolean)[0];
     } else {
       return [
         $innerStyleOverride?.backgroundColor,
         disabled && colors.palette.neutral600,
         status === "error" && colors.error,
         colors.palette.neutral200,
-      ].filter(Boolean)[0]
+      ].filter(Boolean)[0];
     }
-  })()
+  })();
 
   const $animatedSwitchKnob = useAnimatedStyle(() => {
     const offsetLeft = ($innerStyleOverride?.paddingStart ||
       $innerStyleOverride?.paddingLeft ||
       $switchInner?.paddingStart ||
       $switchInner?.paddingLeft ||
-      0) as number
+      0) as number;
 
     const offsetRight = ($innerStyleOverride?.paddingEnd ||
       $innerStyleOverride?.paddingRight ||
       $switchInner?.paddingEnd ||
       $switchInner?.paddingRight ||
-      0) as number
+      0) as number;
 
-    const start = withTiming(on ? "100%" : "0%")
-    const marginStart = withTiming(on ? -(knobWidth || 0) - offsetRight : 0 + offsetLeft)
+    const start = withTiming(on ? "100%" : "0%");
+    const marginStart = withTiming(on ? -(knobWidth || 0) - offsetRight : 0 + offsetLeft);
 
-    return { start, marginStart }
-  }, [on, knobWidth])
+    return { start, marginStart };
+  }, [on, knobWidth]);
 
   return (
     <View
@@ -443,8 +438,7 @@ function Switch(props: ToggleInputProps) {
         $inputOuterVariants.switch,
         { backgroundColor: offBackgroundColor },
         $outerStyleOverride,
-      ]}
-    >
+      ]}>
       <Animated.View
         style={[
           $switchInner,
@@ -467,28 +461,28 @@ function Switch(props: ToggleInputProps) {
         ]}
       />
     </View>
-  )
+  );
 }
 
 function SwitchAccessibilityLabel(props: ToggleInputProps & { role: "on" | "off" }) {
-  const { on, disabled, status, switchAccessibilityMode, role, innerStyle, detailStyle } = props
+  const { on, disabled, status, switchAccessibilityMode, role, innerStyle, detailStyle } = props;
 
-  if (!switchAccessibilityMode) return null
+  if (!switchAccessibilityMode) return null;
 
-  const shouldLabelBeVisible = (on && role === "on") || (!on && role === "off")
+  const shouldLabelBeVisible = (on && role === "on") || (!on && role === "off");
 
   const $switchAccessibilityStyle = [
     $switchAccessibility,
     role === "off" && { end: "5%" },
     role === "on" && { left: "5%" },
-  ]
+  ];
 
   const color = (function () {
-    if (disabled) return colors.palette.neutral600
-    if (status === "error") return colors.error
-    if (!on) return innerStyle?.backgroundColor || colors.palette.secondary500
-    return detailStyle?.backgroundColor || colors.palette.neutral100
-  })()
+    if (disabled) return colors.palette.neutral600;
+    if (status === "error") return colors.error;
+    if (!on) return innerStyle?.backgroundColor || colors.palette.secondary500;
+    return detailStyle?.backgroundColor || colors.palette.neutral100;
+  })();
 
   return (
     <View style={$switchAccessibilityStyle}>
@@ -510,7 +504,7 @@ function SwitchAccessibilityLabel(props: ToggleInputProps & { role: "on" | "off"
         />
       )}
     </View>
-  )
+  );
 }
 
 function FieldLabel(props: BaseToggleProps) {
@@ -522,9 +516,9 @@ function FieldLabel(props: BaseToggleProps) {
     LabelTextProps,
     labelPosition,
     labelStyle: $labelStyleOverride,
-  } = props
+  } = props;
 
-  if (!label && !labelTx && !LabelTextProps?.children) return null
+  if (!label && !labelTx && !LabelTextProps?.children) return null;
 
   const $labelStyle = [
     $label,
@@ -533,7 +527,7 @@ function FieldLabel(props: BaseToggleProps) {
     labelPosition === "left" && $labelLeft,
     $labelStyleOverride,
     LabelTextProps?.style,
-  ]
+  ];
 
   return (
     <Text
@@ -544,13 +538,13 @@ function FieldLabel(props: BaseToggleProps) {
       {...LabelTextProps}
       style={$labelStyle}
     />
-  )
+  );
 }
 
 const $inputWrapper: ViewStyle = {
   flexDirection: "row",
   alignItems: "center",
-}
+};
 
 const $inputOuterBase: ViewStyle = {
   height: 24,
@@ -562,13 +556,13 @@ const $inputOuterBase: ViewStyle = {
   flexShrink: 0,
   justifyContent: "space-between",
   flexDirection: "row",
-}
+};
 
 const $inputOuterVariants: Record<Variants, StyleProp<ViewStyle>> = {
   checkbox: [$inputOuterBase, { borderRadius: 4 }],
   radio: [$inputOuterBase, { borderRadius: 12 }],
   switch: [$inputOuterBase, { height: 32, width: 56, borderRadius: 16, borderWidth: 0 }],
-}
+};
 
 const $checkboxInner: ViewStyle = {
   width: "100%",
@@ -576,13 +570,13 @@ const $checkboxInner: ViewStyle = {
   alignItems: "center",
   justifyContent: "center",
   overflow: "hidden",
-}
+};
 
 const $checkboxDetail: ImageStyle = {
   width: 20,
   height: 20,
   resizeMode: "contain",
-}
+};
 
 const $radioInner: ViewStyle = {
   width: "100%",
@@ -590,13 +584,13 @@ const $radioInner: ViewStyle = {
   alignItems: "center",
   justifyContent: "center",
   overflow: "hidden",
-}
+};
 
 const $radioDetail: ViewStyle = {
   width: 12,
   height: 12,
   borderRadius: 6,
-}
+};
 
 const $switchInner: ViewStyle = {
   width: "100%",
@@ -607,51 +601,51 @@ const $switchInner: ViewStyle = {
   position: "absolute",
   paddingStart: 4,
   paddingEnd: 4,
-}
+};
 
 const $switchDetail: SwitchToggleProps["inputDetailStyle"] = {
   borderRadius: 12,
   position: "absolute",
   width: 24,
   height: 24,
-}
+};
 
 const $helper: TextStyle = {
   marginTop: spacing.extraSmall,
-}
+};
 
 const $label: TextStyle = {
   flex: 1,
-}
+};
 
 const $labelRight: TextStyle = {
   marginStart: spacing.medium,
-}
+};
 
 const $labelLeft: TextStyle = {
   marginEnd: spacing.medium,
-}
+};
 
 const $switchAccessibility: TextStyle = {
   width: "40%",
   justifyContent: "center",
   alignItems: "center",
-}
+};
 
 const $switchAccessibilityIcon: ImageStyle = {
   width: 14,
   height: 14,
   resizeMode: "contain",
-}
+};
 
 const $switchAccessibilityLine: ViewStyle = {
   width: 2,
   height: 12,
-}
+};
 
 const $switchAccessibilityCircle: ViewStyle = {
   borderWidth: 2,
   width: 12,
   height: 12,
   borderRadius: 6,
-}
+};

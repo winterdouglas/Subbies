@@ -2,7 +2,7 @@ import {
   PartialState,
   NavigationState,
   createNavigationContainerRef,
-} from "@react-navigation/native"
+} from "@react-navigation/native";
 
 // /* eslint-disable */
 // export const RootNavigation = {
@@ -16,17 +16,17 @@ import {
 // }
 // /* eslint-enable */
 
-export const navigationRef = createNavigationContainerRef()
+export const navigationRef = createNavigationContainerRef();
 
 /**
  * Gets the current screen from any navigation state.
  */
 export function getActiveRouteName(state: NavigationState | PartialState<NavigationState>): string {
-  const route = state.routes[state.index]
+  const route = state.routes[state.index];
 
   // Found the active route -- return the name
-  if (!route.state) return route.name
+  if (!route.state) return route.name;
 
   // Recursive call to deal with nested routers
-  return getActiveRouteName(route.state)
+  return getActiveRouteName(route.state);
 }

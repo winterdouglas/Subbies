@@ -1,11 +1,11 @@
-import { Platform } from "react-native"
+import { Platform } from "react-native";
 import {
   SpaceGrotesk_300Light as spaceGroteskLight,
   SpaceGrotesk_400Regular as spaceGroteskRegular,
   SpaceGrotesk_500Medium as spaceGroteskMedium,
   SpaceGrotesk_600SemiBold as spaceGroteskSemiBold,
   SpaceGrotesk_700Bold as spaceGroteskBold,
-} from "@expo-google-fonts/space-grotesk"
+} from "@expo-google-fonts/space-grotesk";
 
 export const customFontsToLoad = {
   spaceGroteskLight,
@@ -13,7 +13,7 @@ export const customFontsToLoad = {
   spaceGroteskMedium,
   spaceGroteskSemiBold,
   spaceGroteskBold,
-}
+};
 
 const fonts = {
   spaceGrotesk: {
@@ -46,7 +46,7 @@ const fonts = {
     // Android only font.
     normal: "monospace",
   },
-}
+};
 
 export const typography = {
   /**
@@ -65,4 +65,4 @@ export const typography = {
    * Lets get fancy with a monospace font!
    */
   code: Platform.select({ ios: fonts.courier, android: fonts.monospace }),
-}
+};

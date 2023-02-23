@@ -1,1 +1,1 @@
-export * from "./LinearGradient"
+export * from "./LinearGradient";

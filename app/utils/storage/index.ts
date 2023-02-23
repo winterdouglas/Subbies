@@ -1,1 +1,1 @@
-export { default as createStorage, IStorage } from "./storage"
+export { default as createStorage, IStorage } from "./storage";
