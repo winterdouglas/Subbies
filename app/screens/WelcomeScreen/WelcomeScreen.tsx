@@ -1,12 +1,8 @@
 import React from "react";
-import { List, Screen } from "@components";
+import { List, Screen, Toggle } from "@components";
 import { AppStackScreenProps } from "@navigators";
 import { useHeader } from "@hooks";
 import { hexToHSL, toHSLString } from "@utils/colorUtils";
-// import Icon from 'react-native-vector-icons/Ionicons';
-// import Ionicons from 'react-native-vector-icons/dist/glyphmaps/Ionicons.json';
-
-// type IoniconsIconNames = keyof typeof Ionicons;
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
@@ -22,6 +18,7 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
 
   return (
     <Screen preset="fixed" safeAreaEdges={["bottom"]}>
+      <Toggle value={false} variant="switch" switchAccessibilityMode="icon" />
       <List
         preset="gradient"
         data={items}
@@ -38,8 +35,8 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
         getItemProps={(item) => {
           return {
             text: item.title,
-            leftIcon: "github",
-            rightIcon: "caretRight",
+            leftIcon: "add",
+            rightIcon: "chevron-forward",
           };
         }}
       />

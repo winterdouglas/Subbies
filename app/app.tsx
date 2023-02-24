@@ -1,4 +1,4 @@
-import "./i18n";
+import "./lib/i18n";
 import "./utils/ignoreWarnings";
 import { useFonts } from "expo-font";
 import React, { useEffect } from "react";

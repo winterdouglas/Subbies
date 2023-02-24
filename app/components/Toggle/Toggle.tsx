@@ -1,8 +1,6 @@
 import React, { ComponentType, useMemo } from "react";
 import {
   GestureResponderEvent,
-  Image,
-  ImageStyle,
   StyleProp,
   SwitchProps,
   TextInputProps,
@@ -12,7 +10,7 @@ import {
 } from "react-native";
 import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated";
 import { colors, spacing } from "@theme";
-import { iconRegistry, IconTypes } from "../Icon";
+import { Icon, IconTypes } from "../Icon";
 import { Text, TextProps } from "../Text";
 import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
 
@@ -107,9 +105,9 @@ interface BaseToggleProps extends Omit<PressableOpacityProps, "style"> {
 interface CheckboxToggleProps extends BaseToggleProps {
   variant?: "checkbox";
   /**
-   * Optional style prop that affects the Image component.
+   * Optional style prop that affects the Icon component.
    */
-  inputDetailStyle?: ImageStyle;
+  inputDetailStyle?: ViewStyle;
   /**
    * Checkbox-only prop that changes the icon used for the "on" state.
    */
@@ -145,7 +143,7 @@ interface ToggleInputProps {
   disabled: boolean;
   outerStyle: ViewStyle;
   innerStyle: ViewStyle;
-  detailStyle: Omit<ViewStyle & ImageStyle, "overflow">;
+  detailStyle: Omit<ViewStyle, "overflow">;
   switchAccessibilityMode?: SwitchToggleProps["switchAccessibilityMode"];
   checkboxIcon?: CheckboxToggleProps["checkboxIcon"];
 }
@@ -297,9 +295,11 @@ function Checkbox(props: ToggleInputProps) {
           $innerStyleOverride,
           useAnimatedStyle(() => ({ opacity: withTiming(on ? 1 : 0) }), [on]),
         ]}>
-        <Image
-          source={iconRegistry[checkboxIcon] || iconRegistry.check}
-          style={[$checkboxDetail, { tintColor: iconTintColor }, $detailStyleOverride]}
+        <Icon
+          icon={checkboxIcon || "checkmark"}
+          color={iconTintColor}
+          size={20}
+          style={$detailStyleOverride}
         />
       </Animated.View>
     </View>
@@ -498,10 +498,7 @@ function SwitchAccessibilityLabel(props: ToggleInputProps & { role: "on" | "off"
       )}
 
       {switchAccessibilityMode === "icon" && shouldLabelBeVisible && (
-        <Image
-          style={[$switchAccessibilityIcon, { tintColor: color }]}
-          source={role === "off" ? iconRegistry.hidden : iconRegistry.view}
-        />
+        <Icon icon={role === "off" ? "eye-off-outline" : "eye-outline"} color={color} size={16} />
       )}
     </View>
   );
@@ -572,12 +569,6 @@ const $checkboxInner: ViewStyle = {
   overflow: "hidden",
 };
 
-const $checkboxDetail: ImageStyle = {
-  width: 20,
-  height: 20,
-  resizeMode: "contain",
-};
-
 const $radioInner: ViewStyle = {
   width: "100%",
   height: "100%",
@@ -632,11 +623,11 @@ const $switchAccessibility: TextStyle = {
   alignItems: "center",
 };
 
-const $switchAccessibilityIcon: ImageStyle = {
-  width: 14,
-  height: 14,
-  resizeMode: "contain",
-};
+// const $switchAccessibilityIcon: ImageStyle = {
+//   width: 14,
+//   height: 14,
+//   resizeMode: "contain",
+// };
 
 const $switchAccessibilityLine: ViewStyle = {
   width: 2,
