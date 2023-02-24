@@ -9,7 +9,7 @@ export interface IStorage {
   clear(): void;
 }
 
-export default (_storage?: MMKV): IStorage => {
+export const createStorage = (_storage?: MMKV): IStorage => {
   const storage = _storage ?? new MMKV();
 
   return {
@@ -92,3 +92,5 @@ export default (_storage?: MMKV): IStorage => {
     },
   };
 };
+
+export const storage = createStorage();

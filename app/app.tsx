@@ -6,11 +6,9 @@ import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-c
 import * as Linking from "expo-linking";
 import { AppNavigator, useNavigationPersistence } from "./navigators";
 import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary";
-import { createStorage } from "@utils/storage";
+import { storage } from "@lib/storage";
 import { customFontsToLoad } from "@theme";
 import { Config } from "@config";
-
-const storage = createStorage();
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE";
 

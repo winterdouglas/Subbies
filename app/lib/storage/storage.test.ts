@@ -1,5 +1,5 @@
 import { MMKV } from "react-native-mmkv";
-import createStorage, { IStorage } from "./storage";
+import { createStorage, IStorage } from "./storage";
 
 // fixtures
 const KEY = "Key";

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { NavigationState } from "@react-navigation/native";
 import { Config, PersistNavigationConfig } from "@config";
 import { useIsMounted } from "@hooks";
-import { IStorage } from "@utils/storage";
+import { IStorage } from "@lib/storage";
 import { getActiveRouteName } from "../navigationUtilities";
 
 /**
