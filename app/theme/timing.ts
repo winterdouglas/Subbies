@@ -7,4 +7,4 @@ export const timing = {
    * The duration (ms) for animations in reduce motion
    */
   disabled: 0,
-}
+};

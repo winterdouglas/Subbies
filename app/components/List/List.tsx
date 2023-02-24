@@ -1,39 +1,39 @@
-import React from "react"
-import { PressableProps, View, ViewProps, ViewStyle } from "react-native"
-import { ContentStyle, FlashList, FlashListProps } from "@shopify/flash-list"
-import { colors, spacing } from "@theme"
-import { EmptyState } from "../EmptyState"
-import { ListItem, ListItemProps } from "../ListItem"
-import { LinearGradient, LinearGradientProps } from "../LinearGradient"
-import { PressableScale } from "../PressableScale"
+import React from "react";
+import { PressableProps, View, ViewProps, ViewStyle } from "react-native";
+import { ContentStyle, FlashList, FlashListProps } from "@shopify/flash-list";
+import { colors, spacing } from "@theme";
+import { EmptyState } from "../EmptyState";
+import { ListItem, ListItemProps } from "../ListItem";
+import { LinearGradient, LinearGradientProps } from "../LinearGradient";
+import { PressableScale } from "../PressableScale";
 
 interface BaseListProps<TItem> extends Omit<FlashListProps<TItem>, "renderItem"> {
-  getItemProps: (item: TItem, index: number) => ListItemProps<PressableProps, ViewProps>
+  getItemProps: (item: TItem, index: number) => ListItemProps<PressableProps, ViewProps>;
 }
 
 interface DefaultListProps<TItem> extends BaseListProps<TItem> {
-  preset?: "default"
-  separator?: boolean
+  preset?: "default";
+  separator?: boolean;
 }
 
 interface GradientListProps<TItem> extends BaseListProps<TItem> {
-  preset?: "gradient"
-  getGradientProps: (item: TItem, index: number) => LinearGradientProps
+  preset?: "gradient";
+  getGradientProps: (item: TItem, index: number) => LinearGradientProps;
 }
 
-export type ListProps<TItem> = GradientListProps<TItem> | DefaultListProps<TItem>
+export type ListProps<TItem> = GradientListProps<TItem> | DefaultListProps<TItem>;
 
 const ItemSizes = {
   default: 56,
   gradient: 72,
-} as const
+} as const;
 
 function EmptySeparator() {
-  return <View style={$emptySeparator} />
+  return <View style={$emptySeparator} />;
 }
 
 function LineSeparator() {
-  return <View style={$lineSeparator} />
+  return <View style={$lineSeparator} />;
 }
 
 function GradientList<TItem>({
@@ -42,8 +42,8 @@ function GradientList<TItem>({
   getItemProps,
   ...ListProps
 }: GradientListProps<TItem>) {
-  const $listContainerStyle = $listContainerPresets.gradient
-  const itemSize = ItemSizes.gradient
+  const $listContainerStyle = $listContainerPresets.gradient;
+  const itemSize = ItemSizes.gradient;
 
   return (
     <FlashList<TItem>
@@ -62,11 +62,11 @@ function GradientList<TItem>({
             backgroundProps={getGradientProps(item, index)}
             {...getItemProps(item, index)}
           />
-        )
+        );
       }}
       {...ListProps}
     />
-  )
+  );
 }
 
 function DefaultList<TItem>({
@@ -75,9 +75,9 @@ function DefaultList<TItem>({
   separator,
   ...ListProps
 }: DefaultListProps<TItem>) {
-  const $listContainerStyle = $listContainerPresets.default
-  const itemSize = ItemSizes.default
-  const Separator = separator && LineSeparator
+  const $listContainerStyle = $listContainerPresets.default;
+  const itemSize = ItemSizes.default;
+  const Separator = separator && LineSeparator;
 
   return (
     <FlashList<TItem>
@@ -87,25 +87,25 @@ function DefaultList<TItem>({
       estimatedItemSize={itemSize}
       ListEmptyComponent={EmptyState}
       renderItem={({ item, index }) => {
-        return <ListItem height={itemSize} {...getItemProps(item, index)} />
+        return <ListItem height={itemSize} {...getItemProps(item, index)} />;
       }}
       {...ListProps}
     />
-  )
+  );
 }
 
 export function List<TItem>(props: ListProps<TItem>) {
-  return props.preset === "gradient" ? <GradientList {...props} /> : <DefaultList {...props} />
+  return props.preset === "gradient" ? <GradientList {...props} /> : <DefaultList {...props} />;
 }
 
 const $emptySeparator: ViewStyle = {
   height: spacing.medium,
-}
+};
 
 const $lineSeparator: ViewStyle = {
   height: spacing.nano,
   backgroundColor: colors.separator,
-}
+};
 
 const $listContainerPresets = {
   default: {} as ContentStyle,
@@ -113,4 +113,4 @@ const $listContainerPresets = {
   gradient: {
     padding: spacing.medium,
   } as ContentStyle,
-}
+};

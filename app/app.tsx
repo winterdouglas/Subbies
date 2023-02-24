@@ -1,21 +1,19 @@
-import "./i18n"
-import "./utils/ignoreWarnings"
-import { useFonts } from "expo-font"
-import React, { useEffect } from "react"
-import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context"
-import * as Linking from "expo-linking"
-import { AppNavigator, useNavigationPersistence } from "./navigators"
-import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary"
-import { createStorage } from "@utils/storage"
-import { customFontsToLoad } from "@theme"
-import { Config } from "@config"
+import "./lib/i18n";
+import "./utils/ignoreWarnings";
+import { useFonts } from "expo-font";
+import React, { useEffect } from "react";
+import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context";
+import * as Linking from "expo-linking";
+import { AppNavigator, useNavigationPersistence } from "./navigators";
+import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary";
+import { storage } from "@lib/storage";
+import { customFontsToLoad } from "@theme";
+import { Config } from "@config";
 
-const storage = createStorage()
-
-export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE"
+export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE";
 
 // Web linking configuration
-const prefix = Linking.createURL("/")
+const prefix = Linking.createURL("/");
 const config = {
   screens: {
     Login: {
@@ -33,30 +31,29 @@ const config = {
       },
     },
   },
-}
+};
 
 interface AppProps {
-  hideSplashScreen: () => Promise<void>
+  hideSplashScreen: () => Promise<void>;
 }
 
 /**
  * This is the root component of our app.
  */
-function App(props: AppProps) {
-  const { hideSplashScreen } = props
+function App({ hideSplashScreen }: AppProps) {
   const {
     initialNavigationState,
     onNavigationStateChange,
     isRestored: isNavigationStateRestored,
-  } = useNavigationPersistence(storage, NAVIGATION_PERSISTENCE_KEY)
+  } = useNavigationPersistence(storage, NAVIGATION_PERSISTENCE_KEY);
 
-  const [areFontsLoaded] = useFonts(customFontsToLoad)
+  const [areFontsLoaded] = useFonts(customFontsToLoad);
 
   useEffect(() => {
     if (areFontsLoaded) {
-      hideSplashScreen()
+      hideSplashScreen();
     }
-  }, [areFontsLoaded])
+  }, [areFontsLoaded]);
 
   // Before we show the app, we have to wait for our state to be ready.
   // In the meantime, don't render anything. This will be the background
@@ -64,12 +61,12 @@ function App(props: AppProps) {
   // In iOS: application:didFinishLaunchingWithOptions:
   // In Android: https://stackoverflow.com/a/45838109/204044
   // You can replace with your own loading component if you wish.
-  if (!isNavigationStateRestored || !areFontsLoaded) return null
+  if (!isNavigationStateRestored || !areFontsLoaded) return null;
 
   const linking = {
     prefixes: [prefix],
     config,
-  }
+  };
 
   // otherwise, we're ready to render the app
   return (
@@ -82,7 +79,7 @@ function App(props: AppProps) {
         />
       </ErrorBoundary>
     </SafeAreaProvider>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -3967,6 +3967,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-native-vector-icons@npm:^6.4.13":
+  version: 6.4.13
+  resolution: "@types/react-native-vector-icons@npm:6.4.13"
+  dependencies:
+    "@types/react": "*"
+    "@types/react-native": ^0.70
+  checksum: e954807f7229a84ba6aa15c6952a987e0b45406e501131c0d73fdaa3fe634301d466e22eec8bb23d9c509eb39043fae9cad4ca685b125dc4d6d603dc46b789f7
+  languageName: node
+  linkType: hard
+
+"@types/react-native@npm:^0.70":
+  version: 0.70.11
+  resolution: "@types/react-native@npm:0.70.11"
+  dependencies:
+    "@types/react": "*"
+  checksum: d81155adbc0ca7d407772a4be531834890b2a64ebd992d9658c8384d7c39d1026da85ee504ea412887eb4269b9911d213d013a141f352df9e7a7256c267c0c73
+  languageName: node
+  linkType: hard
+
 "@types/react-native@npm:~0.70.6":
   version: 0.70.10
   resolution: "@types/react-native@npm:0.70.10"
@@ -17689,6 +17708,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-vector-icons@npm:^9.2.0":
+  version: 9.2.0
+  resolution: "react-native-vector-icons@npm:9.2.0"
+  dependencies:
+    prop-types: ^15.7.2
+    yargs: ^16.1.1
+  bin:
+    fa5-upgrade: bin/fa5-upgrade.sh
+    generate-icon: bin/generate-icon.js
+  checksum: 222baf88c3f269234c08a41680e6400a4bf1f4c170f7c2ffac34b2c1c089cdb1084223db2a7d9cc54ee212eec20ff1478f3f482df19062e3057c328642da0be2
+  languageName: node
+  linkType: hard
+
 "react-native-web@npm:~0.18.7":
   version: 0.18.12
   resolution: "react-native-web@npm:0.18.12"
@@ -19852,6 +19884,7 @@ __metadata:
     "@types/jest": 26.0.19
     "@types/react": ~18.0.24
     "@types/react-native": ~0.70.6
+    "@types/react-native-vector-icons": ^6.4.13
     "@typescript-eslint/eslint-plugin": 5.28.0
     "@typescript-eslint/parser": 5.28.0
     apisauce: 2.1.5
@@ -19908,6 +19941,7 @@ __metadata:
     react-native-safe-area-context: 4.4.1
     react-native-screens: ~3.18.0
     react-native-svg: ^13.8.0
+    react-native-vector-icons: ^9.2.0
     react-native-web: ~0.18.7
     regenerator-runtime: ^0.13.4
     ts-jest: 26
@@ -22246,7 +22280,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:^16.0.3":
+"yargs@npm:^16.0.3, yargs@npm:^16.1.1":
   version: 16.2.0
   resolution: "yargs@npm:16.2.0"
   dependencies:

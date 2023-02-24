@@ -1,16 +1,16 @@
-import { MMKV } from "react-native-mmkv"
+import { MMKV } from "react-native-mmkv";
 
 export interface IStorage {
-  loadString: (key: string) => string | null
-  saveString(key: string, value: string): boolean
-  load(key: string): any | null
-  save(key: string, value: any): boolean
-  remove(key: string): void
-  clear(): void
+  loadString: (key: string) => string | null;
+  saveString(key: string, value: string): boolean;
+  load(key: string): any | null;
+  save(key: string, value: any): boolean;
+  remove(key: string): void;
+  clear(): void;
 }
 
-export default (_storage?: MMKV): IStorage => {
-  const storage = _storage ?? new MMKV()
+export const createStorage = (_storage?: MMKV): IStorage => {
+  const storage = _storage ?? new MMKV();
 
   return {
     /**
@@ -20,10 +20,10 @@ export default (_storage?: MMKV): IStorage => {
      */
     loadString: (key: string): string | null => {
       try {
-        return storage.getString(key)
+        return storage.getString(key);
       } catch {
         // not sure why this would fail... even reading the RN docs I'm unclear
-        return null
+        return null;
       }
     },
 
@@ -35,10 +35,10 @@ export default (_storage?: MMKV): IStorage => {
      */
     saveString: (key: string, value: string): boolean => {
       try {
-        storage.set(key, value)
-        return true
+        storage.set(key, value);
+        return true;
       } catch {
-        return false
+        return false;
       }
     },
 
@@ -49,10 +49,10 @@ export default (_storage?: MMKV): IStorage => {
      */
     load: (key: string): any | null => {
       try {
-        const almostThere = storage.getString(key)
-        return JSON.parse(almostThere)
+        const almostThere = storage.getString(key);
+        return JSON.parse(almostThere);
       } catch {
-        return null
+        return null;
       }
     },
 
@@ -64,10 +64,10 @@ export default (_storage?: MMKV): IStorage => {
      */
     save: (key: string, value: any): boolean => {
       try {
-        storage.set(key, JSON.stringify(value))
-        return true
+        storage.set(key, JSON.stringify(value));
+        return true;
       } catch {
-        return false
+        return false;
       }
     },
 
@@ -78,7 +78,7 @@ export default (_storage?: MMKV): IStorage => {
      */
     remove: (key: string): void => {
       try {
-        storage.delete(key)
+        storage.delete(key);
       } catch {}
     },
 
@@ -87,8 +87,10 @@ export default (_storage?: MMKV): IStorage => {
      */
     clear: (): void => {
       try {
-        storage.clearAll()
+        storage.clearAll();
       } catch {}
     },
-  }
-}
+  };
+};
+
+export const storage = createStorage();

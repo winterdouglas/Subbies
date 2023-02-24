@@ -4,14 +4,14 @@
  * Generally speaking, it will contain an auth flow (registration, login, forgot password)
  * and a "main" flow which the user will use once logged in.
  */
-import React from "react"
-import { useColorScheme } from "react-native"
-import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native"
-import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
-import { Config } from "@config"
-import { WelcomeScreen } from "@screens/WelcomeScreen"
-import { useBackButtonHandler } from "./hooks"
-import { navigationRef } from "./navigationUtilities"
+import React from "react";
+import { useColorScheme } from "react-native";
+import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Config } from "@config";
+import { WelcomeScreen } from "@screens/WelcomeScreen";
+import { useBackButtonHandler } from "./hooks";
+import { navigationRef } from "./navigationUtilities";
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -27,23 +27,23 @@ import { navigationRef } from "./navigationUtilities"
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  Welcome: undefined
+  Welcome: undefined;
   // 🔥 Your screens go here
-}
+};
 
 /**
  * This is a list of all the route names that will exit the app if the back button
  * is pressed while in that screen. Only affects Android.
  */
-const exitRoutes = Config.exitRoutes
+const exitRoutes = Config.exitRoutes;
 
 export type AppStackScreenProps<T extends keyof AppStackParamList> = NativeStackScreenProps<
   AppStackParamList,
   T
->
+>;
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
-const Stack = createNativeStackNavigator<AppStackParamList>()
+const Stack = createNativeStackNavigator<AppStackParamList>();
 
 const AppStack = function AppStack() {
   return (
@@ -51,23 +51,22 @@ const AppStack = function AppStack() {
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
       {/** 🔥 Your screens go here */}
     </Stack.Navigator>
-  )
-}
+  );
+};
 
 interface NavigationProps extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
 
 export const AppNavigator = function AppNavigator(props: NavigationProps) {
-  const colorScheme = useColorScheme()
+  const colorScheme = useColorScheme();
 
-  useBackButtonHandler((routeName) => exitRoutes.includes(routeName))
+  useBackButtonHandler((routeName) => exitRoutes.includes(routeName));
 
   return (
     <NavigationContainer
       ref={navigationRef}
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-      {...props}
-    >
+      {...props}>
       <AppStack />
     </NavigationContainer>
-  )
-}
+  );
+};

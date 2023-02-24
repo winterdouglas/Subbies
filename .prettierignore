@@ -2,5 +2,6 @@ node_modules
 ios
 android
 .vscode
+.yarn
 ignite/ignite.json
 package.json

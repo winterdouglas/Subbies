@@ -1,1 +1,1 @@
-export * from "./AutoImage"
+export * from "./AutoImage";
