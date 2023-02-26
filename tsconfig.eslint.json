@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["index.js", "App.js", "index.ts", "app", "test", "detox"]
+  "include": ["index.js", "App.js", "index.ts", "app", "test", "detox", "typings"]
 }

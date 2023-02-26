@@ -1,4 +1,12 @@
+const styledComponentsPlugin = [
+  "babel-plugin-styled-components",
+  {
+    ssr: false,
+  },
+]
+
 const plugins = [
+  styledComponentsPlugin,
   [
     "module-resolver",
     {
@@ -32,7 +40,9 @@ const plugins = [
 const vanillaConfig = {
   presets: ["module:metro-react-native-babel-preset"],
   env: {
-    production: {},
+    production: {
+      plugins: [styledComponentsPlugin],
+    },
   },
   plugins,
 }
@@ -40,7 +50,9 @@ const vanillaConfig = {
 const expoConfig = {
   presets: ["babel-preset-expo"],
   env: {
-    production: {},
+    production: {
+      plugins: [styledComponentsPlugin],
+    },
   },
   plugins,
 }
