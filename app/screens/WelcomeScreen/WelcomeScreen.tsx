@@ -1,5 +1,5 @@
 import React from "react";
-import { List, Screen, Toggle } from "@components";
+import { List, Screen, Text, Toggle } from "@components";
 import { AppStackScreenProps } from "@navigators";
 import { useHeader } from "@hooks";
 import { hexToHSL, toHSLString } from "@utils/colorUtils";
@@ -19,6 +19,7 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
   return (
     <Screen preset="fixed" safeAreaEdges={["bottom"]}>
       <Toggle value={false} variant="switch" switchAccessibilityMode="icon" />
+      <Text preset="heading" tx="common.back" style={{ width: 320 }} />
       <List
         preset="gradient"
         data={items}

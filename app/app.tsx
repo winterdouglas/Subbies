@@ -9,6 +9,7 @@ import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary";
 import { storage } from "@lib/storage";
 import { customFontsToLoad } from "@theme";
 import { Config } from "@config";
+import { ThemeProvider } from "styled-components";
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE";
 
@@ -70,15 +71,17 @@ function App({ hideSplashScreen }: AppProps) {
 
   // otherwise, we're ready to render the app
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <ErrorBoundary catchErrors={Config.catchErrors}>
-        <AppNavigator
-          linking={linking}
-          initialState={initialNavigationState}
-          onStateChange={onNavigationStateChange}
-        />
-      </ErrorBoundary>
-    </SafeAreaProvider>
+    <ThemeProvider theme={{ mode: "light" }}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <ErrorBoundary catchErrors={Config.catchErrors}>
+          <AppNavigator
+            linking={linking}
+            initialState={initialNavigationState}
+            onStateChange={onNavigationStateChange}
+          />
+        </ErrorBoundary>
+      </SafeAreaProvider>
+    </ThemeProvider>
   );
 }
 
