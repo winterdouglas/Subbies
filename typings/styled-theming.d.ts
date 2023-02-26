@@ -27,7 +27,7 @@ declare module "styled-theming" {
       name: keyof TTheme,
       prop: TVariant,
       values: VariantMap<TProps, TVariant, TTheme>,
-    ): VariantSet<TVariant, string>;
+    ): VariantSet<TVariant, string>; // TODO: Why this string?
   }
 
   export default theme;
