@@ -49,7 +49,7 @@ export interface TextProps extends RNTextProps {
   children?: React.ReactNode;
 }
 
-const $textColor = theme("mode", {
+const $color = theme("mode", {
   light: colors.palette.neutral800,
   dark: colors.palette.neutral100,
 });
@@ -123,7 +123,7 @@ const $presets = {
 const $baseStyle = css`
   ${$textStyles.sm};
   ${$fontWeightStyles.normal};
-  color: ${$textColor};
+  color: ${$color};
 `;
 
 const $rtlStyle: TextStyle = isRTL ? { writingDirection: "rtl" } : {};

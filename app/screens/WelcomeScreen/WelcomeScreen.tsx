@@ -19,7 +19,7 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
   return (
     <Screen preset="fixed" safeAreaEdges={["bottom"]}>
       <Toggle value={false} variant="switch" switchAccessibilityMode="icon" />
-      <Text preset="heading" tx="common.back" style={{ width: 320 }} />
+      <Text preset="bold" tx="common.back" />
       <List
         preset="gradient"
         data={items}

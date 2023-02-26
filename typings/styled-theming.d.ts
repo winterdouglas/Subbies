@@ -1,11 +1,34 @@
-import { ThemeSet, ThemeValue } from "styled-theming";
+import "styled-theming";
 import { DefaultTheme } from "styled-components/native";
 
 declare module "styled-theming" {
-  declare function theme<TKey extends keyof DefaultTheme>(
+  function theme<TKey extends keyof TTheme, TTheme extends DefaultTheme = DefaultTheme>(
     name: TKey,
-    values: Record<DefaultTheme[TKey], ThemeValue>,
+    values: theme.ThemeMap<TKey, TTheme>,
   ): ThemeSet;
+
+  namespace theme {
+    type ThemeMap<TKey extends keyof TTheme, TTheme extends DefaultTheme> = Record<
+      TTheme[TKey],
+      ThemeValue
+    >;
+
+    type VariantMap<
+      TProps = unknown,
+      TVariant extends keyof TProps,
+      TTheme extends DefaultTheme,
+    > = Record<TProps[TVariant], ThemeMap<keyof TTheme, TTheme>>;
+
+    function variants<
+      TProps = unknown,
+      TVariant extends keyof TProps,
+      TTheme extends DefaultTheme = DefaultTheme,
+    >(
+      name: keyof TTheme,
+      prop: TVariant,
+      values: VariantMap<TProps, TVariant, TTheme>,
+    ): VariantSet<TVariant, string>;
+  }
 
   export default theme;
 }
