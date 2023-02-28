@@ -6,7 +6,7 @@ import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
 
 type Presets = keyof typeof $containerPresets;
 
-interface CardProps extends PressableOpacityProps {
+interface CardProps extends Omit<PressableOpacityProps, "children"> {
   /**
    * One of the different types of text presets.
    */
@@ -154,20 +154,17 @@ export function Card(props: CardProps) {
     $containerStyleOverride as StyleProp<ViewStyle>,
   ];
   const $headingStyle = [
-    $headingPresets[preset],
     (isFooterPresent || isContentPresent) && { marginBottom: spacing.micro },
     $headingStyleOverride,
     HeadingTextProps?.style,
   ];
   const $contentStyle = [
-    $contentPresets[preset],
     isHeadingPresent && { marginTop: spacing.micro },
     isFooterPresent && { marginBottom: spacing.micro },
     $contentStyleOverride,
     ContentTextProps?.style,
   ];
   const $footerStyle = [
-    $footerPresets[preset],
     (isHeadingPresent || isContentPresent) && { marginTop: spacing.micro },
     $footerStyleOverride,
     FooterTextProps?.style,
@@ -175,8 +172,8 @@ export function Card(props: CardProps) {
   const $alignmentWrapperStyle = [
     $alignmentWrapper,
     { justifyContent: $alignmentWrapperFlexOptions[verticalAlignment] },
-    LeftComponent && { marginStart: spacing.medium },
-    RightComponent && { marginEnd: spacing.medium },
+    LeftComponent && { marginStart: spacing.small },
+    RightComponent && { marginEnd: spacing.small },
   ];
 
   return (
@@ -233,7 +230,7 @@ const $containerBase: ViewStyle = {
   borderRadius: spacing.medium,
   padding: spacing.extraSmall,
   borderWidth: 1,
-  shadowColor: colors.palette.neutral800,
+  shadowColor: colors.shadow,
   shadowOffset: { width: 0, height: 12 },
   shadowOpacity: 0.08,
   shadowRadius: 12.81,
@@ -258,28 +255,8 @@ const $containerPresets = {
   default: [
     $containerBase,
     {
-      backgroundColor: colors.palette.neutral100,
-      borderColor: colors.palette.neutral300,
+      backgroundColor: colors.cardBackground,
+      borderColor: colors.border,
     },
   ] as StyleProp<ViewStyle>,
-
-  reversed: [
-    $containerBase,
-    { backgroundColor: colors.palette.neutral800, borderColor: colors.palette.neutral500 },
-  ] as StyleProp<ViewStyle>,
-};
-
-const $headingPresets: Record<Presets, TextStyle> = {
-  default: {},
-  reversed: { color: colors.palette.neutral100 },
-};
-
-const $contentPresets: Record<Presets, TextStyle> = {
-  default: {},
-  reversed: { color: colors.palette.neutral100 },
-};
-
-const $footerPresets: Record<Presets, TextStyle> = {
-  default: {},
-  reversed: { color: colors.palette.neutral100 },
 };

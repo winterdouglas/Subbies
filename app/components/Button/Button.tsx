@@ -154,29 +154,32 @@ const $viewPresets = {
     $baseViewStyle,
     {
       borderWidth: 1,
-      borderColor: colors.palette.neutral400,
-      backgroundColor: colors.palette.neutral100,
+      borderColor: colors.border,
+      backgroundColor: colors.defaultButtonBackground,
     },
   ] as StyleProp<ViewStyle>,
 
-  filled: [$baseViewStyle, { backgroundColor: colors.palette.neutral300 }] as StyleProp<ViewStyle>,
+  filled: [
+    $baseViewStyle,
+    { backgroundColor: colors.filledButtonBackground },
+  ] as StyleProp<ViewStyle>,
 
   reversed: [
     $baseViewStyle,
-    { backgroundColor: colors.palette.neutral800 },
+    { backgroundColor: colors.reversedButtonBackground },
   ] as StyleProp<ViewStyle>,
 };
 
 const $textPresets: Record<Presets, StyleProp<TextStyle>> = {
   default: $baseTextStyle,
   filled: $baseTextStyle,
-  reversed: [$baseTextStyle, { color: colors.palette.neutral100 }],
+  reversed: [$baseTextStyle, { color: colors.reversedbuttonText }],
 };
 
 const $pressedViewPresets: Record<Presets, StyleProp<ViewStyle>> = {
-  default: { backgroundColor: colors.palette.neutral200 },
-  filled: { backgroundColor: colors.palette.neutral400 },
-  reversed: { backgroundColor: colors.palette.neutral700 },
+  default: { backgroundColor: colors.defaultPressedButtonBackground },
+  filled: { backgroundColor: colors.filledPressedButtonBackground },
+  reversed: { backgroundColor: colors.reversedPressedButtonBackground },
 };
 
 const $pressedTextPresets: Record<Presets, StyleProp<TextStyle>> = {
