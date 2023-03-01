@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Card, Icon, Screen, Text, Toggle } from "@components";
 import { AppStackScreenProps } from "@navigators";
 import { useHeader } from "@hooks";
-import { colors } from "@theme";
+import { useTheme } from "styled-components/native";
 // import { hexToHSL, toHSLString } from "@utils/colorUtils";
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
@@ -17,10 +17,12 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
     title: "Subbies",
   });
 
+  const { theme: mode, toggleTheme: toggle } = useTheme();
+
   return (
     <Screen preset="fixed">
-      <Toggle value={true} variant="checkbox" />
-      <Text preset="bold" tx="common.back" size="xxl" style={{ color: colors.tint }} />
+      <Toggle value={mode === "dark"} variant="checkbox" label="Dark Mode" onPress={toggle} />
+      <Text preset="bold" tx="common.back" size="xxl" />
       {/* <List
         preset="gradient"
         data={items}

@@ -7,7 +7,7 @@ import styled, { css } from "styled-components/native";
 import { FlattenSimpleInterpolation } from "styled-components";
 
 import { isRTL, translate, TxKeyPath } from "@lib/i18n";
-import { colors, typography } from "@theme";
+import { typography } from "@theme";
 
 type Sizes = "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
 type Weights = keyof typeof typography.primary;
@@ -49,12 +49,12 @@ export interface TextProps extends RNTextProps {
   children?: React.ReactNode;
 }
 
-const $colorStyle = theme("mode", {
+const $colorStyle = theme("theme", {
   light: css`
-    color: ${colors.text};
+    color: "#000";
   `,
   dark: css`
-    color: ${colors.background}; // Temporary
+    color: "#fff";
   `,
 });
 
