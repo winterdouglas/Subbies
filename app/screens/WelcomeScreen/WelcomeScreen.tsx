@@ -17,11 +17,11 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
     title: "Subbies",
   });
 
-  const { theme: mode, toggleTheme: toggle } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <Screen preset="fixed">
-      <Toggle value={mode === "dark"} variant="checkbox" label="Dark Mode" onPress={toggle} />
+      <Toggle value={theme === "dark"} variant="checkbox" label="Dark Mode" onPress={toggleTheme} />
       <Text preset="bold" tx="common.back" size="xxl" />
       {/* <List
         preset="gradient"

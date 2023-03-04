@@ -70,7 +70,7 @@ const raw = {
   "color-danger-700": "#B72739",
   "color-danger-800": "#931932",
   "color-danger-900": "#7A0F2E",
-};
+} as const;
 
 const defaults = {
   "color-basic-default": raw["color-basic-300"],
@@ -104,7 +104,7 @@ const defaults = {
   "color-control-default": raw["color-basic-100"],
   "color-control-active": raw["color-basic-300"],
   "color-control-disabled": raw["color-basic-transparent-300"],
-};
+} as const;
 
 const palette = {
   ...raw,
@@ -269,8 +269,6 @@ export const colors = {
   "text-danger-active-color": palette["color-danger-active"],
   "text-danger-disabled-color": palette["color-danger-400"],
 
-  "outline-color": palette["color-basic-transparent-200"],
-
   /**
    * A helper for making something see-thru.
    */
@@ -339,4 +337,8 @@ export const colors = {
   switchDisabledKnobBackground: palette.neutral600,
   switchKnobOn: palette.neutral100,
   switchKnobOff: palette.neutral200,
-};
+} as const;
+
+export type Theme = "light" | "dark";
+
+export type ThemeData = typeof colors;

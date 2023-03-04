@@ -1,15 +1,17 @@
 import "./lib/i18n";
 import "./utils/ignoreWarnings";
+import React, { useEffect } from "react";
 import { useFonts } from "expo-font";
-import React, { useEffect, useState } from "react";
 import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context";
 import * as Linking from "expo-linking";
-import { AppNavigator, useNavigationPersistence } from "./navigators";
-import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary";
-import { storage } from "@lib/storage";
-import { customFontsToLoad, Theme } from "@theme";
-import { Config } from "@config";
 import { ThemeProvider } from "styled-components";
+
+import { storage } from "@lib/storage";
+import { customFontsToLoad } from "@theme";
+import { Config } from "@config";
+import { useTheme } from "@hooks";
+import { AppNavigator, useNavigationPersistence } from "@navigators";
+import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary";
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE";
 
@@ -42,12 +44,12 @@ interface AppProps {
  * This is the root component of our app.
  */
 function App({ hideSplashScreen }: AppProps) {
-  const [theme, setTheme] = useState<Theme>("light");
   const {
     initialNavigationState,
     onNavigationStateChange,
     isRestored: isNavigationStateRestored,
   } = useNavigationPersistence(storage, NAVIGATION_PERSISTENCE_KEY);
+  const theme = useTheme();
 
   const [areFontsLoaded] = useFonts(customFontsToLoad);
 
@@ -70,13 +72,9 @@ function App({ hideSplashScreen }: AppProps) {
     config,
   };
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
-
   // otherwise, we're ready to render the app
   return (
-    <ThemeProvider theme={{ toggleTheme, theme }}>
+    <ThemeProvider theme={theme}>
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
         <ErrorBoundary catchErrors={Config.catchErrors}>
           <AppNavigator

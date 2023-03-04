@@ -2,7 +2,6 @@ import React from "react";
 import i18n from "i18n-js";
 import { StyleProp, Text as RNText, TextProps as RNTextProps, TextStyle } from "react-native";
 
-import theme from "styled-theming";
 import styled, { css } from "styled-components/native";
 import { FlattenSimpleInterpolation } from "styled-components";
 
@@ -48,15 +47,6 @@ export interface TextProps extends RNTextProps {
    */
   children?: React.ReactNode;
 }
-
-const $colorStyle = theme("theme", {
-  light: css`
-    color: "#000";
-  `,
-  dark: css`
-    color: "#fff";
-  `,
-});
 
 const $textStyles = {
   xxl: css`
@@ -141,7 +131,7 @@ const TextComponent = ({ tx, txOptions, text, children, style, ...rest }: TextPr
 export const Text = styled(TextComponent)`
   ${$textStyles.sm};
   ${$fontWeightStyles.normal};
-  ${$colorStyle}
+  ${(props) => props.theme.colors["text-basic-color"]}
   ${(props) => $presets[props.preset || "default"]};
   ${(props) => $fontWeightStyles[props.weight]};
   ${(props) => $textStyles[props.size]};
