@@ -32,7 +32,7 @@ export interface TextProps extends RNTextProps {
    */
   preset?: Presets;
 
-  appearance?: "primary" | "success" | "warning" | "danger" | "basic" | "control" | "hint";
+  appearance?: "primary" | "success" | "info" | "warning" | "danger" | "basic" | "control" | "hint";
   /**
    * Text weight modifier.
    */
@@ -74,8 +74,8 @@ export function Text({
     $presets[preset],
     $fontWeightStyles[weight],
     $sizeStyles[size],
-    $styleOverride,
     { color: theme[`text-${appearance}-color`] },
+    $styleOverride,
   ];
 
   return (

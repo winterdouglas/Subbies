@@ -28,11 +28,11 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
         content="This is some nice card text"
         heading="This is the title"
         footer="This is the footer"
+        FooterComponent={<Button text="Test" appearance="basic" />}
       />
-      <Button text="Test" preset="reversed" />
 
       <List
-        preset="gradient"
+        // preset="gradient"
         data={items}
         keyExtractor={(item) => item.title}
         getGradientProps={(item) => {

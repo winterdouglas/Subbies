@@ -10,14 +10,16 @@ const useThemeData = () => {
       toggleMode: () => {
         setThemeMode(themeMode === "dark" ? "light" : "dark");
       },
-      theme: themeMode === "light" ? colors : darkColors, // TODO: Switch the theme
+      theme: themeMode === "light" ? colors : darkColors,
     }),
     [themeMode],
   );
   return theme;
 };
 
-export const ThemeContext = createContext<ReturnType<typeof useThemeData> | null>(null);
+export type ThemeContextType = ReturnType<typeof useThemeData>;
+
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   return <ThemeContext.Provider value={useThemeData()}>{children}</ThemeContext.Provider>;

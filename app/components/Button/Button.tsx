@@ -7,10 +7,9 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native";
-import { colors, spacing, typography } from "@theme";
+import { spacing, typography } from "@theme";
 import { Text, TextProps } from "../Text";
-
-type Presets = keyof typeof $viewPresets;
+import { useTheme } from "@hooks";
 
 export interface ButtonAccessoryProps {
   style: StyleProp<any>;
@@ -47,10 +46,8 @@ export interface ButtonProps extends PressableProps {
    * An optional style override for the button text when in the "pressed" state.
    */
   pressedTextStyle?: StyleProp<TextStyle>;
-  /**
-   * One of the different types of button presets.
-   */
-  preset?: Presets;
+
+  appearance?: "primary" | "success" | "info" | "warning" | "danger" | "basic";
   /**
    * An optional component to render on the right side of the text.
    * Example: `RightAccessory={(props) => <View {...props} />}`
@@ -82,27 +79,45 @@ export function Button(props: ButtonProps) {
     pressedStyle: $pressedViewStyleOverride,
     textStyle: $textStyleOverride,
     pressedTextStyle: $pressedTextStyleOverride,
+    appearance = "basic",
     children,
     RightAccessory,
     LeftAccessory,
     ...rest
   } = props;
 
-  const preset: Presets = $viewPresets[props.preset] ? props.preset : "default";
+  const { mode, theme } = useTheme();
+  const isDark = mode === "dark";
 
-  function $viewStyle({ pressed }: PressableStateCallbackType) {
+  function $viewStyle({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> {
     return [
-      $viewPresets[preset],
+      $baseViewStyle,
+      {
+        borderColor: theme[`color-${appearance}-default-border`],
+        backgroundColor: theme[`color-${appearance}-default`],
+      },
       $viewStyleOverride,
-      !!pressed && [$pressedViewPresets[preset], $pressedViewStyleOverride],
+      !!pressed && [
+        {
+          borderColor: theme[`color-${appearance}-active-border`],
+          backgroundColor: theme[`color-${appearance}-active`],
+        },
+        $pressedViewStyleOverride,
+      ],
     ];
   }
 
-  function $textStyle({ pressed }: PressableStateCallbackType) {
+  function $textStyle({ pressed }: PressableStateCallbackType): StyleProp<TextStyle> {
     return [
-      $textPresets[preset],
+      $baseTextStyle,
+      {
+        color:
+          appearance === "basic"
+            ? theme[`text-${isDark ? "alternate" : "basic"}-color`]
+            : theme["text-control-color"],
+      },
       $textStyleOverride,
-      !!pressed && [$pressedTextPresets[preset], $pressedTextStyleOverride],
+      !!pressed && $pressedTextStyleOverride,
     ];
   }
 
@@ -127,6 +142,7 @@ export function Button(props: ButtonProps) {
 
 const $baseViewStyle: ViewStyle = {
   minHeight: 56,
+  borderWidth: 1, // TODO: Check this
   borderRadius: 4,
   justifyContent: "center",
   alignItems: "center",
@@ -148,42 +164,3 @@ const $baseTextStyle: TextStyle = {
 
 const $rightAccessoryStyle: ViewStyle = { marginStart: spacing.extraSmall, zIndex: 1 };
 const $leftAccessoryStyle: ViewStyle = { marginEnd: spacing.extraSmall, zIndex: 1 };
-
-const $viewPresets = {
-  default: [
-    $baseViewStyle,
-    {
-      borderWidth: 1,
-      borderColor: colors.border,
-      backgroundColor: colors.defaultButtonBackground,
-    },
-  ] as StyleProp<ViewStyle>,
-
-  filled: [
-    $baseViewStyle,
-    { backgroundColor: colors.filledButtonBackground },
-  ] as StyleProp<ViewStyle>,
-
-  reversed: [
-    $baseViewStyle,
-    { backgroundColor: colors.reversedButtonBackground },
-  ] as StyleProp<ViewStyle>,
-};
-
-const $textPresets: Record<Presets, StyleProp<TextStyle>> = {
-  default: $baseTextStyle,
-  filled: $baseTextStyle,
-  reversed: [$baseTextStyle, { color: colors.reversedbuttonText }],
-};
-
-const $pressedViewPresets: Record<Presets, StyleProp<ViewStyle>> = {
-  default: { backgroundColor: colors.defaultPressedButtonBackground },
-  filled: { backgroundColor: colors.filledPressedButtonBackground },
-  reversed: { backgroundColor: colors.reversedPressedButtonBackground },
-};
-
-const $pressedTextPresets: Record<Presets, StyleProp<TextStyle>> = {
-  default: { opacity: 0.9 },
-  filled: { opacity: 0.9 },
-  reversed: { opacity: 0.9 },
-};
