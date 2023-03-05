@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useMemo, useState } from "react";
-import { colors, darkColors, ThemeMode } from "@theme";
+import { lightColors, darkColors, ThemeMode } from "@theme";
 
 const useThemeData = () => {
   const [themeMode, setThemeMode] = useState<ThemeMode>("light");
@@ -10,7 +10,7 @@ const useThemeData = () => {
       toggleMode: () => {
         setThemeMode(themeMode === "dark" ? "light" : "dark");
       },
-      theme: themeMode === "light" ? colors : darkColors,
+      theme: themeMode === "light" ? lightColors : darkColors,
     }),
     [themeMode],
   );

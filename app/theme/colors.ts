@@ -73,6 +73,8 @@ const raw = {
 } as const;
 
 const defaults = {
+  transparent: "rgba(0, 0, 0, 0)",
+
   "color-basic-default": raw["color-basic-300"],
   "color-basic-active": raw["color-basic-400"],
   "color-basic-disabled": raw["color-basic-transparent-300"],
@@ -112,6 +114,10 @@ const palette = {
   "color-basic-active-border": defaults["color-basic-active"],
   "color-basic-disabled-border": defaults["color-basic-disabled"],
 
+  "color-basic-transparent-default-border": raw["color-basic-600"],
+  "color-basic-transparent-active-border": raw["color-basic-600"],
+  "color-basic-transparent-disabled-border": raw["color-basic-transparent-300"],
+
   "color-primary-default-border": defaults["color-primary-default"],
   "color-primary-active-border": defaults["color-primary-active"],
   "color-primary-disabled-border": defaults["color-primary-disabled"],
@@ -135,46 +141,9 @@ const palette = {
   "color-control-default-border": defaults["color-control-default"],
   "color-control-active-border": defaults["color-control-active"],
   "color-control-disabled-border": defaults["color-control-disabled"],
-
-  // Ignite
-  neutral100: "#FFFFFF",
-  neutral200: "#F4F2F1",
-  neutral300: "#D7CEC9",
-  neutral400: "#B6ACA6",
-  neutral500: "#978F8A",
-  neutral600: "#564E4A",
-  neutral700: "#3C3836",
-  neutral800: "#191015",
-  neutral900: "#000000",
-
-  primary100: "#F4E0D9",
-  primary200: "#E8C1B4",
-  primary300: "#DDA28E",
-  primary400: "#D28468",
-  primary500: "#C76542",
-  primary600: "#A54F31",
-
-  secondary100: "#DCDDE9",
-  secondary200: "#BCC0D6",
-  secondary300: "#9196B9",
-  secondary400: "#626894",
-  secondary500: "#41476E",
-
-  accent100: "#FFEED4",
-  accent200: "#FFE1B2",
-  accent300: "#FDD495",
-  accent400: "#FBC878",
-  accent500: "#FFBB50",
-
-  angry100: "#F2D6CD",
-  angry500: "#C03403",
-
-  overlay20: "rgba(25, 16, 21, 0.2)",
-  overlay50: "rgba(25, 16, 21, 0.5)",
-  transparent: "rgba(0, 0, 0, 0)",
 } as const;
 
-export const colors = {
+export const lightColors = {
   ...palette,
   /**
    * Usually used for top sitting elements - cards, headers, etc.
@@ -184,8 +153,8 @@ export const colors = {
    * For background of the layout and input controls (inputs, checkboxes, etc)
    */
   "background-basic-color-2": raw["color-basic-200"],
-  // "background-basic-color-3": palette["color-basic-300"],
-  // "background-basic-color-4": palette["color-basic-400"],
+  "background-basic-color-3": raw["color-basic-300"],
+  "background-basic-color-4": raw["color-basic-400"],
 
   "shadow-basic-color-1": raw["color-basic-900"],
 
@@ -195,32 +164,21 @@ export const colors = {
    * Dividers
    */
   "border-basic-color-3": raw["color-basic-300"],
-  // "border-basic-color-4": palette["color-basic-400"],
 
   "border-primary-color-1": raw["color-primary-500"],
   "border-primary-color-2": raw["color-primary-600"],
-  // "border-primary-color-3": palette["color-primary-700"],
-  // "border-primary-color-4": palette["color-primary-800"],
 
   "border-success-color-1": raw["color-success-500"],
   "border-success-color-2": raw["color-success-600"],
-  // "border-success-color-3": palette["color-success-700"],
-  // "border-success-color-4": palette["color-success-800"],
 
   "border-info-color-1": raw["color-info-500"],
   "border-info-color-2": raw["color-info-600"],
-  // "border-info-color-3": palette["color-info-700"],
-  // "border-info-color-4": palette["color-info-800"],
 
   "border-warning-color-1": raw["color-warning-500"],
   "border-warning-color-2": raw["color-warning-600"],
-  // "border-warning-color-3": palette["color-warning-700"],
-  // "border-warning-color-4": palette["color-warning-800"],
 
   "border-danger-color-1": raw["color-danger-500"],
   "border-danger-color-2": raw["color-danger-600"],
-  // "border-danger-color-3": palette["color-danger-700"],
-  // "border-danger-color-4": palette["color-danger-800"],
 
   /**
    * Main text color, used on top of basic backgrounds
@@ -275,75 +233,6 @@ export const colors = {
   "text-danger-color": palette["color-danger-default"],
   "text-danger-active-color": palette["color-danger-active"],
   "text-danger-disabled-color": raw["color-danger-400"],
-
-  /**
-   * A helper for making something see-thru.
-   */
-  transparent: palette.transparent,
-  /**
-   * The default text color in many components.
-   */
-  text: palette.neutral800,
-  /**
-   * Secondary text information.
-   */
-  textDim: palette.neutral600,
-  /**
-   * The default color of the screen background.
-   */
-  background: palette.neutral200,
-  /**
-   * The default border color.
-   */
-  border: palette.neutral400,
-  /**
-   * The main tinting color.
-   */
-  tint: palette.primary500,
-  /**
-   * A subtle color used for lines.
-   */
-  separator: palette.neutral300,
-  /**
-   * Shadow color.
-   */
-  shadow: palette.neutral800,
-  /**
-   * Error messages.
-   */
-  error: palette.angry500,
-  /**
-   * Error background.
-   */
-  errorBackground: palette.angry100,
-  /**
-   * Card background
-   */
-  cardBackground: palette.neutral100,
-
-  defaultButtonBackground: palette.neutral100,
-  defaultPressedButtonBackground: palette.neutral200,
-
-  filledButtonBackground: palette.neutral300,
-  filledPressedButtonBackground: palette.neutral400,
-
-  reversedButtonBackground: palette.neutral800,
-  reversedPressedButtonBackground: palette.neutral700,
-  reversedbuttonText: palette.neutral100,
-
-  toggleDisabled: palette.neutral400,
-  toggleDisabledIcon: palette.neutral600,
-  toggleOff: palette.neutral200,
-  toggleOn: palette.neutral800,
-  toggleDefaultColor: palette.secondary500,
-  toggleIconTint: palette.neutral100,
-
-  radioOnBackground: palette.neutral100,
-
-  switchOffBackground: palette.neutral300,
-  switchDisabledKnobBackground: palette.neutral600,
-  switchKnobOn: palette.neutral100,
-  switchKnobOff: palette.neutral200,
 } as const;
 
 export const darkColors = {
@@ -356,8 +245,8 @@ export const darkColors = {
    * For background of the layout and input controls (inputs, checkboxes, etc)
    */
   "background-basic-color-2": raw["color-basic-900"],
-  // "background-basic-color-3": palette["color-basic-300"],
-  // "background-basic-color-4": palette["color-basic-400"],
+  "background-basic-color-3": raw["color-basic-1000"],
+  "background-basic-color-4": raw["color-basic-1100"],
 
   "shadow-basic-color-1": raw["color-basic-100"],
 
@@ -367,32 +256,21 @@ export const darkColors = {
    * Dividers
    */
   "border-basic-color-3": raw["color-basic-1000"],
-  // "border-basic-color-4": palette["color-basic-400"],
 
   "border-primary-color-1": raw["color-primary-500"],
   "border-primary-color-2": raw["color-primary-600"],
-  // "border-primary-color-3": palette["color-primary-700"],
-  // "border-primary-color-4": palette["color-primary-800"],
 
   "border-success-color-1": raw["color-success-500"],
   "border-success-color-2": raw["color-success-600"],
-  // "border-success-color-3": palette["color-success-700"],
-  // "border-success-color-4": palette["color-success-800"],
 
   "border-info-color-1": raw["color-info-500"],
   "border-info-color-2": raw["color-info-600"],
-  // "border-info-color-3": palette["color-info-700"],
-  // "border-info-color-4": palette["color-info-800"],
 
   "border-warning-color-1": raw["color-warning-500"],
   "border-warning-color-2": raw["color-warning-600"],
-  // "border-warning-color-3": palette["color-warning-700"],
-  // "border-warning-color-4": palette["color-warning-800"],
 
   "border-danger-color-1": raw["color-danger-500"],
   "border-danger-color-2": raw["color-danger-600"],
-  // "border-danger-color-3": palette["color-danger-700"],
-  // "border-danger-color-4": palette["color-danger-800"],
 
   /**
    * Main text color, used on top of basic backgrounds
@@ -451,4 +329,4 @@ export const darkColors = {
 
 export type ThemeMode = "light" | "dark";
 
-export type Theme = typeof colors;
+export type Theme = typeof lightColors;

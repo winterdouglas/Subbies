@@ -9,10 +9,11 @@ import {
   ViewStyle,
 } from "react-native";
 import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated";
-import { colors, spacing } from "@theme";
+import { spacing } from "@theme";
 import { Icon, IconTypes } from "../Icon";
 import { Text, TextProps } from "../Text";
 import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
+import { useTheme } from "@hooks";
 
 type Variants = "checkbox" | "switch" | "radio";
 
@@ -172,6 +173,7 @@ export function Toggle(props: ToggleProps) {
     ...WrapperProps
   } = props;
 
+  const { theme } = useTheme();
   const { switchAccessibilityMode } = props as SwitchToggleProps;
   const { checkboxIcon } = props as CheckboxToggleProps;
 
@@ -190,7 +192,7 @@ export function Toggle(props: ToggleProps) {
   const $inputWrapperStyles = [$inputWrapper, $inputWrapperStyleOverride];
   const $helperStyles = [
     $helper,
-    status === "error" && { color: colors.error },
+    status === "error" && { color: theme["text-danger-color"] },
     HelperTextProps?.style,
   ];
 
@@ -255,30 +257,30 @@ function Checkbox(props: ToggleInputProps) {
     innerStyle: $innerStyleOverride,
     detailStyle: $detailStyleOverride,
   } = props;
+  const { theme } = useTheme();
 
   const offBackgroundColor = [
-    disabled && colors.toggleDisabled,
-    status === "error" && colors.errorBackground,
-    colors.toggleOff,
+    disabled && theme["color-basic-disabled"],
+    status === "error" && theme["color-danger-default"],
+    theme["background-basic-color-2"],
   ].filter(Boolean)[0];
 
   const outerBorderColor = [
-    disabled && colors.toggleDisabled,
-    status === "error" && colors.error,
-    !on && colors.toggleOn,
-    colors.toggleDefaultColor,
+    disabled && theme["color-basic-disabled"],
+    status === "error" && theme["color-danger-default"],
+    theme["color-basic-transparent-default-border"],
   ].filter(Boolean)[0];
 
   const onBackgroundColor = [
-    disabled && colors.transparent,
-    status === "error" && colors.errorBackground,
-    colors.toggleDefaultColor,
+    disabled && theme["color-basic-disabled"],
+    status === "error" && theme["color-danger-default"],
+    theme["background-basic-color-2"],
   ].filter(Boolean)[0];
 
   const iconTintColor = [
-    disabled && colors.toggleDisabledIcon,
-    status === "error" && colors.error,
-    colors.toggleIconTint,
+    disabled && theme["color-basic-disabled"],
+    status === "error" && theme["color-danger-default"],
+    theme["text-basic-color"],
   ].filter(Boolean)[0];
 
   return (
@@ -316,29 +318,30 @@ function Radio(props: ToggleInputProps) {
     detailStyle: $detailStyleOverride,
   } = props;
 
+  const { theme } = useTheme();
+
   const offBackgroundColor = [
-    disabled && colors.toggleDisabled,
-    status === "error" && colors.errorBackground,
-    colors.toggleOff,
+    disabled && theme["color-basic-disabled"],
+    status === "error" && theme["color-danger-default"],
+    theme["background-basic-color-2"],
   ].filter(Boolean)[0];
 
   const outerBorderColor = [
-    disabled && colors.toggleDisabled,
-    status === "error" && colors.error,
-    !on && colors.toggleOn,
-    colors.toggleDefaultColor,
+    disabled && theme["color-basic-disabled"],
+    status === "error" && theme["color-danger-default"],
+    theme["color-basic-transparent-default-border"],
   ].filter(Boolean)[0];
 
   const onBackgroundColor = [
-    disabled && colors.transparent,
-    status === "error" && colors.errorBackground,
-    colors.radioOnBackground,
+    disabled && theme["color-basic-disabled"],
+    status === "error" && theme["color-danger-default"],
+    theme["background-basic-color-2"],
   ].filter(Boolean)[0];
 
   const dotBackgroundColor = [
-    disabled && colors.toggleDisabledIcon,
-    status === "error" && colors.error,
-    colors.toggleDefaultColor,
+    disabled && theme["color-basic-disabled"],
+    status === "error" && theme["color-danger-default"],
+    theme["text-basic-color"],
   ].filter(Boolean)[0];
 
   return (
@@ -373,6 +376,8 @@ function Switch(props: ToggleInputProps) {
     detailStyle: $detailStyleOverride,
   } = props;
 
+  const { theme } = useTheme();
+
   const knobSizeFallback = 2;
 
   const knobWidth = [$detailStyleOverride?.width, $switchDetail?.width, knobSizeFallback].find(
@@ -384,31 +389,31 @@ function Switch(props: ToggleInputProps) {
   );
 
   const offBackgroundColor = [
-    disabled && colors.toggleDisabled,
-    status === "error" && colors.errorBackground,
-    colors.switchOffBackground,
+    disabled && theme["color-basic-disabled"],
+    status === "error" && theme["color-danger-default"],
+    theme["background-basic-color-4"],
   ].filter(Boolean)[0];
 
   const onBackgroundColor = [
-    disabled && colors.transparent,
-    status === "error" && colors.errorBackground,
-    colors.toggleDefaultColor,
+    disabled && theme["color-basic-disabled"],
+    status === "error" && theme["color-danger-default"],
+    theme["color-primary-active"],
   ].filter(Boolean)[0];
 
   const knobBackgroundColor = (function () {
     if (on) {
       return [
         $detailStyleOverride?.backgroundColor,
-        status === "error" && colors.error,
-        disabled && colors.switchDisabledKnobBackground,
-        colors.switchKnobOn,
+        disabled && theme["color-basic-disabled"],
+        status === "error" && theme["color-danger-default"],
+        theme["color-control-active"],
       ].filter(Boolean)[0];
     } else {
       return [
         $innerStyleOverride?.backgroundColor,
-        disabled && colors.switchDisabledKnobBackground,
-        status === "error" && colors.error,
-        colors.switchKnobOff,
+        disabled && theme["color-basic-disabled"],
+        status === "error" && theme["color-danger-default"],
+        theme["color-control-default"],
       ].filter(Boolean)[0];
     }
   })();
@@ -467,6 +472,8 @@ function Switch(props: ToggleInputProps) {
 function SwitchAccessibilityLabel(props: ToggleInputProps & { role: "on" | "off" }) {
   const { on, disabled, status, switchAccessibilityMode, role, innerStyle, detailStyle } = props;
 
+  const { theme } = useTheme();
+
   if (!switchAccessibilityMode) return null;
 
   const shouldLabelBeVisible = (on && role === "on") || (!on && role === "off");
@@ -478,10 +485,10 @@ function SwitchAccessibilityLabel(props: ToggleInputProps & { role: "on" | "off"
   ];
 
   const color = (function () {
-    if (disabled) return colors.toggleDisabledIcon;
-    if (status === "error") return colors.error;
-    if (!on) return innerStyle?.backgroundColor || colors.toggleDefaultColor;
-    return detailStyle?.backgroundColor || colors.switchKnobOn;
+    if (disabled) return theme["color-basic-disabled"];
+    if (status === "error") return theme["color-danger-default"];
+    if (!on) return innerStyle?.backgroundColor || theme["text-basic-color"];
+    return detailStyle?.backgroundColor || theme["color-control-default"];
   })();
 
   return (
@@ -514,12 +521,13 @@ function FieldLabel(props: BaseToggleProps) {
     labelPosition,
     labelStyle: $labelStyleOverride,
   } = props;
+  const { theme } = useTheme();
 
   if (!label && !labelTx && !LabelTextProps?.children) return null;
 
   const $labelStyle = [
     $label,
-    status === "error" && { color: colors.error },
+    status === "error" && { color: theme["text-danger-color"] },
     labelPosition === "right" && $labelRight,
     labelPosition === "left" && $labelLeft,
     $labelStyleOverride,
@@ -587,7 +595,6 @@ const $switchInner: ViewStyle = {
   width: "100%",
   height: "100%",
   alignItems: "center",
-  borderColor: colors.transparent,
   overflow: "hidden",
   position: "absolute",
   paddingStart: 4,

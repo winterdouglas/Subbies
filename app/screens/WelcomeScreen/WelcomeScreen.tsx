@@ -17,21 +17,36 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
     rightIcon: "add",
   });
 
-  const { toggleMode } = useTheme();
+  const { toggleMode, mode } = useTheme();
 
   return (
     <Screen preset="fixed">
-      <Toggle variant="checkbox" label="Dark Mode" onPress={toggleMode} />
-      <Text preset="bold" tx="common.back" size="xxl" />
+      <Text preset="bold" tx="welcomeScreen.exciting" size="xxl" />
       <Card
         LeftComponent={<Icon icon="add-circle" size={32} />}
+        HeadingComponent={
+          <Toggle
+            variant="checkbox"
+            label="Dark Mode"
+            onPress={toggleMode}
+            value={mode === "dark"}
+          />
+        }
         content="This is some nice card text"
-        heading="This is the title"
         footer="This is the footer"
         FooterComponent={
           <>
-            <Button text="Test" appearance="basic" />
             <TextField placeholder="This is a placeholder" helper="This is the input info" />
+            <Toggle variant="radio" />
+            <Toggle variant="radio" value={true} />
+            <Toggle variant="switch" switchAccessibilityMode="text" />
+            <Toggle
+              variant="switch"
+              value={true}
+              label="A cool option"
+              switchAccessibilityMode="text"
+            />
+            <Button text="Test" appearance="primary" />
           </>
         }
       />
