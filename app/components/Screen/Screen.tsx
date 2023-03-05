@@ -12,8 +12,8 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { colors } from "@theme";
-import { ExtendedEdge, useSafeAreaInsetsStyle } from "@hooks";
+import { spacing } from "@theme";
+import { ExtendedEdge, useSafeAreaInsetsStyle, useTheme } from "@hooks";
 
 interface BaseScreenProps {
   /**
@@ -24,6 +24,11 @@ interface BaseScreenProps {
    * Style for the outer content container useful for padding & margin.
    */
   style?: StyleProp<ViewStyle>;
+  /**
+   * Determines whether the screen content receives automatic horizontal padding
+   * Default: True
+   */
+  contentHorizontalPadding?: boolean;
   /**
    * Style for the inner content container useful for padding & margin.
    */
@@ -136,11 +141,22 @@ function useAutoPreset(props: AutoScreenProps) {
   };
 }
 
-function ScreenWithoutScrolling(props: ScreenProps) {
-  const { style, contentContainerStyle, children } = props;
+function ScreenWithoutScrolling({
+  style,
+  contentHorizontalPadding = true,
+  contentContainerStyle,
+  children,
+}: ScreenProps) {
   return (
     <View style={[$outerStyle, style]}>
-      <View style={[$fixedContentContainerStyle, contentContainerStyle]}>{children}</View>
+      <View
+        style={[
+          $fixedContentContainerStyle,
+          contentHorizontalPadding && { paddingHorizontal: spacing.medium },
+          contentContainerStyle,
+        ]}>
+        {children}
+      </View>
     </View>
   );
 }
@@ -149,6 +165,7 @@ function ScreenWithScrolling(props: ScreenProps) {
   const {
     children,
     keyboardShouldPersistTaps = "handled",
+    contentHorizontalPadding = true,
     contentContainerStyle,
     ScrollViewProps,
     style,
@@ -177,6 +194,7 @@ function ScreenWithScrolling(props: ScreenProps) {
       style={[$outerStyle, ScrollViewProps?.style, style]}
       contentContainerStyle={[
         $scrollingContentContainerStyle,
+        contentHorizontalPadding && { paddingHorizontal: spacing.medium },
         ScrollViewProps?.contentContainerStyle,
         contentContainerStyle,
       ]}>
@@ -186,11 +204,13 @@ function ScreenWithScrolling(props: ScreenProps) {
 }
 
 export function Screen(props: ScreenProps) {
+  const { theme } = useTheme();
+
   const {
-    backgroundColor = colors.background,
+    backgroundColor = theme["background-basic-color-2"],
     KeyboardAvoidingViewProps,
     keyboardOffset = 0,
-    safeAreaEdges,
+    safeAreaEdges = ["bottom"],
     StatusBarProps,
     statusBarStyle = "dark",
   } = props;

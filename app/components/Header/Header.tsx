@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
 import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
 import { isRTL, translate } from "@lib/i18n";
-import { colors, spacing } from "@theme";
-import { ExtendedEdge, useSafeAreaInsetsStyle } from "@hooks";
+import { spacing } from "@theme";
+import { ExtendedEdge, useSafeAreaInsetsStyle, useTheme } from "@hooks";
 import { Icon, IconTypes } from "../Icon";
 import { Text, TextProps } from "../Text";
 import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
@@ -137,8 +137,9 @@ interface HeaderActionProps {
  * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-Header.md)
  */
 export function Header(props: HeaderProps) {
+  const { theme } = useTheme();
   const {
-    backgroundColor = colors.background,
+    backgroundColor = theme["background-basic-color-2"],
     LeftActionComponent,
     leftIcon,
     leftIconColor,
@@ -214,6 +215,7 @@ export function Header(props: HeaderProps) {
 }
 
 function HeaderAction(props: HeaderActionProps) {
+  const { theme } = useTheme();
   const { backgroundColor, icon, text, tx, txOptions, onPress, ActionComponent, iconColor } = props;
 
   const content = tx ? translate(tx, txOptions) : text;
@@ -221,23 +223,26 @@ function HeaderAction(props: HeaderActionProps) {
   if (ActionComponent) return ActionComponent;
 
   if (content) {
+    const $textStyle = { color: theme["text-primary-color"] };
+
     return (
       <PressableOpacity
         style={[$actionTextContainer, { backgroundColor }]}
         onPress={onPress}
         disabled={!onPress}
         activeOpacity={0.8}>
-        <Text weight="medium" size="md" text={content} style={$actionText} />
+        <Text weight="medium" size="md" text={content} style={$textStyle} />
       </PressableOpacity>
     );
   }
 
   if (icon) {
+    const $iconColor = theme["text-primary-color"];
     return (
       <Icon
         size={24}
         icon={icon}
-        color={iconColor}
+        color={iconColor || $iconColor}
         onPress={onPress}
         containerStyle={[$actionIconContainer, { backgroundColor }]}
         style={isRTL ? { transform: [{ rotate: "180deg" }] } : {}}
@@ -270,10 +275,6 @@ const $actionTextContainer: ViewStyle = {
   height: "100%",
   paddingHorizontal: spacing.medium,
   zIndex: 2,
-};
-
-const $actionText: TextStyle = {
-  color: colors.tint,
 };
 
 const $actionIconContainer: ViewStyle = {

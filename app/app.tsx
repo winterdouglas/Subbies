@@ -1,14 +1,16 @@
 import "./lib/i18n";
 import "./utils/ignoreWarnings";
-import { useFonts } from "expo-font";
 import React, { useEffect } from "react";
+import { useFonts } from "expo-font";
 import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context";
 import * as Linking from "expo-linking";
-import { AppNavigator, useNavigationPersistence } from "./navigators";
-import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary";
+
 import { storage } from "@lib/storage";
 import { customFontsToLoad } from "@theme";
 import { Config } from "@config";
+import { AppNavigator, useNavigationPersistence } from "@navigators";
+import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary";
+import { ThemeProvider } from "@contexts";
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE";
 
@@ -70,15 +72,17 @@ function App({ hideSplashScreen }: AppProps) {
 
   // otherwise, we're ready to render the app
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <ErrorBoundary catchErrors={Config.catchErrors}>
-        <AppNavigator
-          linking={linking}
-          initialState={initialNavigationState}
-          onStateChange={onNavigationStateChange}
-        />
-      </ErrorBoundary>
-    </SafeAreaProvider>
+    <ThemeProvider>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <ErrorBoundary catchErrors={Config.catchErrors}>
+          <AppNavigator
+            linking={linking}
+            initialState={initialNavigationState}
+            onStateChange={onNavigationStateChange}
+          />
+        </ErrorBoundary>
+      </SafeAreaProvider>
+    </ThemeProvider>
   );
 }
 

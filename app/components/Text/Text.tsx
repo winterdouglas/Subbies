@@ -2,7 +2,8 @@ import i18n from "i18n-js";
 import React from "react";
 import { StyleProp, Text as RNText, TextProps as RNTextProps, TextStyle } from "react-native";
 import { isRTL, translate, TxKeyPath } from "@lib/i18n";
-import { colors, typography } from "@theme";
+import { typography } from "@theme";
+import { useTheme } from "@hooks";
 
 type Sizes = keyof typeof $sizeStyles;
 type Weights = keyof typeof typography.primary;
@@ -30,6 +31,8 @@ export interface TextProps extends RNTextProps {
    * One of the different types of text presets.
    */
   preset?: Presets;
+
+  appearance?: "primary" | "success" | "info" | "warning" | "danger" | "basic" | "control" | "hint";
   /**
    * Text weight modifier.
    */
@@ -50,18 +53,28 @@ export interface TextProps extends RNTextProps {
  *
  * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-Text.md)
  */
-export function Text(props: TextProps) {
-  const { weight, size, tx, txOptions, text, children, style: $styleOverride, ...rest } = props;
-
+export function Text({
+  preset = "default",
+  appearance = "basic",
+  weight,
+  size,
+  tx,
+  txOptions,
+  text,
+  children,
+  style: $styleOverride,
+  ...rest
+}: TextProps) {
+  const { theme } = useTheme();
   const i18nText = tx && translate(tx, txOptions);
   const content = i18nText || text || children;
 
-  const preset: Presets = $presets[props.preset] ? props.preset : "default";
   const $styles = [
     $rtlStyle,
     $presets[preset],
     $fontWeightStyles[weight],
     $sizeStyles[size],
+    { color: theme[`text-${appearance}-color`] },
     $styleOverride,
   ];
 
@@ -86,11 +99,7 @@ const $fontWeightStyles = Object.entries(typography.primary).reduce((acc, [weigh
   return { ...acc, [weight]: { fontFamily } };
 }, {}) as Record<Weights, TextStyle>;
 
-const $baseStyle: StyleProp<TextStyle> = [
-  $sizeStyles.sm,
-  $fontWeightStyles.normal,
-  { color: colors.text },
-];
+const $baseStyle: StyleProp<TextStyle> = [$sizeStyles.sm, $fontWeightStyles.normal];
 
 const $presets = {
   default: $baseStyle,

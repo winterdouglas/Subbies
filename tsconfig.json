@@ -21,6 +21,7 @@
       "@assets": ["./assets"],
       "@components": ["./app/components"],
       "@config": ["./app/config"],
+      "@contexts": ["./app/contexts"],
       "@hooks": ["./app/hooks"],
       "@lib/*": ["./app/lib/*"],
       "@navigators": ["./app/navigators"],
@@ -31,6 +32,6 @@
     }
   },
   "exclude": ["node_modules"],
-  "include": ["index.js", "App.js", "index.ts", "app"],
+  "include": ["index.js", "App.js", "index.ts", "app", "typings"],
   "extends": "expo/tsconfig.base"
 }

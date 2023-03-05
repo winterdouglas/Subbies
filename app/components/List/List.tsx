@@ -1,11 +1,12 @@
 import React from "react";
 import { PressableProps, View, ViewProps, ViewStyle } from "react-native";
 import { ContentStyle, FlashList, FlashListProps } from "@shopify/flash-list";
-import { colors, spacing } from "@theme";
+import { spacing } from "@theme";
 import { EmptyState } from "../EmptyState";
 import { ListItem, ListItemProps } from "../ListItem";
 import { LinearGradient, LinearGradientProps } from "../LinearGradient";
 import { PressableScale } from "../PressableScale";
+import { useTheme } from "@hooks";
 
 interface BaseListProps<TItem> extends Omit<FlashListProps<TItem>, "renderItem"> {
   getItemProps: (item: TItem, index: number) => ListItemProps<PressableProps, ViewProps>;
@@ -33,7 +34,8 @@ function EmptySeparator() {
 }
 
 function LineSeparator() {
-  return <View style={$lineSeparator} />;
+  const { theme } = useTheme();
+  return <View style={[$lineSeparator, { backgroundColor: theme["border-basic-color-2"] }]} />;
 }
 
 function GradientList<TItem>({
@@ -104,13 +106,12 @@ const $emptySeparator: ViewStyle = {
 
 const $lineSeparator: ViewStyle = {
   height: spacing.nano,
-  backgroundColor: colors.separator,
 };
 
 const $listContainerPresets = {
   default: {} as ContentStyle,
 
   gradient: {
-    padding: spacing.medium,
+    paddingVertical: spacing.medium,
   } as ContentStyle,
 };
