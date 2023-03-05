@@ -1,9 +1,10 @@
 import React, { ComponentType, forwardRef, Ref, useImperativeHandle, useRef } from "react";
 import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from "react-native";
 import { isRTL, translate } from "@lib/i18n";
-import { colors, spacing, typography } from "@theme";
+import { spacing, typography } from "@theme";
 import { Text, TextProps } from "../Text";
 import { PressableOpacity } from "../PressableOpacity";
+import { useTheme } from "@hooks";
 
 export interface TextFieldAccessoryProps {
   style: StyleProp<any>;
@@ -117,6 +118,7 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
     ...TextInputProps
   } = props;
   const input = useRef<TextInput>();
+  const { theme } = useTheme();
 
   const disabled = TextInputProps.editable === false || status === "disabled";
 
@@ -128,9 +130,13 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
 
   const $labelStyles = [$labelStyle, LabelTextProps?.style];
 
-  const $inputWrapperStyles = [
+  const $inputWrapperStyles: StyleProp<ViewStyle> = [
     $inputWrapperStyle,
-    status === "error" && { borderColor: colors.error },
+    {
+      backgroundColor: theme["background-basic-color-2"],
+      borderColor: theme["border-basic-color-2"],
+    },
+    status === "error" && { borderColor: theme["border-danger-color-2"] },
     TextInputProps.multiline && { minHeight: 112 },
     LeftAccessory && { paddingStart: 0 },
     RightAccessory && { paddingEnd: 0 },
@@ -139,7 +145,8 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
 
   const $inputStyles = [
     $inputStyle,
-    disabled && { color: colors.textDim },
+    { color: theme["text-basic-color"] },
+    disabled && { color: theme["text-disabled-color"] },
     isRTL && { textAlign: "right" as TextStyle["textAlign"] },
     TextInputProps.multiline && { height: "auto" },
     $inputStyleOverride,
@@ -147,7 +154,7 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
 
   const $helperStyles = [
     $helperStyle,
-    status === "error" && { color: colors.error },
+    status === "error" && { color: theme["text-danger-color"] },
     HelperTextProps?.style,
   ];
 
@@ -188,10 +195,10 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
 
         <TextInput
           ref={input}
-          underlineColorAndroid={colors.transparent}
+          underlineColorAndroid={theme.transparent}
           textAlignVertical="top"
           placeholder={placeholderContent}
-          placeholderTextColor={colors.textDim}
+          placeholderTextColor={theme["text-hint-color"]}
           {...TextInputProps}
           editable={!disabled}
           style={$inputStyles}
@@ -230,8 +237,6 @@ const $inputWrapperStyle: ViewStyle = {
   alignItems: "flex-start",
   borderWidth: 1,
   borderRadius: 4,
-  backgroundColor: colors.background,
-  borderColor: colors.border,
   overflow: "hidden",
 };
 
@@ -239,7 +244,6 @@ const $inputStyle: TextStyle = {
   flex: 1,
   alignSelf: "stretch",
   fontFamily: typography.primary.normal,
-  color: colors.text,
   fontSize: 16,
   height: 24,
   // https://github.com/facebook/react-native/issues/21720#issuecomment-532642093

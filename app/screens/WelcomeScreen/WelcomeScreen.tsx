@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Icon, List, Screen, Text, Toggle } from "@components";
+import { Button, Card, Icon, List, Screen, Text, TextField, Toggle } from "@components";
 import { AppStackScreenProps } from "@navigators";
 import { useHeader, useTheme } from "@hooks";
 import { hexToHSL, toHSLString } from "@utils/colorUtils";
@@ -28,7 +28,12 @@ export const WelcomeScreen = function WelcomeScreen(_props: WelcomeScreenProps) 
         content="This is some nice card text"
         heading="This is the title"
         footer="This is the footer"
-        FooterComponent={<Button text="Test" appearance="basic" />}
+        FooterComponent={
+          <>
+            <Button text="Test" appearance="basic" />
+            <TextField placeholder="This is a placeholder" helper="This is the input info" />
+          </>
+        }
       />
 
       <List

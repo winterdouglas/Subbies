@@ -30,7 +30,7 @@ export function ErrorScreen(props: ErrorScreenProps) {
         />
       </ScrollView>
 
-      <Button preset="filled" style={$resetButton} onPress={props.onReset} tx="errorScreen.reset" />
+      <Button style={$resetButton} onPress={props.onReset} tx="errorScreen.reset" />
     </Screen>
   );
 }
