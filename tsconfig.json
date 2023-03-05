@@ -21,6 +21,7 @@
       "@assets": ["./assets"],
       "@components": ["./app/components"],
       "@config": ["./app/config"],
+      "@contexts": ["./app/contexts"],
       "@hooks": ["./app/hooks"],
       "@lib/*": ["./app/lib/*"],
       "@navigators": ["./app/navigators"],

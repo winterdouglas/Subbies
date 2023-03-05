@@ -1,9 +1,10 @@
 import React, { ComponentType, ReactElement } from "react";
 import { PressableProps, StyleProp, TextStyle, View, ViewProps, ViewStyle } from "react-native";
-import { colors, spacing } from "@theme";
+import { spacing } from "@theme";
 import { Icon, IconTypes } from "../Icon";
 import { Text, TextProps } from "../Text";
 import { PressableOpacity } from "../PressableOpacity";
+import { useTheme } from "@hooks";
 
 export interface ListItemProps<
   TPressableProps extends PressableProps,
@@ -145,11 +146,12 @@ export function ListItem<
   PressableComponent,
   pressableProps,
 }: ListItemProps<TPressableProps, TBackgroundProps>) {
+  const { theme } = useTheme();
   const $textStyles = [$textStyle, $textStyleOverride, TextProps?.style];
 
   const $containerStyles = [
-    topSeparator && $separatorTop,
-    bottomSeparator && $separatorBottom,
+    topSeparator && { borderTopWidth: 1, borderTopColor: theme["border-basic-color-3"] },
+    bottomSeparator && { borderBottomWidth: 1, borderTopColor: theme["border-basic-color-3"] },
     $containerStyleOverride,
   ];
 
@@ -215,16 +217,6 @@ function ListItemAction(props: ListItemActionProps) {
 
   return null;
 }
-
-const $separatorTop: ViewStyle = {
-  borderTopWidth: 1,
-  borderTopColor: colors.separator,
-};
-
-const $separatorBottom: ViewStyle = {
-  borderBottomWidth: 1,
-  borderBottomColor: colors.separator,
-};
 
 const $roundStyle: ViewStyle = {
   borderRadius: 8,

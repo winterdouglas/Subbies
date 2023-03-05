@@ -1,18 +1,12 @@
-import { useMemo, useState } from "react";
-import { DefaultTheme } from "styled-components/native";
-import { colors, Theme } from "@theme";
+import { useContext } from "react";
+import { ThemeContext } from "@contexts";
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const context = useContext(ThemeContext);
 
-  return useMemo(
-    (): DefaultTheme => ({
-      theme,
-      toggleTheme: () => {
-        setTheme(theme === "light" ? "dark" : "light");
-      },
-      colors: theme === "light" ? colors : colors,
-    }),
-    [theme],
-  );
+  if (!context) {
+    throw new Error("Theme not set, make sure to wrap the app with the ThemeProvider");
+  }
+
+  return context;
 };

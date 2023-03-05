@@ -12,8 +12,8 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { colors, spacing } from "@theme";
-import { ExtendedEdge, useSafeAreaInsetsStyle } from "@hooks";
+import { spacing } from "@theme";
+import { ExtendedEdge, useSafeAreaInsetsStyle, useTheme } from "@hooks";
 
 interface BaseScreenProps {
   /**
@@ -204,8 +204,10 @@ function ScreenWithScrolling(props: ScreenProps) {
 }
 
 export function Screen(props: ScreenProps) {
+  const { theme } = useTheme();
+
   const {
-    backgroundColor = colors.background,
+    backgroundColor = theme["background-basic-color-2"],
     KeyboardAvoidingViewProps,
     keyboardOffset = 0,
     safeAreaEdges = ["bottom"],

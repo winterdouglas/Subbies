@@ -187,9 +187,14 @@ export const colors = {
   // "background-basic-color-3": palette["color-basic-300"],
   // "background-basic-color-4": palette["color-basic-400"],
 
+  "shadow-basic-color-1": palette["color-basic-900"],
+
   "border-basic-color-1": palette["color-basic-100"],
   "border-basic-color-2": palette["color-basic-200"],
-  // "border-basic-color-3": palette["color-basic-300"],
+  /**
+   * Dividers
+   */
+  "border-basic-color-3": palette["color-basic-300"],
   // "border-basic-color-4": palette["color-basic-400"],
 
   "border-primary-color-1": palette["color-primary-500"],
@@ -339,6 +344,106 @@ export const colors = {
   switchKnobOff: palette.neutral200,
 } as const;
 
-export type Theme = "light" | "dark";
+export const darkColors = {
+  /**
+   * Usually used for top sitting elements - cards, headers, etc.
+   */
+  "background-basic-color-1": palette["color-basic-800"],
+  /**
+   * For background of the layout and input controls (inputs, checkboxes, etc)
+   */
+  "background-basic-color-2": palette["color-basic-900"],
+  // "background-basic-color-3": palette["color-basic-300"],
+  // "background-basic-color-4": palette["color-basic-400"],
 
-export type ThemeData = typeof colors;
+  "shadow-basic-color-1": palette["color-basic-100"],
+
+  "border-basic-color-1": palette["color-basic-800"],
+  "border-basic-color-2": palette["color-basic-900"],
+  /**
+   * Dividers
+   */
+  "border-basic-color-3": palette["color-basic-1000"],
+  // "border-basic-color-4": palette["color-basic-400"],
+
+  "border-primary-color-1": palette["color-primary-500"],
+  "border-primary-color-2": palette["color-primary-600"],
+  // "border-primary-color-3": palette["color-primary-700"],
+  // "border-primary-color-4": palette["color-primary-800"],
+
+  "border-success-color-1": palette["color-success-500"],
+  "border-success-color-2": palette["color-success-600"],
+  // "border-success-color-3": palette["color-success-700"],
+  // "border-success-color-4": palette["color-success-800"],
+
+  "border-info-color-1": palette["color-info-500"],
+  "border-info-color-2": palette["color-info-600"],
+  // "border-info-color-3": palette["color-info-700"],
+  // "border-info-color-4": palette["color-info-800"],
+
+  "border-warning-color-1": palette["color-warning-500"],
+  "border-warning-color-2": palette["color-warning-600"],
+  // "border-warning-color-3": palette["color-warning-700"],
+  // "border-warning-color-4": palette["color-warning-800"],
+
+  "border-danger-color-1": palette["color-danger-500"],
+  "border-danger-color-2": palette["color-danger-600"],
+  // "border-danger-color-3": palette["color-danger-700"],
+  // "border-danger-color-4": palette["color-danger-800"],
+
+  /**
+   * Main text color, used on top of basic backgrounds
+   */
+  "text-basic-color": palette["color-basic-100"],
+  /**
+   * Used on top of status colors (primary, success, etc)
+   */
+  "text-control-color": palette["color-basic-100"],
+  /**
+   * To indicate text/component disabled state
+   */
+  "text-disabled-color": palette["color-basic-transparent-600"],
+  /**
+   * For secondary texts (for example placeholders and captions)
+   */
+  "text-hint-color": palette["color-basic-600"],
+
+  /**
+   * Used on top of primary backgrounds
+   */
+  "text-primary-color": palette["color-primary-default"],
+  "text-primary-active-color": palette["color-primary-active"],
+  "text-primary-disabled-color": palette["color-primary-disabled"],
+
+  /**
+   * Used on top of success backgrounds
+   */
+  "text-success-color": palette["color-success-default"],
+  "text-success-active-color": palette["color-success-active"],
+  "text-success-disabled-color": palette["color-success-400"],
+
+  /**
+   * Used on top of info backgrounds
+   */
+  "text-info-color": palette["color-info-default"],
+  "text-info-active-color": palette["color-info-active"],
+  "text-info-disabled-color": palette["color-info-400"],
+
+  /**
+   * Used on top of warning backgrounds
+   */
+  "text-warning-color": palette["color-warning-default"],
+  "text-warning-active-color": palette["color-warning-active"],
+  "text-warning-disabled-color": palette["color-warning-400"],
+
+  /**
+   * Used on top of danger backgrounds
+   */
+  "text-danger-color": palette["color-danger-default"],
+  "text-danger-active-color": palette["color-danger-active"],
+  "text-danger-disabled-color": palette["color-danger-400"],
+};
+
+export type ThemeMode = "light" | "dark";
+
+export type Theme = typeof colors;

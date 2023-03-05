@@ -4,14 +4,13 @@ import React, { useEffect } from "react";
 import { useFonts } from "expo-font";
 import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context";
 import * as Linking from "expo-linking";
-import { ThemeProvider } from "styled-components";
 
 import { storage } from "@lib/storage";
 import { customFontsToLoad } from "@theme";
 import { Config } from "@config";
-import { useTheme } from "@hooks";
 import { AppNavigator, useNavigationPersistence } from "@navigators";
 import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary";
+import { ThemeProvider } from "@contexts";
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE";
 
@@ -49,7 +48,6 @@ function App({ hideSplashScreen }: AppProps) {
     onNavigationStateChange,
     isRestored: isNavigationStateRestored,
   } = useNavigationPersistence(storage, NAVIGATION_PERSISTENCE_KEY);
-  const theme = useTheme();
 
   const [areFontsLoaded] = useFonts(customFontsToLoad);
 
@@ -74,7 +72,7 @@ function App({ hideSplashScreen }: AppProps) {
 
   // otherwise, we're ready to render the app
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider>
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
         <ErrorBoundary catchErrors={Config.catchErrors}>
           <AppNavigator

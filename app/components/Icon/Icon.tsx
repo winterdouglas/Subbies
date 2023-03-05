@@ -4,6 +4,7 @@ import { ColorValue, StyleProp, View, ViewStyle } from "react-native";
 import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
 import Ionicon from "react-native-vector-icons/Ionicons";
 import IoniconIconNames from "react-native-vector-icons/dist/glyphmaps/Ionicons.json";
+import { useTheme } from "@hooks";
 
 export type IconTypes = keyof typeof IoniconIconNames;
 
@@ -55,6 +56,7 @@ export function Icon(props: IconProps) {
     containerStyle: $containerStyleOverride,
     ...WrapperProps
   } = props;
+  const { theme } = useTheme();
 
   const isPressable = !!WrapperProps.onPress;
   const Wrapper: ComponentType<PressableOpacityProps> = WrapperProps?.onPress
@@ -66,7 +68,12 @@ export function Icon(props: IconProps) {
       accessibilityRole={isPressable ? "imagebutton" : undefined}
       {...WrapperProps}
       style={$containerStyleOverride}>
-      <Ionicon style={$imageStyleOverride} name={icon} size={size} color={color} />
+      <Ionicon
+        style={$imageStyleOverride}
+        name={icon}
+        size={size}
+        color={color || theme["text-basic-color"]}
+      />
     </Wrapper>
   );
 }
