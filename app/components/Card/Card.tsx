@@ -3,7 +3,7 @@ import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
 import { spacing } from "@theme";
 import { Text, TextProps } from "../Text";
 import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
-import { useTheme } from "@hooks";
+import { useTheme } from "@hooks/useTheme";
 
 interface CardProps extends Omit<PressableOpacityProps, "children"> {
   /**

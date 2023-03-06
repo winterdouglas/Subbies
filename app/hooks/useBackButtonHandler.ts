@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { BackHandler, Platform } from "react-native";
-import { getActiveRouteName, navigationRef } from "../navigationUtilities";
+import { getActiveRouteName, navigationRef } from "@navigators/navigationUtilities";
 
 /**
  * Hook that handles Android back button presses and forwards those on to

@@ -2,11 +2,11 @@ import React from "react";
 import { PressableProps, View, ViewProps, ViewStyle } from "react-native";
 import { ContentStyle, FlashList, FlashListProps } from "@shopify/flash-list";
 import { spacing } from "@theme";
+import { useTheme } from "@hooks/useTheme";
 import { EmptyState } from "../EmptyState";
 import { ListItem, ListItemProps } from "../ListItem";
 import { LinearGradient, LinearGradientProps } from "../LinearGradient";
 import { PressableScale } from "../PressableScale";
-import { useTheme } from "@hooks";
 
 interface BaseListProps<TItem> extends Omit<FlashListProps<TItem>, "renderItem"> {
   getItemProps: (item: TItem, index: number) => ListItemProps<PressableProps, ViewProps>;

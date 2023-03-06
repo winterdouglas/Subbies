@@ -4,7 +4,7 @@ import { isRTL, translate } from "@lib/i18n";
 import { spacing, typography } from "@theme";
 import { Text, TextProps } from "../Text";
 import { PressableOpacity } from "../PressableOpacity";
-import { useTheme } from "@hooks";
+import { useTheme } from "@hooks/useTheme";
 
 export interface TextFieldAccessoryProps {
   style: StyleProp<any>;

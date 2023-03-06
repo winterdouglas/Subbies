@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { NavigationState } from "@react-navigation/native";
 import { Config, PersistNavigationConfig } from "@config";
-import { useIsMounted } from "@hooks";
+import { useIsMounted } from "@hooks/useIsMounted";
 import { IStorage } from "@lib/storage";
-import { getActiveRouteName } from "../navigationUtilities";
+import { getActiveRouteName } from "@navigators/navigationUtilities";
 
 /**
  * This helper function will determine whether we should enable navigation persistence
