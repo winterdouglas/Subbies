@@ -1,5 +1,4 @@
 import "./lib/i18n";
-import "./utils/ignoreWarnings";
 import React, { useEffect } from "react";
 import { useFonts } from "expo-font";
 import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context";
