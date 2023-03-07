@@ -142,7 +142,7 @@ export function Button(props: ButtonProps) {
 
 const $baseViewStyle: ViewStyle = {
   minHeight: 56,
-  borderWidth: 1, // TODO: Check this
+  borderWidth: 1,
   borderRadius: 4,
   justifyContent: "center",
   alignItems: "center",
@@ -150,6 +150,7 @@ const $baseViewStyle: ViewStyle = {
   paddingVertical: spacing.small,
   paddingHorizontal: spacing.small,
   overflow: "hidden",
+  gap: 10,
 };
 
 const $baseTextStyle: TextStyle = {
