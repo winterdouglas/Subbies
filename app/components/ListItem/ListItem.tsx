@@ -4,7 +4,7 @@ import { spacing } from "@theme";
 import { Icon, IconTypes } from "../Icon";
 import { Text, TextProps } from "../Text";
 import { PressableOpacity } from "../PressableOpacity";
-import { useTheme } from "@hooks";
+import { useTheme } from "@hooks/useTheme";
 
 export interface ListItemProps<
   TPressableProps extends PressableProps,

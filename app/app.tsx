@@ -1,5 +1,4 @@
 import "./lib/i18n";
-import "./utils/ignoreWarnings";
 import React, { useEffect } from "react";
 import { useFonts } from "expo-font";
 import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context";
@@ -8,9 +7,10 @@ import * as Linking from "expo-linking";
 import { storage } from "@lib/storage";
 import { customFontsToLoad } from "@theme";
 import { Config } from "@config";
-import { AppNavigator, useNavigationPersistence } from "@navigators";
-import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary";
+import { AppNavigator } from "@navigators";
 import { ThemeProvider } from "@contexts";
+import { useNavigationPersistence } from "@hooks/useNavigationPersistence";
+import { ErrorBoundary } from "@screens/ErrorScreen/ErrorBoundary";
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE";
 

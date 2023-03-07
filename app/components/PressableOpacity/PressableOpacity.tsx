@@ -6,7 +6,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import { useAnimationSpeed } from "@hooks";
+import { useAnimationSpeed } from "@hooks/useAnimationSpeed";
 
 export interface PressableOpacityProps extends PressableProps {
   activeOpacity?: number;

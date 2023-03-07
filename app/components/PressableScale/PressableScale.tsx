@@ -6,7 +6,7 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
-import { useAnimationSpeed } from "@hooks";
+import { useAnimationSpeed } from "@hooks/useAnimationSpeed";
 
 export interface PressableScaleProps extends PressableProps {
   activeScale?: number;

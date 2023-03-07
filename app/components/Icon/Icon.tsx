@@ -4,7 +4,7 @@ import { ColorValue, StyleProp, View, ViewStyle } from "react-native";
 import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
 import Ionicon from "react-native-vector-icons/Ionicons";
 import IoniconIconNames from "react-native-vector-icons/dist/glyphmaps/Ionicons.json";
-import { useTheme } from "@hooks";
+import { useTheme } from "@hooks/useTheme";
 
 export type IconTypes = keyof typeof IoniconIconNames;
 

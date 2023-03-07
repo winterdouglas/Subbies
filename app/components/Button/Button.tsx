@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { spacing, typography } from "@theme";
 import { Text, TextProps } from "../Text";
-import { useTheme } from "@hooks";
+import { useTheme } from "@hooks/useTheme";
 
 export interface ButtonAccessoryProps {
   style: StyleProp<any>;

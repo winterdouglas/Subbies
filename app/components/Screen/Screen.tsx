@@ -13,7 +13,8 @@ import {
   ViewStyle,
 } from "react-native";
 import { spacing } from "@theme";
-import { ExtendedEdge, useSafeAreaInsetsStyle, useTheme } from "@hooks";
+import { ExtendedEdge, useSafeAreaInsetsStyle } from "@hooks/useSafeAreaInsetsStyle";
+import { useTheme } from "@hooks/useTheme";
 
 interface BaseScreenProps {
   /**

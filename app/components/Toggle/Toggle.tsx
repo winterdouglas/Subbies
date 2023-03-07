@@ -13,7 +13,7 @@ import { spacing } from "@theme";
 import { Icon, IconTypes } from "../Icon";
 import { Text, TextProps } from "../Text";
 import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
-import { useTheme } from "@hooks";
+import { useTheme } from "@hooks/useTheme";
 
 type Variants = "checkbox" | "switch" | "radio";
 

@@ -9,8 +9,8 @@ import { useColorScheme } from "react-native";
 import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Config } from "@config";
+import { useBackButtonHandler } from "@hooks/useBackButtonHandler";
 import { WelcomeScreen } from "@screens/WelcomeScreen";
-import { useBackButtonHandler } from "./hooks";
 import { navigationRef } from "./navigationUtilities";
 
 /**
