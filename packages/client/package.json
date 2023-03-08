@@ -98,7 +98,7 @@
     "metro-react-native-babel-preset": "^0.76.0",
     "patch-package": "6.4.7",
     "react-devtools-core": "4.24.7",
-    "react-dom": "^18.2.0",
+    "react-dom": "18.2.0",
     "react-native-web": "~0.18.12",
     "regenerator-runtime": "^0.13.4",
     "ts-jest": "29",
