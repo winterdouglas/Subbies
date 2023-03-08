@@ -1,14 +1,14 @@
-const { getDefaultConfig } = require("metro-config")
-const { getDefaultConfig: getDefaultExpoConfig } = require("@expo/metro-config")
+const { getDefaultConfig } = require("metro-config");
+const { getDefaultConfig: getDefaultExpoConfig } = require("@expo/metro-config");
 
-let metroConfig
-let isExpo = false
+let metroConfig;
+let isExpo = false;
 try {
-  const Constants = require("expo-constants")
+  const Constants = require("expo-constants");
   // True if the app is running in an `expo build` app or if it's running in Expo Go.
   isExpo =
     Constants.executionEnvironment === "standalone" ||
-    Constants.executionEnvironment === "storeClient"
+    Constants.executionEnvironment === "storeClient";
 } catch {}
 
 if (isExpo) {
@@ -19,7 +19,7 @@ if (isExpo) {
    * For one idea on how to support symlinks in Expo, see:
    * https://github.com/infinitered/ignite/issues/1904#issuecomment-1054535068
    */
-  metroConfig = getDefaultExpoConfig(__dirname)
+  metroConfig = getDefaultExpoConfig(__dirname);
 } else {
   /**
    * Vanilla metro config - we're using a custom metro config because we want to support symlinks
@@ -30,15 +30,15 @@ if (isExpo) {
    *
    * However, it doesn't hurt to have it either.
    */
-  const { makeMetroConfig } = require("@rnx-kit/metro-config")
-  const MetroSymlinksResolver = require("@rnx-kit/metro-resolver-symlinks")
-  const path = require('path');
+  const { makeMetroConfig } = require("@rnx-kit/metro-config");
+  const MetroSymlinksResolver = require("@rnx-kit/metro-resolver-symlinks");
+  const path = require("path");
 
   metroConfig = (async () => {
     const projectRoot = __dirname;
-    const workspaceRoot = path.resolve(projectRoot, '../../');
+    const workspaceRoot = path.resolve(projectRoot, "../../");
 
-    const defaultConfig = await getDefaultConfig()
+    const defaultConfig = await getDefaultConfig();
 
     return makeMetroConfig({
       projectRoot: projectRoot,
@@ -52,13 +52,13 @@ if (isExpo) {
         resolveRequest: MetroSymlinksResolver(),
         assetExts: [...defaultConfig.resolver.assetExts, "bin"],
         nodeModulesPaths: [
-          path.resolve(projectRoot, 'node_modules'),
-          path.resolve(workspaceRoot, 'node_modules'),
+          path.resolve(projectRoot, "node_modules"),
+          path.resolve(workspaceRoot, "node_modules"),
         ],
-        disableHierarchicalLookup: true
+        disableHierarchicalLookup: true,
       },
-    })
-  })()
+    });
+  })();
 }
 
-module.exports = metroConfig
+module.exports = metroConfig;
