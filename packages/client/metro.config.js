@@ -41,7 +41,7 @@ if (isExpo) {
     const defaultConfig = await getDefaultConfig();
 
     return makeMetroConfig({
-      projectRoot: projectRoot,
+      projectRoot,
       watchFolders: [workspaceRoot], // for monorepos
       resolver: {
         /**
