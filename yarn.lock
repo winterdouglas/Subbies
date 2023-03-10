@@ -3100,10 +3100,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/env@npm:13.2.3"
-  checksum: e3d59b888c0e57ead895ec0c96ce92b6929684a1af8b3435e0142d21e6af21b1193f421f9d6b9b36ce7711a0379fb85033e25670fef3ba9c923cc77752be6c10
+"@next/env@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/env@npm:13.2.4"
+  checksum: 4123e08a79e66d6144006972027a9ceb8f3fdd782c4a869df1eb3b91b59ad9f4a44082d3f8e421f4df5214c6bc7190b52b94881369452d65eb4580485f33b9e6
   languageName: node
   linkType: hard
 
@@ -3116,93 +3116,93 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/swc-android-arm-eabi@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-android-arm-eabi@npm:13.2.3"
+"@next/swc-android-arm-eabi@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-android-arm-eabi@npm:13.2.4"
   conditions: os=android & cpu=arm
   languageName: node
   linkType: hard
 
-"@next/swc-android-arm64@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-android-arm64@npm:13.2.3"
+"@next/swc-android-arm64@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-android-arm64@npm:13.2.4"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-darwin-arm64@npm:13.2.3"
+"@next/swc-darwin-arm64@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-darwin-arm64@npm:13.2.4"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-darwin-x64@npm:13.2.3"
+"@next/swc-darwin-x64@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-darwin-x64@npm:13.2.4"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-freebsd-x64@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-freebsd-x64@npm:13.2.3"
+"@next/swc-freebsd-x64@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-freebsd-x64@npm:13.2.4"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm-gnueabihf@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-linux-arm-gnueabihf@npm:13.2.3"
+"@next/swc-linux-arm-gnueabihf@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-linux-arm-gnueabihf@npm:13.2.4"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-linux-arm64-gnu@npm:13.2.3"
+"@next/swc-linux-arm64-gnu@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-linux-arm64-gnu@npm:13.2.4"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-linux-arm64-musl@npm:13.2.3"
+"@next/swc-linux-arm64-musl@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-linux-arm64-musl@npm:13.2.4"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-linux-x64-gnu@npm:13.2.3"
+"@next/swc-linux-x64-gnu@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-linux-x64-gnu@npm:13.2.4"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-linux-x64-musl@npm:13.2.3"
+"@next/swc-linux-x64-musl@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-linux-x64-musl@npm:13.2.4"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-win32-arm64-msvc@npm:13.2.3"
+"@next/swc-win32-arm64-msvc@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-win32-arm64-msvc@npm:13.2.4"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-ia32-msvc@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-win32-ia32-msvc@npm:13.2.3"
+"@next/swc-win32-ia32-msvc@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-win32-ia32-msvc@npm:13.2.4"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:13.2.3":
-  version: 13.2.3
-  resolution: "@next/swc-win32-x64-msvc@npm:13.2.3"
+"@next/swc-win32-x64-msvc@npm:13.2.4":
+  version: 13.2.4
+  resolution: "@next/swc-win32-x64-msvc@npm:13.2.4"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -3741,7 +3741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^4.9.0":
+"@prisma/client@npm:^4.11.0":
   version: 4.11.0
   resolution: "@prisma/client@npm:4.11.0"
   dependencies:
@@ -4286,7 +4286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^4.20.2":
+"@tanstack/react-query@npm:^4.26.1":
   version: 4.26.1
   resolution: "@tanstack/react-query@npm:4.26.1"
   dependencies:
@@ -4319,49 +4319,49 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trpc/client@npm:^10.9.0":
-  version: 10.14.1
-  resolution: "@trpc/client@npm:10.14.1"
+"@trpc/client@npm:^10.15.0":
+  version: 10.15.0
+  resolution: "@trpc/client@npm:10.15.0"
   peerDependencies:
-    "@trpc/server": 10.14.1
-  checksum: f82f141797ce3dbc5731277db3499cc02d7348df614b72cc52a7d48d365e2723b157be9168a5d6c4901729a78b5be7eecf924877f3972604f2b17677faa898b0
+    "@trpc/server": 10.15.0
+  checksum: e0669fbf28305358025f5544678ec3efea4b6a529618338c099596e36bf97f09b37d0c631e0e965f76b80e69018ecf926439e9e51e12fd7cdd918ad7664f5361
   languageName: node
   linkType: hard
 
-"@trpc/next@npm:^10.9.0":
-  version: 10.14.1
-  resolution: "@trpc/next@npm:10.14.1"
+"@trpc/next@npm:^10.15.0":
+  version: 10.15.0
+  resolution: "@trpc/next@npm:10.15.0"
   dependencies:
     react-ssr-prepass: ^1.5.0
   peerDependencies:
     "@tanstack/react-query": ^4.3.8
-    "@trpc/client": 10.14.1
-    "@trpc/react-query": 10.14.1
-    "@trpc/server": 10.14.1
+    "@trpc/client": 10.15.0
+    "@trpc/react-query": 10.15.0
+    "@trpc/server": 10.15.0
     next: "*"
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 7ec9b52c6723f6a19ab34962a79a75f9fea7c5b6a9d30c32542c1312a59b749eee1a4edc5b6c8ce71f733819a841018b8defb92f58e01542f6c3e27684fdab00
+  checksum: 3c9381ce74ce7dbd44ad9578bb2ce40dda424318cdd38f69f79444c52b99b3b874fa05e9ee766b60002f54747ab00c1577ca576b4406cb4375d8f6906ea4ccbe
   languageName: node
   linkType: hard
 
-"@trpc/react-query@npm:^10.9.0":
-  version: 10.14.1
-  resolution: "@trpc/react-query@npm:10.14.1"
+"@trpc/react-query@npm:^10.15.0":
+  version: 10.15.0
+  resolution: "@trpc/react-query@npm:10.15.0"
   peerDependencies:
     "@tanstack/react-query": ^4.3.8
-    "@trpc/client": 10.14.1
-    "@trpc/server": 10.14.1
+    "@trpc/client": 10.15.0
+    "@trpc/server": 10.15.0
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: f44eb20e224cc400d3fb481af676d8da8eb8b7b42439d75d2c1e727f043e3afce43c6b9a3244fd6d9a7c6338662672149dc90ba95f67042dda0ac48bcecf68f6
+  checksum: 0be445ec2e0ce8fb2caf62c5d2e47dc6e9df5c2fa97a793d4b58adc31b4581d375ea8a25dfb992475d9f2b3f15704e328699e750483859545ca2b46cda1bcec9
   languageName: node
   linkType: hard
 
-"@trpc/server@npm:^10.9.0":
-  version: 10.14.1
-  resolution: "@trpc/server@npm:10.14.1"
-  checksum: 31c29e2b46e2108573cb6fa5582890ac94ede439d7414b6de80f15008a801bbb676506431a1d773cc0350b174dcd8ad9ba01f7480b897240a32b499b9c07a752
+"@trpc/server@npm:^10.15.0":
+  version: 10.15.0
+  resolution: "@trpc/server@npm:10.15.0"
+  checksum: d02bd5b6c409e59642c860e29c41b5787a98d4db81e5ee7f6c4c0600af07fdf00217c032f5345711f9556680fdf1686da8aef0c4d28bd44cd652eee96ecc11e0
   languageName: node
   linkType: hard
 
@@ -16770,7 +16770,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-auth@npm:^4.19.0":
+"next-auth@npm:^4.20.1":
   version: 4.20.1
   resolution: "next-auth@npm:4.20.1"
   dependencies:
@@ -16795,24 +16795,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^13.2.1":
-  version: 13.2.3
-  resolution: "next@npm:13.2.3"
+"next@npm:^13.2.4":
+  version: 13.2.4
+  resolution: "next@npm:13.2.4"
   dependencies:
-    "@next/env": 13.2.3
-    "@next/swc-android-arm-eabi": 13.2.3
-    "@next/swc-android-arm64": 13.2.3
-    "@next/swc-darwin-arm64": 13.2.3
-    "@next/swc-darwin-x64": 13.2.3
-    "@next/swc-freebsd-x64": 13.2.3
-    "@next/swc-linux-arm-gnueabihf": 13.2.3
-    "@next/swc-linux-arm64-gnu": 13.2.3
-    "@next/swc-linux-arm64-musl": 13.2.3
-    "@next/swc-linux-x64-gnu": 13.2.3
-    "@next/swc-linux-x64-musl": 13.2.3
-    "@next/swc-win32-arm64-msvc": 13.2.3
-    "@next/swc-win32-ia32-msvc": 13.2.3
-    "@next/swc-win32-x64-msvc": 13.2.3
+    "@next/env": 13.2.4
+    "@next/swc-android-arm-eabi": 13.2.4
+    "@next/swc-android-arm64": 13.2.4
+    "@next/swc-darwin-arm64": 13.2.4
+    "@next/swc-darwin-x64": 13.2.4
+    "@next/swc-freebsd-x64": 13.2.4
+    "@next/swc-linux-arm-gnueabihf": 13.2.4
+    "@next/swc-linux-arm64-gnu": 13.2.4
+    "@next/swc-linux-arm64-musl": 13.2.4
+    "@next/swc-linux-x64-gnu": 13.2.4
+    "@next/swc-linux-x64-musl": 13.2.4
+    "@next/swc-win32-arm64-msvc": 13.2.4
+    "@next/swc-win32-ia32-msvc": 13.2.4
+    "@next/swc-win32-x64-msvc": 13.2.4
     "@swc/helpers": 0.4.14
     caniuse-lite: ^1.0.30001406
     postcss: 8.4.14
@@ -16862,7 +16862,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: 5147078cebf6156acd1dc54208b02852d23c50fe9fae9de444d9982090b63ac1975284d6e8d1647b78c98508c6d4be90a2debc3a12e383db423188724d38e6a9
+  checksum: 8531dee41b60181b582f5ee80858907b102f083ef8808ff9352d589dd39e6b3a96f7a11b3776a03eef3a28430cff768336fa2e3ff2c6f8fcd699fbc891749051
   languageName: node
   linkType: hard
 
@@ -19234,7 +19234,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prisma@npm:^4.9.0":
+"prisma@npm:^4.11.0":
   version: 4.11.0
   resolution: "prisma@npm:4.11.0"
   dependencies:
@@ -21315,24 +21315,24 @@ __metadata:
   resolution: "server@workspace:packages/server"
   dependencies:
     "@next-auth/prisma-adapter": ^1.0.5
-    "@prisma/client": ^4.9.0
-    "@tanstack/react-query": ^4.20.2
-    "@trpc/client": ^10.9.0
-    "@trpc/next": ^10.9.0
-    "@trpc/react-query": ^10.9.0
-    "@trpc/server": ^10.9.0
+    "@prisma/client": ^4.11.0
+    "@tanstack/react-query": ^4.26.1
+    "@trpc/client": ^10.15.0
+    "@trpc/next": ^10.15.0
+    "@trpc/react-query": ^10.15.0
+    "@trpc/server": ^10.15.0
     "@types/eslint": ^8.21.1
     "@types/node": ^18.14.0
     "@types/react": ~18.0.28
     "@types/react-dom": ^18.0.11
     eslint-config-next: ^13.2.1
-    next: ^13.2.1
-    next-auth: ^4.19.0
-    prisma: ^4.9.0
+    next: ^13.2.4
+    next-auth: ^4.20.1
+    prisma: ^4.11.0
     react: 18.2.0
     react-dom: 18.2.0
-    superjson: 1.9.1
-    zod: ^3.20.6
+    superjson: 1.12.2
+    zod: ^3.21.4
   languageName: unknown
   linkType: soft
 
@@ -22525,12 +22525,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superjson@npm:1.9.1":
-  version: 1.9.1
-  resolution: "superjson@npm:1.9.1"
+"superjson@npm:1.12.2":
+  version: 1.12.2
+  resolution: "superjson@npm:1.12.2"
   dependencies:
     copy-anything: ^3.0.2
-  checksum: b575fe4d18b7263b3d6a617dea7857a0f31ae30e80f8cc0c6fe18dc2e6b8bbd7b3374007ca67fa487e0159fff18cce03cbe0654a0df97f337bec6a8835c0eee3
+  checksum: cf7735e172811ed87476a7c2f1bb0e83725a0e3c2d7a50a71303a973060b3c710288767fb767a7a7eee8e5625d3ccaee1176a93e27f43841627512c15c4cdf84
   languageName: node
   linkType: hard
 
@@ -25042,7 +25042,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.20.6":
+"zod@npm:^3.21.4":
   version: 3.21.4
   resolution: "zod@npm:3.21.4"
   checksum: f185ba87342ff16f7a06686767c2b2a7af41110c7edf7c1974095d8db7a73792696bcb4a00853de0d2edeb34a5b2ea6a55871bc864227dace682a0a28de33e1f
