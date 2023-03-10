@@ -33,14 +33,14 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    signIn({ account, profile }) {
-      if (account && profile) {
-        if (account.provider === "google") {
-          return (profile as GoogleProfile).email_verified;
-        }
-      }
-      return true; // Do different verification for other providers that don't have `email_verified`
-    },
+    // signIn({ account, profile }) {
+    //   if (account && profile) {
+    //     if (account.provider === "google") {
+    //       return (profile as GoogleProfile).email_verified;
+    //     }
+    //   }
+    //   return true; // Do different verification for other providers that don't have `email_verified`
+    // },
     session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
