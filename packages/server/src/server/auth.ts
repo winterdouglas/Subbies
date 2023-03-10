@@ -1,6 +1,6 @@
 import { type GetServerSidePropsContext } from "next";
 import { getServerSession, type NextAuthOptions, type DefaultSession } from "next-auth";
-import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
+import GoogleProvider, { type GoogleProfile } from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { env } from "@/env.mjs";
 import { prisma } from "@/server/db";
@@ -33,7 +33,7 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    async signIn({ account, profile }) {
+    signIn({ account, profile }) {
       if (account && profile) {
         if (account.provider === "google") {
           return (profile as GoogleProfile).email_verified;
