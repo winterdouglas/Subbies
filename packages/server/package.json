@@ -5,8 +5,9 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\"",
     "postinstall": "prisma generate",
-    "lint": "next lint",
+    "lint": "next lint . --fix --ext .js,.ts,.tsx && yarn run format",
     "start": "next start"
   },
   "dependencies": {
