@@ -1,8 +1,15 @@
-import React, { ComponentType, ReactElement } from "react";
-import { PressableProps, StyleProp, TextStyle, View, ViewProps, ViewStyle } from "react-native";
+import React, { type ComponentType, type ReactElement } from "react";
+import {
+  type PressableProps,
+  type StyleProp,
+  type TextStyle,
+  View,
+  type ViewProps,
+  type ViewStyle,
+} from "react-native";
 import { spacing } from "@theme";
-import { Icon, IconTypes } from "../Icon";
-import { Text, TextProps } from "../Text";
+import { Icon, type IconTypes } from "../Icon";
+import { Text, type TextProps } from "../Text";
 import { PressableOpacity } from "../PressableOpacity";
 import { useTheme } from "@hooks/useTheme";
 

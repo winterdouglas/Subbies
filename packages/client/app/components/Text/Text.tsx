@@ -1,7 +1,12 @@
-import i18n from "i18n-js";
+import type i18n from "i18n-js";
 import React from "react";
-import { StyleProp, Text as RNText, TextProps as RNTextProps, TextStyle } from "react-native";
-import { isRTL, translate, TxKeyPath } from "@lib/i18n";
+import {
+  type StyleProp,
+  Text as RNText,
+  type TextProps as RNTextProps,
+  type TextStyle,
+} from "react-native";
+import { isRTL, translate, type TxKeyPath } from "@lib/i18n";
 import { typography } from "@theme";
 import { useTheme } from "@hooks/useTheme";
 

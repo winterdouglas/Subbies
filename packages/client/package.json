@@ -87,6 +87,7 @@
     "babel-plugin-module-resolver": "^5.0.0",
     "detox": "19.12.1",
     "detox-expo-helpers": "0.6.0",
+    "eslint-config-custom": "workspace:^",
     "expo-detox-hook": "1.0.10",
     "expo-modules-autolinking": "~1.0.0",
     "fbjs-scripts": "3.0.1",

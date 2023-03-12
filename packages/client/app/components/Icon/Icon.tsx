@@ -1,9 +1,9 @@
 import * as React from "react";
-import { ComponentType } from "react";
-import { ColorValue, StyleProp, View, ViewStyle } from "react-native";
-import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
+import { type ComponentType } from "react";
+import { type ColorValue, type StyleProp, View, type ViewStyle } from "react-native";
+import { PressableOpacity, type PressableOpacityProps } from "../PressableOpacity";
 import Ionicon from "react-native-vector-icons/Ionicons";
-import IoniconIconNames from "react-native-vector-icons/dist/glyphmaps/Ionicons.json";
+import type IoniconIconNames from "react-native-vector-icons/dist/glyphmaps/Ionicons.json";
 import { useTheme } from "@hooks/useTheme";
 
 export type IconTypes = keyof typeof IoniconIconNames;

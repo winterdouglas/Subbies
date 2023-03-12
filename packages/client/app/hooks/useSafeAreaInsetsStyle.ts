@@ -1,5 +1,5 @@
-import { FlexStyle } from "react-native";
-import { Edge, useSafeAreaInsets } from "react-native-safe-area-context";
+import { type FlexStyle } from "react-native";
+import { type Edge, useSafeAreaInsets } from "react-native-safe-area-context";
 
 export type ExtendedEdge = Edge | "start" | "end";
 

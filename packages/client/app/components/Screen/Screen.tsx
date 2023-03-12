@@ -1,19 +1,19 @@
 import { useScrollToTop } from "@react-navigation/native";
-import { StatusBar, StatusBarProps } from "expo-status-bar";
+import { StatusBar, type StatusBarProps } from "expo-status-bar";
 import React, { useRef, useState } from "react";
 import {
   KeyboardAvoidingView,
-  KeyboardAvoidingViewProps,
-  LayoutChangeEvent,
+  type KeyboardAvoidingViewProps,
+  type LayoutChangeEvent,
   Platform,
   ScrollView,
-  ScrollViewProps,
-  StyleProp,
+  type ScrollViewProps,
+  type StyleProp,
   View,
-  ViewStyle,
+  type ViewStyle,
 } from "react-native";
 import { spacing } from "@theme";
-import { ExtendedEdge, useSafeAreaInsetsStyle } from "@hooks/useSafeAreaInsetsStyle";
+import { type ExtendedEdge, useSafeAreaInsetsStyle } from "@hooks/useSafeAreaInsetsStyle";
 import { useTheme } from "@hooks/useTheme";
 
 interface BaseScreenProps {

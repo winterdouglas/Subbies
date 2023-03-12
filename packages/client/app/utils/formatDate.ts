@@ -1,4 +1,4 @@
-import { Locale, format, parseISO } from "date-fns";
+import { type Locale, format, parseISO } from "date-fns";
 import I18n from "i18n-js";
 
 import ar from "date-fns/locale/ar-SA";

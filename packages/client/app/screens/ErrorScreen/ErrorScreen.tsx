@@ -1,5 +1,5 @@
-import React, { ErrorInfo } from "react";
-import { ScrollView, TextStyle, View, ViewStyle } from "react-native";
+import React, { type ErrorInfo } from "react";
+import { ScrollView, type TextStyle, View, type ViewStyle } from "react-native";
 import { Button, Icon, Screen, Text } from "@components";
 import { spacing } from "@theme";
 import { useTheme } from "@hooks/useTheme";

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Pressable, PressableProps, ViewStyle } from "react-native";
+import { Pressable, type PressableProps, type ViewStyle } from "react-native";
 import Animated, {
   cancelAnimation,
   useAnimatedStyle,

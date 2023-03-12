@@ -1,4 +1,4 @@
-import { ApiResponse } from "apisauce";
+import { type ApiResponse } from "apisauce";
 
 export type GeneralApiProblem =
   /**

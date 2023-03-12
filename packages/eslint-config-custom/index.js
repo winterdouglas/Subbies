@@ -1,39 +1,40 @@
-{
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "extends": [
+module.exports = {
+  parser: "@typescript-eslint/parser",
+  extends: [
     "plugin:@typescript-eslint/recommended",
+    // "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/recommended",
     "plugin:react-native/all",
     "standard",
-    "prettier"
+    "prettier",
   ],
-  "plugins": ["@typescript-eslint", "react", "react-native"],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    }
+  plugins: ["@typescript-eslint", "react", "react-native"],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    // project: ["./tsconfig.eslint.json", "./tsconfig.json"],
   },
-  "settings": {
-    "react": {
-      "pragma": "React",
-      "version": "detect"
-    }
+  settings: {
+    react: {
+      pragma: "React",
+      version: "detect",
+    },
   },
-  "globals": {
-    "__DEV__": false,
-    "jasmine": false,
-    "beforeAll": false,
-    "afterAll": false,
-    "beforeEach": false,
-    "afterEach": false,
-    "test": false,
-    "expect": false,
-    "describe": false,
-    "jest": false,
-    "it": false
+  globals: {
+    __DEV__: false,
+    jasmine: false,
+    beforeAll: false,
+    afterAll: false,
+    beforeEach: false,
+    afterEach: false,
+    test: false,
+    expect: false,
+    describe: false,
+    jest: false,
+    it: false,
   },
-  "rules": {
+  rules: {
     "@typescript-eslint/ban-ts-ignore": 0,
     "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
@@ -48,21 +49,22 @@
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_"
-      }
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+      },
     ],
+    "@typescript-eslint/consistent-type-imports": 1,
     "comma-dangle": 0,
     "multiline-ternary": 0,
     "no-undef": 0,
     "no-unused-vars": 0,
     "no-use-before-define": 0,
     "no-global-assign": 0,
-    "quotes": 0,
+    quotes: 0,
     "react-native/no-raw-text": 0,
     "react/no-unescaped-entities": 0,
     "react/prop-types": 0,
     "space-before-function-paren": 0,
-    "no-void": 0
-  }
-}
+    "no-void": 0,
+  },
+};

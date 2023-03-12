@@ -1,6 +1,6 @@
 import {
-  PartialState,
-  NavigationState,
+  type PartialState,
+  type NavigationState,
   createNavigationContainerRef,
 } from "@react-navigation/native";
 
