@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
-import { Image, ImageProps, ImageURISource, Platform } from "react-native";
+import { Image, type ImageProps, type ImageURISource, Platform } from "react-native";
 
 export interface AutoImageProps extends ImageProps {
   /**
@@ -61,8 +61,8 @@ export function AutoImage(props: AutoImageProps) {
 
   const [width, height] = useAutoImage(
     Platform.select({
-      web: (source?.uri as string) ?? (source as string),
-      default: source?.uri as string,
+      web: source?.uri ?? (source as string),
+      default: source?.uri,
     }),
     [maxWidth, maxHeight],
   );

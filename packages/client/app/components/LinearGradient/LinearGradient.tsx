@@ -1,7 +1,7 @@
 import React from "react";
-import { ColorValue } from "react-native";
+import { type ColorValue } from "react-native";
 import Svg, {
-  SvgProps,
+  type SvgProps,
   Defs,
   LinearGradient as RNSvgLinearGradient,
   Stop,

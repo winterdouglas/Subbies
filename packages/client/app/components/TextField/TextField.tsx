@@ -1,8 +1,21 @@
-import React, { ComponentType, forwardRef, Ref, useImperativeHandle, useRef } from "react";
-import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from "react-native";
+import React, {
+  type ComponentType,
+  forwardRef,
+  type Ref,
+  useImperativeHandle,
+  useRef,
+} from "react";
+import {
+  type StyleProp,
+  TextInput,
+  type TextInputProps,
+  type TextStyle,
+  View,
+  type ViewStyle,
+} from "react-native";
 import { isRTL, translate } from "@lib/i18n";
 import { spacing, typography } from "@theme";
-import { Text, TextProps } from "../Text";
+import { Text, type TextProps } from "../Text";
 import { PressableOpacity } from "../PressableOpacity";
 import { useTheme } from "@hooks/useTheme";
 

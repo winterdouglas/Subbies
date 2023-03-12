@@ -1,14 +1,14 @@
-import React, { ComponentType } from "react";
+import React, { type ComponentType } from "react";
 import {
   Pressable,
-  PressableProps,
-  PressableStateCallbackType,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
+  type PressableProps,
+  type PressableStateCallbackType,
+  type StyleProp,
+  type TextStyle,
+  type ViewStyle,
 } from "react-native";
 import { spacing, typography } from "@theme";
-import { Text, TextProps } from "../Text";
+import { Text, type TextProps } from "../Text";
 import { useTheme } from "@hooks/useTheme";
 
 export interface ButtonAccessoryProps {

@@ -1,8 +1,8 @@
-import React, { Fragment, ReactElement } from "react";
-import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
+import React, { Fragment, type ReactElement } from "react";
+import { type StyleProp, type TextStyle, View, type ViewStyle } from "react-native";
 import { spacing } from "@theme";
-import { Text, TextProps } from "../Text";
-import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
+import { Text, type TextProps } from "../Text";
+import { PressableOpacity, type PressableOpacityProps } from "../PressableOpacity";
 import { useTheme } from "@hooks/useTheme";
 
 interface CardProps extends Omit<PressableOpacityProps, "children"> {

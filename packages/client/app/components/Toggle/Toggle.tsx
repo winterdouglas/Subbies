@@ -1,18 +1,18 @@
-import React, { ComponentType, useMemo } from "react";
+import React, { type ComponentType, useMemo } from "react";
 import {
-  GestureResponderEvent,
-  StyleProp,
-  SwitchProps,
-  TextInputProps,
-  TextStyle,
+  type GestureResponderEvent,
+  type StyleProp,
+  type SwitchProps,
+  type TextInputProps,
+  type TextStyle,
   View,
-  ViewStyle,
+  type ViewStyle,
 } from "react-native";
 import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated";
 import { spacing } from "@theme";
-import { Icon, IconTypes } from "../Icon";
-import { Text, TextProps } from "../Text";
-import { PressableOpacity, PressableOpacityProps } from "../PressableOpacity";
+import { Icon, type IconTypes } from "../Icon";
+import { Text, type TextProps } from "../Text";
+import { PressableOpacity, type PressableOpacityProps } from "../PressableOpacity";
 import { useTheme } from "@hooks/useTheme";
 
 type Variants = "checkbox" | "switch" | "radio";

@@ -1,5 +1,5 @@
-import React, { createContext, ReactNode, useMemo, useState } from "react";
-import { lightColors, darkColors, ThemeMode } from "@theme";
+import React, { createContext, type ReactNode, useMemo, useState } from "react";
+import { lightColors, darkColors, type ThemeMode } from "@theme";
 
 const useThemeData = () => {
   const [themeMode, setThemeMode] = useState<ThemeMode>("light");

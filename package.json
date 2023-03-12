@@ -5,19 +5,13 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.54.1",
-    "@typescript-eslint/parser": "5.54.1",
-    "eslint": "8.35.0",
-    "eslint-config-prettier": "8.7.0",
-    "eslint-config-standard": "17.0.0",
-    "eslint-plugin-import": "2.27.5",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-promise": "6.1.1",
-    "eslint-plugin-react": "7.32.2",
-    "eslint-plugin-react-native": "4.0.0",
+    "@types/node": "^18.15.0",
     "lerna": "^6.5.1",
     "prettier": "2.8.4",
+    "ts-node": "^10.9.1",
     "typescript": "4.9.5"
+  },
+  "resolutions": {
+    "react-native@0.71.4": "patch:react-native@npm%3A0.71.4#./.yarn/patches/react-native-npm-0.71.4-f5ed7ab7f3.patch"
   }
 }

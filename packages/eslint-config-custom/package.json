@@ -1,0 +1,19 @@
+{
+  "name": "eslint-config-custom",
+  "main": "index.js",
+  "version": "0.0.1",
+  "dependencies": {
+    "@types/eslint": "^8.21.1",
+    "@typescript-eslint/eslint-plugin": "5.54.1",
+    "@typescript-eslint/parser": "5.54.1",
+    "eslint": "8.35.0",
+    "eslint-config-prettier": "8.7.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-native": "4.0.0"
+  }
+}

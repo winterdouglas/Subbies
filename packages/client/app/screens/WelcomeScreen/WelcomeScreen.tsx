@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card, Icon, List, Screen, Text, TextField, Toggle } from "@components";
-import { AppStackScreenProps } from "@navigators";
+import { type AppStackScreenProps } from "@navigators";
 import { useHeader } from "@hooks/useHeader";
 import { useTheme } from "@hooks/useTheme";
 import { hexToHSL, toHSLString } from "@utils/colorUtils";

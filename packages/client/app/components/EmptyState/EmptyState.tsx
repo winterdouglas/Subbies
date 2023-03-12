@@ -1,9 +1,17 @@
 import React from "react";
-import { Image, ImageProps, ImageStyle, StyleProp, TextStyle, View, ViewStyle } from "react-native";
+import {
+  Image,
+  type ImageProps,
+  type ImageStyle,
+  type StyleProp,
+  type TextStyle,
+  View,
+  type ViewStyle,
+} from "react-native";
 import { translate } from "@lib/i18n";
 import { spacing } from "@theme";
-import { Button, ButtonProps } from "../Button";
-import { Text, TextProps } from "../Text";
+import { Button, type ButtonProps } from "../Button";
+import { Text, type TextProps } from "../Text";
 
 const sadFace = require("@assets/images/sad-face.png");
 
